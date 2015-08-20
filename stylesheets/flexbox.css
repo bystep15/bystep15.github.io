@@ -1,0 +1,143 @@
+html {
+    font-size: 100%;
+}
+* {
+    box-sizing: border-box;
+}
+figure{
+    margin: 0;
+    padding: 0;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.main {
+    position: relative;
+    min-width: 320px;
+    max-width: 1160px;
+    margin: 0 auto;
+}
+
+.abstract{
+    background: hsl(45,50%,98%);
+    font-size: 18px;
+    padding: 1rem;
+    text-align: right;
+}
+.text{
+    font-family: 'Microsoft Yahei', 'Lantinghei SC';
+    line-height: 32px;
+    font-size: 16px;
+    text-indent: 2em;
+    margin: 8px 0;
+}
+/*==========strip=================*/
+
+#strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem;
+}
+#panel1 {
+    width: 40%;
+    position: relative;
+}
+#panel3 {
+    width: 33%;
+    position: relative;
+}
+#panel1 img,
+#panel3 img {
+    width: 100%;
+}
+#strip img {
+    border-image: url(../images/flexbox/comic-frame.png) 22 16 16 22;
+    background: #000;
+    border-width: 12px;
+    border-style: solid;
+}
+#strip figcaption {
+    background: #fff;
+    font-size: 1.2rem;
+    padding: .6rem;
+    display: inline-block;
+    position: absolute;
+    top: 2rem;
+    right: -2rem;
+    font-family: Sequentialist BB, Comic Sans, cursive;
+    border-image: url('../images/flexbox/lettering-frame.png') 11 10 14 12;
+    border-width: 6px;
+    background-clip: padding-box;
+}
+#panel1 figcaption {
+    letter-spacing: .3rem;
+}
+#panel3 figcaption {
+    left: -2rem;
+    width: 6rem;
+    font-style: italic;
+}
+@media screen and (max-width: 45rem) {
+    #panel2 {
+        display: none;
+    }
+}
+@media screen and (max-width: 40rem) {
+    #strip {
+        flex-direction: column;
+    }
+    #panel1,
+    #panel3 {
+        width: 60%;
+    }
+    #panel3 {
+        align-self: flex-end;
+    }
+}
+@media screen and (max-width: 40rem) {
+    #panel1 {
+        order: 3;
+    }
+    #panel3 figcaption {
+        display: none;
+    }
+}
+
+/*============masonry========================*/
+#masonry{
+    background: #131212;
+    display: -ms-flexbox;
+    -ms-flex-wrap: wrap;
+    -ms-flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100vw;
+    /*    */
+    max-height: 800px;
+    width: 70%;
+    font-size: 0;
+    margin: 0 auto;
+}
+#masonry img{
+    width: 33.3%;
+    transition: .8s opacity;
+}
+
+
+/*====================================*/
+@media only screen and (min-width: 768px) {
+    #main-cont{
+        margin-left: 10px;
+        margin-right: 230px;
+    }
+}
+@media only screen and (min-width: 320px) and (max-width: 767px){
+    #main-cont{
+        margin: 0 10px;
+    }
+}
