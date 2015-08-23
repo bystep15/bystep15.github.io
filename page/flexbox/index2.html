@@ -43,8 +43,10 @@
                 
                 <aside id="sidebar">
                     <ul class="side-nav">
-                        <li><a href="#anchor1">制作漫画</a></li>
-                        <li><a href="#anchor2">总结</a></li>
+                        <li><a href="#anchor1">制作图片磁贴</a></li>
+                        <li><a href="#anchor2">Firefox的绛级处理</a></li>
+                        <li><a href="#anchor3">移动端的支持</a></li>
+                        <li><a href="#anchor4">总结</a></li>
                     </ul>
                 </aside>
                 
@@ -58,7 +60,7 @@
                         如果你还没有升级最新的浏览器，我将会给出一些反馈选项。
                     </p>
                     <article>
-                        <h2>制作图片磁贴</h2>
+                        <h2 id="anchor1">制作图片磁贴</h2>
                         <p class="text">
                             这个例子是用flexbox实现的一个磁贴式图片布局。实现起来很简单。
                         </p>
@@ -100,7 +102,7 @@ div#masonry:hover img:hover {
                         </p>
                     </article>
                     <article>
-                        <h2>针对 Firefox 的绛级处理</h2>
+                        <h2 id="anchor2">针对 Firefox 的绛级处理</h2>
                         <p class="text">对于那些还没有升级到最新 Firefox 的用户，我在样式表的最后多加了一项CSS规则</p>
                         <pre><code class="css">@supports not (flex-wrap: wrap) {
     div#masonry {
@@ -129,7 +131,7 @@ div#masonry:hover img:hover {
                         </p>
                     </article>
                     <article>
-                        <h2>移动端的支持</h2>
+                        <h2 id="anchor3">移动端的支持</h2>
                         <p class="text">在移动端改变成两列布局以保证图片的显示效果也是很简单的：</p>
                         <pre><code class="css">@media screen and (max-width: 500px) {
     div#masonry {
@@ -141,7 +143,7 @@ div#masonry:hover img:hover {
 }</code></pre>
                     </article>
                     <article>
-                        <h2 id="anchor2">总结</h2>
+                        <h2 id="anchor4">总结</h2>
                         <p  class="text">
                             就像你看到的，flexbox可以让我们方便的制作出磁贴式或<a href="http://demosthenes.info/blog/825/Pinterest-Style-Column-Layout-In-Pure-CSS">Pinterest-Style</a>风格的布局。
                             当然，还有一种比“可换行flex元素”更好的解决方案，过些日子给大家展示。
