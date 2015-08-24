@@ -1,9 +1,7 @@
 html {
     font-size: 100%;
 }
-* {
-    box-sizing: border-box;
-}
+
 figure{
     margin: 0;
     padding: 0;
@@ -122,6 +120,11 @@ figure{
     font-size: 0;
     margin: 0 auto;
 }
+
+#masonry * {
+    box-sizing: border-box;
+}
+
 @media only screen and (min-width: 768px){
     #masonry{
         width: 70%;
@@ -143,6 +146,101 @@ figure{
 
 #masonry:hover img:hover {
     opacity: 1;
+}
+
+/*========Grid Layout by Flexbox===============================*/
+
+#got-gridbox {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between; 
+}
+ 
+#got-gridbox * {
+	box-sizing: border-box;
+}
+
+#got-gridbox figure {
+    border: 1px solid #333;
+    position: relative;
+    font-size: 0;
+    margin: 2% 0;
+    flex: 0 0 48%;
+}
+
+#got-gridbox figure img {
+	width: 60%;
+	height: auto;
+	margin-top: -2rem;
+}
+
+#got-gridbox figure:nth-child(even) img {
+	float: right;
+}
+
+#got-gridbox figure figcaption {
+    position: absolute;
+    right: 4%;
+    top: 5%;
+    font-family: Deseret, Trajan Pro, Trajan, Requiem, serif;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    text-align: right;
+}
+
+#got-gridbox figure:nth-child(even) figcaption {
+    left: 4%;
+    right: auto;
+    text-align: left;
+}
+
+@media screen and (max-width: 900px) {
+    #got-gridbox figure figcaption {
+        font-size: 1.4rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #got-gridbox figure figcaption {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #got-gridbox figure {
+        flex: 0 0 100%;
+        margin-bottom: 7%;
+    }
+    #got-gridbox figure figcaption {
+        font-size: 1.6rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #got-gridbox figure figcaption {
+        font-size: 1.2rem;
+        width: 50%;
+    }
+}
+
+#got-gridbox figure:nth-last-child(-n+2) {
+	background-image: linear-gradient(transparent, transparent 80%, #111 81%);
+}
+.illustation{
+    float: right;
+    width: 30%;
+    height: auto;
+    text-indent: 0;
+    min-width: 300px
+}
+
+.illustation img{
+    width: 100%;
+}
+
+.illustation p{
+    text-align: center;
+    font: 14px;
 }
 
 /*====================================*/
