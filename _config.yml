@@ -14,9 +14,11 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://yourdomain.com" # the base hostname & protocol for your site
 twitter_username: jekyllrb
 github_username:  jekyll
+paginate: 1
+paginate_path: "blog/page:num"
 
 # Build settings
-markdown: kramdown
+markdown: rdiscount
 
 github: [metadata]
 kramdown:

@@ -2,7 +2,7 @@
 layout: post
 title:  "焦点图进阶"
 date:   2016-02-03 14:49:42 +0800
-categories: jekyll update
+categories: front article
 ---
 新新的Show Time ^_^
 {% highlight html%}

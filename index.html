@@ -5,7 +5,6 @@ layout: default
 <div class="home">
 
   <h1 class="page-heading">宝树技术原创</h1>
-
   <ul class="post-list">
     {% for post in site.posts %}
       <li>
@@ -18,19 +17,7 @@ layout: default
     {% endfor %}
   </ul>
 
-  <h1 class="page-heading">宝树前端生活</h1>
-  <ul class="post-list">
-    {% for post in site.lives %}
-      <li>
-        <span class="post-meta">posted at: {{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-  <h1 class="page-heading">其他文章</h1>
+  <h1 class="page-heading">培训相关</h1>
   <ul class="post-list">
       <li>
         <span class="post-meta">posted at: 2015-12-01</span>
