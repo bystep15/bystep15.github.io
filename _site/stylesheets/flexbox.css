@@ -1,0 +1,257 @@
+html {
+    font-size: 100%;
+}
+
+figure{
+    margin: 0;
+    padding: 0;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.main {
+    position: relative;
+    min-width: 320px;
+    max-width: 1160px;
+    margin: 0 auto;
+}
+
+.abstract{
+    background: hsl(45,50%,98%);
+    font-size: 18px;
+    padding: 1rem;
+    text-align: right;
+}
+.text{
+    font-family: 'Microsoft Yahei', 'Lantinghei SC';
+    line-height: 32px;
+    font-size: 16px;
+    text-indent: 2em;
+    margin: 8px 0;
+}
+/*==========strip=================*/
+
+#strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem;
+}
+#panel1 {
+    width: 40%;
+    position: relative;
+}
+#panel3 {
+    width: 33%;
+    position: relative;
+}
+#panel1 img,
+#panel3 img {
+    width: 100%;
+}
+#strip img {
+    border-image: url(../images/flexbox/comic-frame.png) 22 16 16 22;
+    background: #000;
+    border-width: 12px;
+    border-style: solid;
+}
+#strip figcaption {
+    background: #fff;
+    font-size: 1.2rem;
+    padding: .6rem;
+    display: inline-block;
+    position: absolute;
+    top: 2rem;
+    right: -2rem;
+    font-family: Sequentialist BB, Comic Sans, cursive;
+    border-image: url('../images/flexbox/lettering-frame.png') 11 10 14 12;
+    border-width: 6px;
+    background-clip: padding-box;
+}
+#panel1 figcaption {
+    letter-spacing: .3rem;
+}
+#panel3 figcaption {
+    left: -2rem;
+    width: 6rem;
+    font-style: italic;
+}
+@media screen and (max-width: 45rem) {
+    #panel2 {
+        display: none;
+    }
+}
+@media screen and (max-width: 40rem) {
+    #strip {
+        flex-direction: column;
+    }
+    #panel1,
+    #panel3 {
+        width: 60%;
+    }
+    #panel3 {
+        align-self: flex-end;
+    }
+}
+@media screen and (max-width: 40rem) {
+    #panel1 {
+        order: 3;
+    }
+    #panel3 figcaption {
+        display: none;
+    }
+}
+
+/*============masonry========================*/
+#masonry{
+    background: #131212;
+    display: -ms-flexbox;
+    -ms-flex-wrap: wrap;
+    -ms-flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 95vw;
+    /*    */
+    max-height: 800px;
+    font-size: 0;
+    margin: 0 auto;
+}
+
+#masonry * {
+    box-sizing: border-box;
+}
+
+@media only screen and (min-width: 768px){
+    #masonry{
+        width: 70%;
+    }
+}
+@media only screen and (max-width: 768px){
+    #masonry{
+        width: 100%;
+    }
+}
+#masonry img {
+    width: 33.3%;
+    transition: .8s opacity;
+}
+
+#masonry:hover img {
+    opacity: 0.3;
+}
+
+#masonry:hover img:hover {
+    opacity: 1;
+}
+
+/*========Grid Layout by Flexbox===============================*/
+
+#got-gridbox {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between; 
+}
+ 
+#got-gridbox * {
+	box-sizing: border-box;
+}
+
+#got-gridbox figure {
+    border: 1px solid #333;
+    position: relative;
+    font-size: 0;
+    margin: 2% 0;
+    flex: 0 0 48%;
+}
+
+#got-gridbox figure img {
+	width: 60%;
+	height: auto;
+	margin-top: -2rem;
+}
+
+#got-gridbox figure:nth-child(even) img {
+	float: right;
+}
+
+#got-gridbox figure figcaption {
+    position: absolute;
+    right: 4%;
+    top: 5%;
+    font-family: Deseret, Trajan Pro, Trajan, Requiem, serif;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    text-align: right;
+}
+
+#got-gridbox figure:nth-child(even) figcaption {
+    left: 4%;
+    right: auto;
+    text-align: left;
+}
+
+@media screen and (max-width: 900px) {
+    #got-gridbox figure figcaption {
+        font-size: 1.4rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #got-gridbox figure figcaption {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #got-gridbox figure {
+        flex: 0 0 100%;
+        margin-bottom: 7%;
+    }
+    #got-gridbox figure figcaption {
+        font-size: 1.6rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #got-gridbox figure figcaption {
+        font-size: 1.2rem;
+        width: 50%;
+    }
+}
+
+#got-gridbox figure:nth-last-child(-n+2) {
+	background-image: linear-gradient(transparent, transparent 80%, #111 81%);
+}
+.illustation{
+    float: right;
+    width: 30%;
+    height: auto;
+    text-indent: 0;
+    min-width: 300px
+}
+
+.illustation img{
+    width: 100%;
+}
+
+.illustation p{
+    text-align: center;
+    font: 14px;
+}
+
+/*====================================*/
+@media only screen and (min-width: 768px) {
+    #main-cont{
+        margin-left: 10px;
+        margin-right: 230px;
+    }
+}
+@media only screen and (min-width: 320px) and (max-width: 767px){
+    #main-cont{
+        margin: 0 10px;
+    }
+}

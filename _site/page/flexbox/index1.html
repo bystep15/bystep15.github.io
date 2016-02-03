@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>Bystep15.GitHub.io by bystep15</title>
+        <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="../../stylesheets/stylesheet.css" media="screen">
+        <link rel="stylesheet" href="../../stylesheets/print.css" media="print">
+        <link rel="stylesheet" href="../../stylesheets/flexbox.css">
+        <link rel="stylesheet" href="../../stylesheets/github-gist.css">
+        <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <script src="/javascripts/jquery-1.11.3.js"></script>
+        <script src="/javascripts/highlight.pack.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="inner">
+                <h1>Bystep15.GitHub.io</h1>
+                <h2>宝宝树前端团队</h2>
+                <a href="https://github.com/bystep15" class="button"><small>Follow me on</small> GitHub</a>
+            </div>
+        </header>
+        
+        <div id="content-wrapper">
+            <div class="main clearfix">
+                <div id="strip">
+                    <figure id="panel1">
+                        <img src="/images/flexbox/5main-1.webp" alt="A photograph of a man kneeling in a parking garage, pleading for his life" >
+                        <figcaption>“WAIT…”</figcaption>
+                    </figure>
+                    <img src="/images/flexbox/5miain-mid.webp" alt id="panel2">
+                    <figure id="panel3">
+                        <img src="/images/flexbox/5main-2.webp" alt="A backlit photograph of a man pointing a gun">
+                        <figcaption>CLICK</figcaption>
+                    </figure>
+                </div>
+                <div class="abstract">
+                    原文地址：<a href="http://demosthenes.info/blog/778/A-Responsive-Graphic-Novel-In-Flexbox">A Responsive Graphic Novel In Flexbox</a>
+                </div>
+                
+                <aside id="sidebar">
+                    <ul class="side-nav">
+                        <li><a href="#anchor1">制作漫画</a></li>
+                        <li><a href="#anchor2">总结</a></li>
+                    </ul>
+                </aside>
+                
+                <section id="main-cont">
+                    <h1>Flexbox构建响应式图片</h1>
+                    <p class="text">
+                        如同其它所有的显示图像，漫画也已趋数字化。在其过渡阶段中，逐步出现了可缩放图片、动图、视差效果等。
+                        但是在很多的时候，数字漫画总会有一个不如意的地方：
+                        用户只能不断的从一边拉"条"到了另一边，或是使用那种让图片一张一张刷新显现的不友好导航。
+                    </p>
+                    <p class="text">
+                        在我看来，Flexbox是一个非常好的针对这类漫画场景的响应式设计方式：在完全支持它的浏览器中，
+                        Flex元素可以被看成是一个个的"画面"，多行的Flex容器可以被看成是"栏"。
+                    </p>
+                    <article>
+                        <h2 id="anchor1">制作漫画</h2>
+                        <p class="text">
+                            为证明这个理论，我制作了个简单的论据---一张Mai An Noa的图画。
+                            用PhoteShop切成了三部分，每一份是一个独立的JPEG图片。
+                        </p>
+                        <p class="text">
+                            整合成HTML代码如下：
+                        </p>
+<pre><code class="xml">&lt;div id=&quot;strip&quot;&gt;
+    &lt;figure id=&quot;panel1&quot;&gt;
+        &lt;img src=&quot;/images/flexbox/5main-1.webp&quot; alt=&quot;A photograph of a man kneeling in a parking garage, pleading for his life&quot;&gt;
+        &lt;figcaption&gt;“WAIT…”&lt;/figcaption&gt;
+    &lt;/figure&gt;
+    &lt;img src=&quot;/images/flexbox/5miain-mid.webp&quot; alt id=&quot;panel2&quot;&gt;
+    &lt;figure id=&quot;panel3&quot;&gt;
+        &lt;img src=&quot;/images/flexbox/5main-2.webp&quot; alt=&quot;A backlit photograph of a man pointing a gun&quot;&gt;
+        &lt;figcaption&gt;CLICK&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;</code></pre>
+                        <p class="text">
+                            为使连续的图画水平放置，我将图画的容器设制成flex，几张分离的图像进行垂直排列。
+                        </p>
+<pre><code class="css">#strip { display: flex; justify-content: space-between; align-items: center; }</code></pre>
+                        <p class="text">
+                            （注意：为了简单起见，在上面的示例中只显示最终的flexbox属性。）
+                        </p>
+                        <p class="text">
+                            一般情况下，这几张图片会水平占满容器空间。为了改变这种情况，并在每张画上加上字幕
+                            我们给每张画加上width和position属性。
+                        </p>
+<pre><code class="css">#panel1 { width: 40%; position: relative; }
+#panel3 { width: 33%; position: relative; }</code></pre>
+                        <p class="text">
+                            此时也想到可以用border-image属性给大量的字幕加上边框。
+                        </p>
+<pre><code class="css">#strip img {
+    border-image: url(&#39;frame.png&#39;) 22 16 16 22;
+    background: #000;
+    border-width: 12px;
+    border-style: solid;
+}</code></pre>
+                        <p class="text">
+                            最终，给字幕加上给应景的Sequentialist字体。
+                        </p>
+<pre><code class="css">#strip figcaption {
+    background: #fff;
+    font-size: 1.2rem;
+    padding: 1rem;
+    display: inline-block;
+    position: absolute;
+    top: 2rem;
+    right: -2rem;
+    font-family: Sequentialist BB, Comic Sans, cursive;
+    border-image: url(&#39;lettering-frame.png&#39;) 11 10 14 12;
+    border-width: 6px;
+    background-clip: padding-box;
+}</code></pre>
+                        <p class="text">
+                            给每个字幕的视觉效果稍作处理。
+                        </p>
+<pre><code class="css">#panel1 figcaption { letter-spacing: .3rem; }
+#panel3 figcaption { left: -2rem; width: 4rem; font-style: italic; }</code></pre>
+                        <p class="text">
+                            flexbox的内容是自适应的。在较窄的窗口下，中间的的图画在设计上不再显示(没有字幕的不重要)，所以把它隐藏掉。
+                        </p>
+<pre><code class="css">@media screen and (max-width: 45rem) {
+    #panel2 {
+        display: none;
+    }
+}</code></pre>
+                        <p class="text">某种情况下，垂直排列能够更方便的阅读</p>
+<pre><code class="css">@media screen and (max-width: 40rem) {
+    #strip {
+        flex-direction: column;
+    }
+    #panel1,
+    #panel3 {
+        width: 60%;
+    }
+    #panel3 {
+        align-self: flex-end;
+    }
+}</code></pre>
+                        <p class="text">可以通过flexbox改变漫画的显示顺序来讲述一个不同的故事，这也是件很有趣的事。</p>
+<pre><code class="css">@media screen and (max-width: 40rem) {
+    #panel1 {
+        order: 3;
+    }
+    #panel3 figcaption {
+        display: none;
+    }
+}</code></pre>
+                    </article>
+                    <article>
+                        <h2 id="anchor2">总结</h2>
+                        <p class="text">
+                            这样的设计方式可以使静态的、固定显示的漫画过渡成响应式显示，还利于搜索，自适应的动态变换使其在任何设备上都方便浏览。
+                            这项技术也提供了一个新的可能性：根据设备的屏幕的方向与大不创造出一个不寻常的阅读体验，和一种潜在的故事情节，或借助flex-grow(渐进增长)与shrink(收缩)来构建一个动态中间框架。
+                        </p>
+                        <p class="text">
+                            另一方面，可以使漫画跨越文化差异。传统的日本漫画被设计成从右往左的阅读模式，而西方国家的漫画都是从左往右的形式。
+                            flexbox提供了一个CSS属性writing-direction(书写方向)，用这个属性可以在任何一个语言环境下将漫画“翻译”成符合其文化习惯的方式来阅读。
+                        </p>
+                    </article>
+                </section>
+            </div>
+        </div>
+        <script>
+            hljs.initHighlightingOnLoad({useBR: true});
+            $(document).ready(function() {
+                $('pre code').each(function(i, block) {
+                    hljs.highlightBlock(block);
+                });
+            });
+        </script>
+    </body>
+</html>

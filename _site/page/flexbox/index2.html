@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>Bystep15.GitHub.io by bystep15</title>
+        <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="../../stylesheets/stylesheet.css" media="screen">
+        <link rel="stylesheet" href="../../stylesheets/print.css" media="print">
+        <link rel="stylesheet" href="../../stylesheets/flexbox.css">
+        <link rel="stylesheet" href="../../stylesheets/github-gist.css">
+        <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <script src="/javascripts/jquery-1.11.3.js"></script>
+        <script src="/javascripts/highlight.pack.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="inner">
+                <h1>Bystep15.GitHub.io</h1>
+                <h2>宝宝树前端团队</h2>
+                <a href="https://github.com/bystep15" class="button"><small>Follow me on</small> GitHub</a>
+            </div>
+        </header>
+        
+        <div id="content-wrapper">
+            <div class="main clearfix">
+                <div id="masonry">
+                    <img src="../../images/flexbox/6main-1.jpg">
+                    <img src="../../images/flexbox/6main-2.jpg">
+                    <img src="../../images/flexbox/6main-3.jpg">
+                    <img src="../../images/flexbox/6main-4.jpg">
+                    <img src="../../images/flexbox/6main-5.jpg">
+                    <img src="../../images/flexbox/6main-7.jpg">
+                    <img src="../../images/flexbox/6main-8.jpg">
+                    <img src="../../images/flexbox/6main-9.jpg">
+                </div>
+                <div class="abstract">
+                    原文地址：<a href="http://demosthenes.info/blog/844/Easy-Masonry-Layout-With-Flexbox">Easy Masonry Layout With Flexbox</a>
+                </div>
+                
+                <aside id="sidebar">
+                    <ul class="side-nav">
+                        <li><a href="#anchor1">制作图片磁贴</a></li>
+                        <li><a href="#anchor2">Firefox的绛级处理</a></li>
+                        <li><a href="#anchor3">移动端的支持</a></li>
+                        <li><a href="#anchor4">总结</a></li>
+                    </ul>
+                </aside>
+                
+                <section id="main-cont">
+                    <h1>基于Flex的简单磁贴式布局</h1>
+                    <p class="text">
+                        今天Mozilla Foundation发布的了FireFox v28，带来了对多行多列形式 flexbox布局的跨平台支持。在我的
+                        <a href="http://demosthenes.info/blog/780/A-Designers-Guide-To-Flexbox">Designer’s Guide To Flexbox</a>中，
+                        我对此技术的带来的更多新布局可能性有很我要说的。
+                        但现在，我还是先要庆祝一下flexbox元素带来的小例子。
+                        如果你还没有升级最新的浏览器，我将会给出一些反馈选项。
+                    </p>
+                    <article>
+                        <h2 id="anchor1">制作图片磁贴</h2>
+                        <p class="text">
+                            这个例子是用flexbox实现的一个磁贴式图片布局。实现起来很简单。
+                        </p>
+                        <pre><code class="xml">&lt;div id=&quot;masonry&quot;&gt;
+        &lt;img src=&quot;irina.jpg&quot; alt&gt;
+        &lt;img src=&quot;daniella.jpg&quot; alt&gt;
+        &lt;img src=&quot;karina.jpg&quot; alt&gt;
+        …
+    &lt;/div&gt;</code></pre>
+                        <p class="text">
+                            CSS也非常简单，在样式表中，我没有使用Chrome与FireFox内核特定的前缀，flexbox在这两者中都是可以免前缀的。（但是在 IE 中不可以）
+                        </p>
+                        <pre><code class="css">div#masonry {
+    display: -ms-flexbox;
+    -ms-flex-direction: column;
+    -ms-flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100vw;
+    font-size: 0;
+}
+
+div#masonry img {
+    width: 33.3%;
+    transition: .8s opacity;
+}
+
+div#masonry:hover img {
+    opacity: 0.3;
+}
+
+div#masonry:hover img:hover {
+    opacity: 1;
+}</code></pre>
+                        <p class="text">
+                            在这段代码中有一处要点：是对个DIV容器(#masonry)高度的设定。
+                            如果没有这个限制，这些图片就会以一个单纯的不换行垂直列的形式显示，从而忽视了 flex-wrap 的属性。
+                        </p>
+                    </article>
+                    <article>
+                        <h2 id="anchor2">针对 Firefox 的绛级处理</h2>
+                        <p class="text">对于那些还没有升级到最新 Firefox 的用户，我在样式表的最后多加了一项CSS规则</p>
+                        <pre><code class="css">@supports not (flex-wrap: wrap) {
+    div#masonry {
+        display: block;
+    }
+    div#masonry img {
+        display: inline-block;
+        vertical-align: top;
+    }
+}</code></pre>
+                        <p class="text">
+                            这是一个特征查询的代码块。@supports语法会使一个网页对当前浏览器支持哪些 CSS 属性或特性作出一个判断。
+                            就像@media 媒体查询一样，可以让我们检查当前视窗的宽高与分辨率。
+                            到现在，@supports 让我们可以在纯 CSS 中实现对浏览器的回退绛级处理，替代了许多对特性与兼容性检测的javascript脚本。
+                        </p>
+                        <p class="text">
+                            现在，@supports仅在Firefox、Chrome和最新版的Android浏览器中有效(写这篇文章时是4.4)。
+                            好吧，估计又有人问到 IE 的情况了，IE10也是支持的，
+                            IE9及其更早的版本可以将单独针对这个问题的样式(表)
+                            写在一个特有的<a href="http://demosthenes.info/blog/351/Conditional-Comments-The-Traditional-Remedy-for-IEs-Foibles">条件注释</a>中。
+                            但是在早期的 Firefox 中会出现一个问题：它支持display: flex但不支持flex-wrap，视觉上简直是一种“科学怪物”。
+                        </p>
+                        <p class="text">
+                            对于 Firefox 27 及更早期的浏览器，我们可以将容器中的display: flex去掉，对每个 img 加上 display:inline-block的属性。
+                            这样的结果会有些不同，常会在纵向图之间出现垂直的间隙，但这也比其它的好点。
+                        </p>
+                    </article>
+                    <article>
+                        <h2 id="anchor3">移动端的支持</h2>
+                        <p class="text">在移动端改变成两列布局以保证图片的显示效果也是很简单的：</p>
+                        <pre><code class="css">@media screen and (max-width: 500px) {
+    div#masonry {
+        height: 200vw;
+    }
+    div#masonry img {
+        width: 50%;
+    }
+}</code></pre>
+                    </article>
+                    <article>
+                        <h2 id="anchor4">总结</h2>
+                        <p  class="text">
+                            就像你看到的，flexbox可以让我们方便的制作出磁贴式或<a href="http://demosthenes.info/blog/825/Pinterest-Style-Column-Layout-In-Pure-CSS">Pinterest-Style</a>风格的布局。
+                            当然，还有一种比“可换行flex元素”更好的解决方案，过些日子给大家展示。
+                        </p>
+                    </article>
+                </section>
+            </div>
+        </div>
+        <script>
+            hljs.initHighlightingOnLoad({useBR: true});
+            $(document).ready(function() {
+                $('pre code').each(function(i, block) {
+                    hljs.highlightBlock(block);
+                });
+            });
+        </script>
+    </body>
+</html>
