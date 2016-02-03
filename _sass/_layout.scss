@@ -173,6 +173,9 @@
 
 .page-heading {
     font-size: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    text-indent: 0.5em;
 }
 
 .post-list {
@@ -181,6 +184,7 @@
 
     > li {
         margin-bottom: $spacing-unit;
+        margin-left: 10px;
     }
 }
 
