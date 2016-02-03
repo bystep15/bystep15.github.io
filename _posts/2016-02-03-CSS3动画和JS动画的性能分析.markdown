@@ -1,0 +1,16 @@
+---
+layout: post
+title:  "CSS3动画和JS动画的性能比较"
+date:   2016-02-03 14:49:42 +0800
+categories: jekyll update
+---
+这里是正文
+{% highlight javascript%}
+var test = function () {
+    alert('hello');
+}
+{% endhighlight %}
+
+[jekyll-docs]: http://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
