@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: 关于宝宝树前端
 permalink: /about/
 ---
 
