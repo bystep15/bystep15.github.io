@@ -201,6 +201,18 @@
  */
 .post-header {
     margin-bottom: $spacing-unit;
+    background: none;
+}
+.post-header h1 {
+    color: #333;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.main-header h1 {
+    font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
+}
+.main-header h2 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #fff;
 }
 
 .post-title {
