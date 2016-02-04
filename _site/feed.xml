@@ -6,8 +6,8 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 04 Feb 2016 09:46:16 +0800</pubDate>
-    <lastBuildDate>Thu, 04 Feb 2016 09:46:16 +0800</lastBuildDate>
+    <pubDate>Thu, 04 Feb 2016 16:34:33 +0800</pubDate>
+    <lastBuildDate>Thu, 04 Feb 2016 16:34:33 +0800</lastBuildDate>
     <generator>Jekyll v3.0.2</generator>
     
       <item>
@@ -33,12 +33,21 @@
       </item>
     
       <item>
-        <title>Welcome to Jekyll!</title>
-        <description>&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+        <title>Jekyll使用指南</title>
+        <description>&lt;p&gt;【简译By&lt;a href=&quot;http://wumingli.github.io/about/&quot;&gt;武明礼&lt;/a&gt;，见笑。。。】&lt;/p&gt;
+
+&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;你会在你的&lt;code class=&quot;highlighter-rouge&quot;&gt;“_posts”&lt;/code&gt;文件夹中找到这篇文章；前去编辑并且重新编译站点，你会看到变化；
+你可以用各种不同方式编译你的站点，但最常用的方式是通过运行&lt;code class=&quot;highlighter-rouge&quot;&gt;“jekyll serve”&lt;/code&gt;命令，该方式会启动一个Web Server，并且当文件改动时可以自动生成你的站点。&lt;/p&gt;
 
 &lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
 
+&lt;p&gt;添加新文章非常简单，在“_posts”文件夹下添加即可，需要遵守以下命名格式：&lt;code class=&quot;highlighter-rouge&quot;&gt;“YYYY-MM-DD-name-of-post.ext”&lt;/code&gt;，文件头需要包含必要的内容。你可以查看本文的源文件，就会知道它是如何工作的了。&lt;/p&gt;
+
 &lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;p&gt;Jekyll 还提供了强大的代码高亮支持：&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
@@ -48,15 +57,17 @@
 
 &lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;
 
+&lt;p&gt;前往 &lt;a href=&quot;http://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; 查看更多信息，以充分了解Jekyll的功能。查看提交：&lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;。如果还有问题，可以在Jekyll Talk上提出：&lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;。&lt;/p&gt;
+
 </description>
         <pubDate>Wed, 03 Feb 2016 14:49:42 +0800</pubDate>
-        <link>http://yourdomain.com/jekyll/lives/2016/02/03/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/jekyll/lives/2016/02/03/welcome-to-jekyll.html</guid>
+        <link>http://yourdomain.com/front/article/2016/02/03/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/front/article/2016/02/03/welcome-to-jekyll.html</guid>
         
         
-        <category>jekyll</category>
+        <category>front</category>
         
-        <category>lives</category>
+        <category>article</category>
         
       </item>
     
