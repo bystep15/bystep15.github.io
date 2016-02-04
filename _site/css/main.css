@@ -294,8 +294,8 @@ pre {
  * Posts
  */
 .post-header {
-  margin-bottom: 30px;
-  background: none; }
+  background: none;
+  padding-bottom: 0; }
 
 .post-header h1 {
   color: #333;
