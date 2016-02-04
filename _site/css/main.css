@@ -304,7 +304,10 @@ pre {
   font-size: 24px; }
 
 .main-header h1 {
-  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif; }
+  font-family: 'Microsoft Yahei', Arial;
+  letter-spacing: 5px;
+  width: auto;
+  font-size: 48px; }
 
 .main-header h2 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
