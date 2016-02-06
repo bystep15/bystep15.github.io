@@ -23,6 +23,11 @@
         color: $grey-color-dark;
     }
 }
+.about-title {
+    font-size: 26px;
+    text-align: center;
+    padding: 30px;
+}
 
 .site-nav {
     float: right;
@@ -172,10 +177,11 @@
 }
 
 .page-heading {
-    font-size: 20px;
+    font-size: 24px;
     border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
     text-indent: 0.5em;
+    font-weight: 700;
 }
 
 .post-list {
@@ -196,6 +202,7 @@
 .post-link {
     display: block;
     font-size: 16px;
+    font-family: 'Microsoft Yahei', Arial;
 }
 
 

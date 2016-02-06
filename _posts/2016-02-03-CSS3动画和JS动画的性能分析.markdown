@@ -115,12 +115,13 @@ $element
     .velocity({ opacity: 1, top: "50%" })
     /* After a delay of 1000ms, slide the element out of view. */
     .velocity({ opacity: 0, top: "-50%" }, { delay: 1000 });
-在上面的样例中，第二次调用 Velocity 时已经知道了 opacity 的起始值为 1，top 的值为 50%。
 {% endhighlight %}
+
+在上面的样例中，第二次调用 Velocity 时已经知道了 opacity 的起始值为 1，top 的值为 50%。
 
 浏览器也可以使用与此类似的优化，但是要做这些事情太过激进，使用场景也会受到限制，开发者就有可能会写出有bug的动画代码。jQuery就是因为这个原因没有使用RAF（如上所说），浏览器永远不会强行实施可能打破规范或者可能偏离期望行为的优化。
 
-最后，让我们来比较下两个Javascript框架（velocity.js 和 GSAP）。
+### 最后，让我们来比较下两个Javascript框架（velocity.js 和 GSAP）。
 
 GASP 是一个快速且功能丰富的动画平台。Velocity则更为轻量级，它大大地改善了UI动画性能和工作流程。
 
@@ -158,11 +159,14 @@ $element
     .velocity({ rotateY: "360deg" }, 1000);
 {% endhighlight %}
 
-总结
+### 总结
+
 Velocity 的目标是成为 DOM 动画领域性能最好易用性最高的库。这篇文章主要关注了性能方面。易用性方面可以前往 VelocityJS.org 了解。
 
 在结束之前，请记住一个高性能的 UI 绝不仅仅是选择一个正确的动画库。页面上的其他代码也需要优化。可以看看Google那些非常棒的演讲：
 
-Jank Free
-Rendering Without Lumps
-Faster Websites
+>[Jank Free](http://www.youtube.com/watch?v=n8ep4leoN9A)
+
+>[Rendering Without Lumps](http://www.youtube.com/watch?v=cmZqLzPy0XE)
+
+>[Faster Websites](http://www.devoxx.com/display/DV12/Faster+Websites++Crash+Course+on+Frontend+Performance)

@@ -6,8 +6,8 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 04 Feb 2016 17:59:31 +0800</pubDate>
-    <lastBuildDate>Thu, 04 Feb 2016 17:59:31 +0800</lastBuildDate>
+    <pubDate>Fri, 05 Feb 2016 15:51:19 +0800</pubDate>
+    <lastBuildDate>Fri, 05 Feb 2016 15:51:19 +0800</lastBuildDate>
     <generator>Jekyll v3.0.2</generator>
     
       <item>
@@ -193,12 +193,13 @@ CSS transition 的动画逻辑是由浏览器来执行，所以它的性能能�
     &lt;span class=&quot;cm&quot;&gt;/* Slide the element down into view. */&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;velocity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;opacity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;50%&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
     &lt;span class=&quot;cm&quot;&gt;/* After a delay of 1000ms, slide the element out of view. */&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;velocity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;opacity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;-50%&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;delay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;在上面的样例中，第二次调用&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Velocity&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;时已经知道了&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;opacity&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;的起始值为&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;top&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;的值为&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;。&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;velocity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;opacity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;-50%&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;delay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;在上面的样例中，第二次调用 Velocity 时已经知道了 opacity 的起始值为 1，top 的值为 50%。&lt;/p&gt;
 
 &lt;p&gt;浏览器也可以使用与此类似的优化，但是要做这些事情太过激进，使用场景也会受到限制，开发者就有可能会写出有bug的动画代码。jQuery就是因为这个原因没有使用RAF（如上所说），浏览器永远不会强行实施可能打破规范或者可能偏离期望行为的优化。&lt;/p&gt;
 
-&lt;p&gt;最后，让我们来比较下两个Javascript框架（velocity.js 和 GSAP）。&lt;/p&gt;
+&lt;h3 id=&quot;javascriptvelocityjs--gsap&quot;&gt;最后，让我们来比较下两个Javascript框架（velocity.js 和 GSAP）。&lt;/h3&gt;
 
 &lt;p&gt;GASP 是一个快速且功能丰富的动画平台。Velocity则更为轻量级，它大大地改善了UI动画性能和工作流程。&lt;/p&gt;
 
@@ -232,14 +233,23 @@ Velocity.js&lt;/p&gt;
     &lt;span class=&quot;cm&quot;&gt;/* Then rotate the element around its Y axis by 360 degrees. */&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;velocity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rotateY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;360deg&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;总结
-Velocity 的目标是成为 DOM 动画领域性能最好易用性最高的库。这篇文章主要关注了性能方面。易用性方面可以前往 VelocityJS.org 了解。&lt;/p&gt;
+&lt;h3 id=&quot;section&quot;&gt;总结&lt;/h3&gt;
+
+&lt;p&gt;Velocity 的目标是成为 DOM 动画领域性能最好易用性最高的库。这篇文章主要关注了性能方面。易用性方面可以前往 VelocityJS.org 了解。&lt;/p&gt;
 
 &lt;p&gt;在结束之前，请记住一个高性能的 UI 绝不仅仅是选择一个正确的动画库。页面上的其他代码也需要优化。可以看看Google那些非常棒的演讲：&lt;/p&gt;
 
-&lt;p&gt;Jank Free
-Rendering Without Lumps
-Faster Websites&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;http://www.youtube.com/watch?v=n8ep4leoN9A&quot;&gt;Jank Free&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;http://www.youtube.com/watch?v=cmZqLzPy0XE&quot;&gt;Rendering Without Lumps&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;http://www.devoxx.com/display/DV12/Faster+Websites++Crash+Course+on+Frontend+Performance&quot;&gt;Faster Websites&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
         <pubDate>Wed, 03 Feb 2016 14:49:42 +0800</pubDate>
         <link>http://yourdomain.com/front/article/2016/02/03/CSS3%E5%8A%A8%E7%94%BB%E5%92%8CJS%E5%8A%A8%E7%94%BB%E7%9A%84%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90.html</link>

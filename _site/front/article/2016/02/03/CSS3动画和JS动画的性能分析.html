@@ -160,12 +160,13 @@ CSS transition 的动画逻辑是由浏览器来执行，所以它的性能能�
     <span class="cm">/* Slide the element down into view. */</span>
     <span class="p">.</span><span class="nx">velocity</span><span class="p">({</span> <span class="na">opacity</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">top</span><span class="p">:</span> <span class="s2">"50%"</span> <span class="p">})</span>
     <span class="cm">/* After a delay of 1000ms, slide the element out of view. */</span>
-    <span class="p">.</span><span class="nx">velocity</span><span class="p">({</span> <span class="na">opacity</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="na">top</span><span class="p">:</span> <span class="s2">"-50%"</span> <span class="p">},</span> <span class="p">{</span> <span class="na">delay</span><span class="p">:</span> <span class="mi">1000</span> <span class="p">});</span>
-<span class="err">在上面的样例中，第二次调用</span> <span class="nx">Velocity</span> <span class="err">时已经知道了</span> <span class="nx">opacity</span> <span class="err">的起始值为</span> <span class="mi">1</span><span class="err">，</span><span class="nx">top</span> <span class="err">的值为</span> <span class="mi">50</span><span class="o">%</span><span class="err">。</span></code></pre></figure>
+    <span class="p">.</span><span class="nx">velocity</span><span class="p">({</span> <span class="na">opacity</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="na">top</span><span class="p">:</span> <span class="s2">"-50%"</span> <span class="p">},</span> <span class="p">{</span> <span class="na">delay</span><span class="p">:</span> <span class="mi">1000</span> <span class="p">});</span></code></pre></figure>
+
+<p>在上面的样例中，第二次调用 Velocity 时已经知道了 opacity 的起始值为 1，top 的值为 50%。</p>
 
 <p>浏览器也可以使用与此类似的优化，但是要做这些事情太过激进，使用场景也会受到限制，开发者就有可能会写出有bug的动画代码。jQuery就是因为这个原因没有使用RAF（如上所说），浏览器永远不会强行实施可能打破规范或者可能偏离期望行为的优化。</p>
 
-<p>最后，让我们来比较下两个Javascript框架（velocity.js 和 GSAP）。</p>
+<h3 id="javascriptvelocityjs--gsap">最后，让我们来比较下两个Javascript框架（velocity.js 和 GSAP）。</h3>
 
 <p>GASP 是一个快速且功能丰富的动画平台。Velocity则更为轻量级，它大大地改善了UI动画性能和工作流程。</p>
 
@@ -199,14 +200,23 @@ Velocity.js</p>
     <span class="cm">/* Then rotate the element around its Y axis by 360 degrees. */</span>
     <span class="p">.</span><span class="nx">velocity</span><span class="p">({</span> <span class="na">rotateY</span><span class="p">:</span> <span class="s2">"360deg"</span> <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span></code></pre></figure>
 
-<p>总结
-Velocity 的目标是成为 DOM 动画领域性能最好易用性最高的库。这篇文章主要关注了性能方面。易用性方面可以前往 VelocityJS.org 了解。</p>
+<h3 id="section">总结</h3>
+
+<p>Velocity 的目标是成为 DOM 动画领域性能最好易用性最高的库。这篇文章主要关注了性能方面。易用性方面可以前往 VelocityJS.org 了解。</p>
 
 <p>在结束之前，请记住一个高性能的 UI 绝不仅仅是选择一个正确的动画库。页面上的其他代码也需要优化。可以看看Google那些非常棒的演讲：</p>
 
-<p>Jank Free
-Rendering Without Lumps
-Faster Websites</p>
+<blockquote>
+  <p><a href="http://www.youtube.com/watch?v=n8ep4leoN9A">Jank Free</a></p>
+</blockquote>
+
+<blockquote>
+  <p><a href="http://www.youtube.com/watch?v=cmZqLzPy0XE">Rendering Without Lumps</a></p>
+</blockquote>
+
+<blockquote>
+  <p><a href="http://www.devoxx.com/display/DV12/Faster+Websites++Crash+Course+on+Frontend+Performance">Faster Websites</a></p>
+</blockquote>
 
   </div>
 
@@ -240,7 +250,7 @@ var duoshuoQuery = {short_name:"bystep15"};
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li>宝宝树前端项目组</li>
+          <li><a href="/about/">宝宝树前端项目组</a></li>
           <li><a href="mailto:fe@babytree-inc.com">fe@babytree-inc.com</a></li>
         </ul>
       </div>
