@@ -2,6 +2,7 @@
 layout: post
 title:  "Jekyll使用指南"
 date:   2016-02-03 14:49:42 +0800
+description: "你会在你的“_posts”文件夹中找到这篇文章；前去编辑并且重新编译站点，你会看到变化； 你可以用各种不同方式编译你的站点，但最常用的方式是通过运行“jekyll serve”命令，该方式会启动一个Web Server"
 categories: front article
 ---
 【简译By[武明礼](http://wumingli.github.io/about/)，见笑。。。】

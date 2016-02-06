@@ -23,6 +23,14 @@
         color: $grey-color-dark;
     }
 }
+.description-text {
+    font-size: 14px;
+    text-indent: 2em;
+}
+.read-more,
+.read-more:visited {
+    color: #09c;
+}
 .about-title {
     font-size: 26px;
     text-align: center;
@@ -189,7 +197,7 @@
     list-style: none;
 
     > li {
-        margin-bottom: $spacing-unit;
+        margin-bottom: $spacing-20;
         margin-left: 10px;
     }
 }
@@ -200,7 +208,6 @@
 }
 
 .post-link {
-    display: block;
     font-size: 16px;
     font-family: 'Microsoft Yahei', Arial;
 }

@@ -166,6 +166,14 @@ pre {
   .site-title, .site-title:visited {
     color: #424242; }
 
+.description-text {
+  font-size: 14px;
+  text-indent: 2em; }
+
+.read-more,
+.read-more:visited {
+  color: #09c; }
+
 .about-title {
   font-size: 26px;
   text-align: center;
@@ -285,7 +293,7 @@ pre {
   margin-left: 0;
   list-style: none; }
   .post-list > li {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     margin-left: 10px; }
 
 .post-meta {
@@ -293,7 +301,6 @@ pre {
   color: #828282; }
 
 .post-link {
-  display: block;
   font-size: 16px;
   font-family: 'Microsoft Yahei', Arial; }
 
