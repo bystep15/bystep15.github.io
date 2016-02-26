@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>http/2 试部署测试总结</title>
+  <meta name="description" content="HTTP/2 上线前期调研断断续续也有一段时间了，到此算是告一段落，所得到一些结论在这里给可能涉及到此项目的人分享一下">
+
+  <link rel="stylesheet" href="/stylesheets/stylesheet.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://bystep15.github.io//front/article/2016/02/03/http2_statistics.html">
+  <link rel="alternate" type="application/rss+xml" title="宝宝树前端团队" href="http://bystep15.github.io//feed.xml">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+  <body>
+
+    <header class="main-header">
+    <div class="inner">
+        <h1>宝宝树前端团队博客</h1>
+        <h2>Bystep15.GitHub.io</h2>
+        <a href="https://github.com/bystep15" class="button"><small>Follow me on</small> GitHub</a>
+    </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <nav>当前位置：<a href="/">首页</a> &gt; <a href="/front/article/2016/02/03/http2_statistics.html">http/2 试部署测试总结</a></nav>
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">http/2 试部署测试总结</h1>
+    <p class="post-meta"><time datetime="2016-02-03T14:49:42+08:00" itemprop="datePublished">Feb 3, 2016</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>HTTP/2 上线前期调研断断续续也有一段时间了，到此算是告一段落，所得到一些结论在这里给可能涉及到此项目的人分享一下。</p>
+
+<h2 id="http2-">HTTP/2 客户端兼容性问题</h2>
+
+<p>这这里先提供一个终端浏览器 H2 兼容性测试的小站点：<br />
+<a href="https://www.h2statistics.ml/">www.h2statistics.ml</a>  (笔者原创^_^)</p>
+
+<p>HTTP/2 是由 SPDY 协议发展过来的，因各种历史遗留原因，H2 加上其前身 SPDY ，市面上能看到的版本由低到高大致有4个:
+<code class="highlighter-rouge">spdy2 spdy3 spdy3.1 http/2</code>，这个时候，你就要考虑客户端的兼容性问题了。</p>
+
+<p>在上面提供的站点里，你会看到当前的终端(浏览器)能够支持的<strong>最高</strong>协议版本。</p>
+
+<h3 id="section">采样统计结果</h3>
+
+<p>以下是目前为止对所做采样调研的统计图<br />
+<img src="/images/http2/h2-1.png" alt="HTTP/2 终端兼容性统计图" /></p>
+
+<h3 id="section-1">兼容性说明</h3>
+
+<p>在这里要注意一下几个情况：</p>
+
+<ul>
+  <li>再说一遍，你所看到的是高最协议版本，不会向上兼容</li>
+  <li>向下兼容情况：支持 HTTP/2 的一定支持 SPDY3与SPDY3.1，但不一定支持 SPDY2 (如 Chrome、FF、IE)</li>
+  <li>同浏览器，同版本在不同终端设备上有可能支持的情况也不一样</li>
+  <li>webview 请参考自身的浏览器</li>
+</ul>
+
+<h3 id="section-2">总结</h3>
+
+<p>如上图所示，SPDY3.1 的支持率已经达到 50%，再加上 HTTP/2 支持浏览器也可以支持 SPDY3.X 的比率，总共对 SPDY3.1 的支持率应该可以达到 <strong>75%</strong> 左右。这对实际部署 H2 服务器的协议选择提供了一个有效的数据支持。</p>
+
+<h2 id="http2--1">HTTP/2 服务端兼容性情况</h2>
+
+<p>http/2 的正式版本刚发出不到一年时间，虽然之前就已经有各大 server 都已开始支持，详情见 <a href="https://github.com/http2/http2-spec/wiki/Implementations">H2 支持 server 一览表</a>。
+但所支持的 H2 版本有所差别，支持的方式也略有不同。</p>
+
+<p>在看了上面的浏览器兼容性情况后，你肯定会想到一个问题，浏览器支持的情况不尽相同，那服务端怎么处理，服务端能够自动降级吗？</p>
+
+<p>以下以 nodejs 和 nginx 为例，大致说一下服务端的支持情况以及协议降级的方案。</p>
+
+<p><img src="/images/http2/h2-2.png" alt="测试的服务端" /></p>
+
+<h3 id="nginx">nginx</h3>
+
+<p>nginx 从 1.5.10 到最新的稳定版 1.8.5，都可以支持到 SPDY3.1，<strong>但不会支持正式的 H2 协议</strong>，所以想体验新协议的人只能去找开发版，而且是大于 1.9.5 的版本才行。</p>
+
+<p>笔者是在 1.8.5 和 1.9.8 上进行了测试。<br />
+1.8.5 只支持 SPDY3.x，这个倒也算正常，但 1.9.8 也是只支持 HTTP/2，不会做 SPDY 的降级处理，会直接降为 HTTP1.1，这个就有点不太厚道了。</p>
+
+<h3 id="nodejs">nodejs</h3>
+
+<p>nodejs 有专门的 HTTP/2 与 SPDY 模块，两者在降级的问题上解决的都非常优秀。以 SPDY@3.2.0 为例，会支持<code class="highlighter-rouge">spdy2 spdy3 spdy3.1 http/2</code>四个协议，通过 ALPN/NPN 与浏览器进行协商所用哪种协议进行传输。甚至可以设定所部署哪几种协议，非常人性化。</p>
+
+<h2 id="section-3">部署方案建议</h2>
+
+<p>在选择哪种协议的问题上，以目前已经全面部署 H2/SPDY 的一线站点为参照案例来看，国内外还是很有差别的。</p>
+
+<h3 id="section-4">国外的完美部署方案</h3>
+
+<p>国外因为没有太多的非主流浏览器，浏览器的碎片化程度不高，对于浏览器的支持情况还是很理想的：</p>
+
+<p><img src="/images/http2/h2-3.jpg" alt="2015-8 全国浏览器占有率" /></p>
+
+<p>所以如 Google、facebook 等大站都选择最正式的 HTTP/2 协议做为最高协议，然后依次降级。</p>
+
+<p>对于如何很好有降级，目前已经有较成熟的接入端的分发服务器的方案，可以在接入端进行 NPN 的协商，再分发给支持特定协议的服务器，这里提供一篇文章，大家有兴趣可以参考：<br />
+<a href="https://www.igvita.com/2012/10/31/simple-spdy-and-npn-negotiation-with-haproxy/">基于 HAProxy 的简单 SPDY 协议处理方案</a></p>
+
+<h3 id="section-5">国内的”重点照顾”方案</h3>
+
+<p>国内的浏览器情况。。。你懂的~~~ !-_-</p>
+
+<p>所以以 <strong>百度</strong> 和 <strong>淘宝</strong> 为例，都直接选择的是 SPDY3.1 协议进行部署，这样可以照顾到大多数的国内浏览器的支持情况，不支持的就自然降到 HTTP/1.1，这样在实施上简单不少，切中要点，也几乎没有损失，可以很平滑的过渡。笔者也建议如此。
+<br /></p>
+
+<hr />
+<p><br /></p>
+
+<p>总之，HTTP/2 是目前唯一的 HTTP 协议发展趋势，它给整个互联网带来的优化还是很明显（具体分析可看笔者之前的 <a href="http://yj1438.github.io/2015/11/09/http2.html">HTTP/2 简介</a>）。</p>
+
+<p>再者 HTTPS 也越来越普及的环境下，为何不趋势把 HTTP/2 也搞定呢。</p>
+
+  </div>
+
+</article>
+<!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="/front/article/2016/02/03/http2_statistics" data-title="http/2 试部署测试总结" data-url="/front/article/2016/02/03/http2_statistics.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"bystep15"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+<!-- 多说公共JS代码 end -->
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">宝宝树前端团队</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li><a href="/about/">宝宝树前端团队</a></li>
+          <li><a href="mailto:fe@babytree-inc.com">fe@babytree-inc.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/bystep15"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">bystep15</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>宝宝树前端项目组技术博客，欢迎补充
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

@@ -11,9 +11,8 @@ email: fe@babytree-inc.com
 description: > # this means to ignore newlines until "baseurl:"
     宝宝树前端项目组技术博客，欢迎补充
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://yourdomain.com" # the base hostname & protocol for your site
-twitter_username: jekyllrb
-github_username:  jekyll
+url: "http://bystep15.github.io/" # the base hostname & protocol for your site
+github_username: bystep15
 paginate: 1
 paginate_path: "blog/page:num"
 
@@ -21,20 +20,53 @@ paginate_path: "blog/page:num"
 #markdown: kramdown 
 # Conversion
 markdown: kramdown
-#highlighter: pygments
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids:       true
+  footnote_nr:    1
+  entity_output:  as_char
+  toc_levels:     1..6
+  smart_quotes:   lsquo,rsquo,ldquo,rdquo
+  enable_coderay: true
+
+  coderay:
+    coderay_wrap:              div
+    coderay_line_numbers:      inline
+    coderay_line_number_start: 1
+    coderay_tab_width:         4
+    coderay_bold_every:        10
+    coderay_css:               style
+
 #markdown: rdiscount
 #rdiscount:
 #   extensions:
 #     - footnotes
-#lsi: false
-#excerpt_separator: "\n\n\n\n"
 
-#markdown_ext: markdown,mkd,mkdn,md
+encoding: "utf-8"
+markdown_ext: markdown,mkd,mkdn,md
 
-github: [metadata]
-kramdown:
-    input: GFM
-    hard_wrap: false
+lsi: false
+excerpt_separator: "\n\n\n\n"
+incremental: false
+
+#highlighter: pygments
+highlighter: rouge
+
+safe: true
+
+#markdown: rdiscount
+#rdiscount:
+#   extensions:
+#     - footnotes
+
+github: {
+    "author": "bystep15",
+    "hostname": "https://github.com/bystep15/",
+    "pages_hostname": "http://bystep15.github.io/"
+}
+
+#plugins
 gems:
     - jekyll-coffeescript
     - jekyll-paginate
