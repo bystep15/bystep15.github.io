@@ -7,10 +7,10 @@ categories: front article
 ---
 【简译By[武明礼](http://wumingli.github.io/about/)，见笑。。。】
 
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
+You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`(noted by translator: `bundle exec jekyll serve`), which launches a web server and auto-regenerates your site when a file is updated.
 
 你会在你的`“_posts”`文件夹中找到这篇文章；前去编辑并且重新编译站点，你会看到变化；
-你可以用各种不同方式编译你的站点，但最常用的方式是通过运行`“jekyll serve”`命令，该方式会启动一个Web Server，并且当文件改动时可以自动生成你的站点。
+你可以用各种不同方式编译你的站点，但最常用的方式是通过运行`“jekyll serve”`命令(译者注：实时看到更改，用以下命令`bundle exec jekyll serve`)，该方式会启动一个Web Server，并且当文件改动时可以自动生成你的站点。
 
 To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
 
@@ -35,3 +35,5 @@ Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most ou
 [jekyll-docs]: http://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
+
+本地安装jelyll，参见：[Setting up your Pages site locally with Jekyll](https://help.github.com/articles/setting-up-your-pages-site-locally-with-jekyll/)

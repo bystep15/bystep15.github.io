@@ -107,6 +107,7 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 .post-list > li { margin-bottom: 20px; margin-left: 10px; }
 
 .post-meta { font-size: 14px; color: #828282; }
+.post-meta em { color: #09c; font-style: normal; }
 
 .post-link { font-size: 16px; font-family: 'Microsoft Yahei', Arial; }
 

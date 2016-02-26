@@ -10,7 +10,7 @@ layout: default
       <li>
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-          <span class="post-meta">posted at: {{ post.date | date: "%b %-d, %Y" }}</span>
+          <span class="post-meta">posted at: {{ post.date | date: "%b %-d, %Y" }} <em class="author">{% if (post.author) %}作者：{{post.author}}{% else %}宝宝树前端团队{% endif %}</em></span>
         </h2>
         <p class="description-text">
             {% if (post.description) %}{{ post.description }}... <a class="read-more" href="{{ post.url | prepend: site.baseurl }}">[阅读全文]</a> {% endif %}

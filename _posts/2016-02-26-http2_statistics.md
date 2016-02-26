@@ -3,6 +3,7 @@ layout: post
 title:  "http/2 试部署测试总结"
 date:   2016-02-03 14:49:42 +0800
 description: "HTTP/2 上线前期调研断断续续也有一段时间了，到此算是告一段落，所得到一些结论在这里给可能涉及到此项目的人分享一下"
+author: 尹洁
 categories: front article
 ---
 

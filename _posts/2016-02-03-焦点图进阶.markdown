@@ -3,6 +3,7 @@ layout: post
 title:  "焦点图进阶"
 date:   2016-02-03 14:49:42 +0800
 description: "这篇文章是针对宝宝树常用焦点图的一篇进阶文章，由朱新新同学完成。目标：由简入难，自己独立完成可配置的各种焦点图"
+author: 朱新新
 categories: front article
 ---
 新新的Show Time ^_^

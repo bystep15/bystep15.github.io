@@ -205,6 +205,10 @@
 .post-meta {
     font-size: $small-font-size;
     color: $grey-color;
+    em {
+        color: #09c;
+        font-style: normal;
+    }
 }
 
 .post-link {
