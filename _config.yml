@@ -7,7 +7,7 @@
 
 # Site settings
 title: 宝宝树前端团队
-email: fe@babytree-inc.com
+email: front-end@babytree-inc.com
 description: > # this means to ignore newlines until "baseurl:"
     宝宝树前端项目组技术博客，欢迎补充
 baseurl: "" # the subpath of your site, e.g. /blog
