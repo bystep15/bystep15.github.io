@@ -7,18 +7,16 @@ categories: front article
 ---
 
 # ReactNative分享提纲
+
 # 分享的目的
+
 1. 了解rn是什么，特点和使用场景
 2. 本次重点是学习架构（思想）而不是学习框架（用法）
 3. 学习组件化的思想及其好处，目标是能运用到工作中
 4. 希望随时打断进行交流讨论
 
-# 时间
-一个小时，开始收尾，讲到哪算哪，其余内容有机会再分享
-
-# 穿插读书分享
-
 # 开场
+
 ## reactnative是个啥
 
 用js写原生app的开源框架，目前支持ios和android。
@@ -52,6 +50,7 @@ categories: front article
 1. 尚未发布1.0
 
 # react基本概念
+
 ## 组件化编程
 
 ### 组件化定义
@@ -79,6 +78,7 @@ react组件生命周期及其生命周期事件。[链接](http://facebook.githu
 js中的xml。[例子](http://facebook.github.io/react/)
 
 # reactnative基本概念
+
 ## 和react的关系
 
 1. rn使用react的组件化规范。
@@ -126,6 +126,7 @@ js中的xml。[例子](http://facebook.github.io/react/)
 reactnative
 android、ios操作系统
 ```
+
 
 # 框架设计
 
