@@ -92,6 +92,7 @@ js中的xml。[例子](http://facebook.github.io/react/)
 3. img Image
 4. input TextInput
 5. button Touch*
+
 ## 样式定义
 不支持选择器。不支持选择器。不支持选择器。
 
@@ -101,7 +102,10 @@ js中的xml。[例子](http://facebook.github.io/react/)
 
 # 组件设计
 [链接](https://github.com/cnsnake11/blog/blob/master/ReactNative%E5%BC%80%E5%8F%91%E6%8C%87%E5%AF%BC/ReactNative%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1.md)
+
+
 # 坑坑坑
+
 1. android的textinput不能设置边框圆角
 1. android的图片resizemodal=contain不好用
 1. 循环依赖报错的问题
@@ -124,6 +128,9 @@ android、ios操作系统
 ```
 
 # 框架设计
+
 # 版本发布
+
 # 原生开发
+
 
