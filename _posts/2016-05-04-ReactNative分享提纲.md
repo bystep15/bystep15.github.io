@@ -19,7 +19,7 @@ categories: front article
 
 用js写原生app的开源框架，目前支持ios和android。
 
-## 先爽一爽（特性汇总）
+## 优势
 
 ### 开发体验
 	
