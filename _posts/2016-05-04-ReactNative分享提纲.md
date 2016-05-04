@@ -3,6 +3,7 @@ layout: post
 title:  "ReactNative分享提纲"
 date:   2016-05-04 18:00:00 +0800
 description: "ReactNative的团队内分享提纲"
+author: 曹楠
 categories: front article
 ---
 
