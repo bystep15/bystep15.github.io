@@ -6,8 +6,6 @@ description: "ReactNative的团队内分享提纲"
 categories: front article
 ---
 
-# ReactNative分享提纲
-
 # 分享的目的
 
 1. 了解rn是什么，特点和使用场景
