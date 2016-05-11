@@ -6,9 +6,909 @@
 </description>
     <link>http://bystep15.github.io//</link>
     <atom:link href="http://bystep15.github.io//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 26 Feb 2016 17:51:28 +0800</pubDate>
-    <lastBuildDate>Fri, 26 Feb 2016 17:51:28 +0800</lastBuildDate>
+    <pubDate>Wed, 11 May 2016 14:19:00 +0800</pubDate>
+    <lastBuildDate>Wed, 11 May 2016 14:19:00 +0800</lastBuildDate>
     <generator>Jekyll v3.0.2</generator>
+    
+      <item>
+        <title>ReactNative分享提纲</title>
+        <description>&lt;h1 id=&quot;section&quot;&gt;分享的目的&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;了解rn是什么，特点和使用场景&lt;/li&gt;
+  &lt;li&gt;本次重点是学习架构（思想）而不是学习框架（用法）&lt;/li&gt;
+  &lt;li&gt;学习组件化的思想及其好处，目标是能运用到工作中&lt;/li&gt;
+  &lt;li&gt;希望随时打断进行交流讨论&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;reactnative&quot;&gt;reactnative是个啥&lt;/h1&gt;
+
+&lt;p&gt;用js写原生app的开源框架，目前官方支持ios和android。&lt;/p&gt;
+
+&lt;p&gt;facebook2015年发布。社区关注度非常高。版本迭代很快，基本上2周左右一个版本。&lt;/p&gt;
+
+&lt;h1 id=&quot;demo&quot;&gt;安卓demo包下载&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://pan.baidu.com/s/1mhX6VoO&quot;&gt;RnDemo.apk,9MB&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;section-1&quot;&gt;优势&lt;/h1&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;开发体验&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;改代码，即时编译，即时加载&lt;/li&gt;
+  &lt;li&gt;兼容性好，代码可预测，各系统的模拟器、各型号的真机基本无差异&lt;/li&gt;
+  &lt;li&gt;组件化支撑，代码更易复用&lt;/li&gt;
+  &lt;li&gt;flexbox布局，自适应布局更容易&lt;/li&gt;
+  &lt;li&gt;手势操控系统，更易开发体验佳的触屏应用&lt;/li&gt;
+  &lt;li&gt;支持应用内更新，自由控制发版&lt;/li&gt;
+  &lt;li&gt;es6新特性，各种语法黑魔法
+    &lt;ol&gt;
+      &lt;li&gt;箭头函数&lt;/li&gt;
+      &lt;li&gt;promise&lt;/li&gt;
+      &lt;li&gt;解构赋值&lt;/li&gt;
+      &lt;li&gt;类定义、继承&lt;/li&gt;
+      &lt;li&gt;fetch&lt;/li&gt;
+      &lt;li&gt;等&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;用户体验&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;加载性能好，无白屏&lt;/li&gt;
+  &lt;li&gt;动画性能好，无卡顿&lt;/li&gt;
+  &lt;li&gt;顺畅的手势操作&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;section-4&quot;&gt;劣势&lt;/h1&gt;
+&lt;ol&gt;
+  &lt;li&gt;无web版，分享页等还要开发,react-web目前还不成熟&lt;/li&gt;
+  &lt;li&gt;无选择器的概念，定义样式很繁琐,通过开发规范部分解决&lt;/li&gt;
+  &lt;li&gt;尚未发布1.0&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;程序员首先要思考的是让用户爽，然后才是让自己爽。如果按此原则的话，劣势还是在我们接受范围内的。（用户体验和开发体验同样重要，最好是有更完美的解决方案。）&lt;/p&gt;
+
+&lt;h1 id=&quot;react&quot;&gt;react基本概念&lt;/h1&gt;
+
+&lt;h2 id=&quot;section-5&quot;&gt;组件化编程&lt;/h2&gt;
+
+&lt;h3 id=&quot;section-6&quot;&gt;组件化定义&lt;/h3&gt;
+&lt;p&gt;组件的定义：独立的可完成某些工作的部件。可能是一个button，或者一个util类。&lt;/p&gt;
+
+&lt;p&gt;组件化编程的目的：复用复用复用。站在别人肩膀上可以极大的提升开发测试效率。&lt;/p&gt;
+
+&lt;p&gt;遇到的困难：个性化定制。通过属性、事件等扩展。&lt;/p&gt;
+
+&lt;p&gt;举个web组件的例子，参考此文档的前半部分：&lt;a href=&quot;https://github.com/cnsnake11/blog/blob/master/ReactNative%E5%BC%80%E5%8F%91%E6%8C%87%E5%AF%BC/ReactNative%E7%BB%84%E4%BB%B6%E7%8A%B6%E6%80%81%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%80%83.md&quot;&gt;链接&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;react-1&quot;&gt;react做了什么&lt;/h3&gt;
+
+&lt;p&gt;react是一个组件化编程的框架，提供了组件化编程的完整解决方案。&lt;a href=&quot;http://facebook.github.io/react/&quot;&gt;例子&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;react组件的定义。 &lt;a href=&quot;http://facebook.github.io/react/docs/component-specs.html&quot;&gt;链接&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;react组件生命周期及其生命周期事件。&lt;a href=&quot;http://facebook.github.io/react/docs/component-specs.html#lifecycle-methods&quot;&gt;链接&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-7&quot;&gt;面向状态编程&lt;/h2&gt;
+
+&lt;p&gt;页面中任何组件的state的改变，都会引起页面所有组件的render方法的执行。react会根据render执行的结果与当前的虚拟dom进行比对，只进行增量的更新。&lt;a href=&quot;https://github.com/cnsnake11/blog/blob/master/ReactNative%E5%BC%80%E5%8F%91%E6%8C%87%E5%AF%BC/ReactNative%E7%BB%84%E4%BB%B6%E7%8A%B6%E6%80%81%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%80%83.md#rn设计思路&quot;&gt;链接&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;jsx&quot;&gt;jsx&lt;/h2&gt;
+&lt;p&gt;js中的xml。&lt;a href=&quot;http://facebook.github.io/react/&quot;&gt;例子&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;reactnative-1&quot;&gt;reactnative基本概念&lt;/h1&gt;
+
+&lt;h2 id=&quot;react-2&quot;&gt;和react的关系&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;rn使用react的组件化规范。&lt;/li&gt;
+  &lt;li&gt;rn使用react的面向状态编程的机制。&lt;/li&gt;
+  &lt;li&gt;rn使用react的jsx机制。&lt;/li&gt;
+  &lt;li&gt;rn提供了一系列app开发所需要的组件。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;section-8&quot;&gt;常用组件&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;div View&lt;/li&gt;
+  &lt;li&gt;span Text&lt;/li&gt;
+  &lt;li&gt;img Image&lt;/li&gt;
+  &lt;li&gt;input TextInput&lt;/li&gt;
+  &lt;li&gt;button Touch*&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;section-9&quot;&gt;样式定义&lt;/h2&gt;
+&lt;p&gt;不支持选择器。不支持选择器。不支持选择器。&lt;/p&gt;
+
+&lt;p&gt;只能内联或者在每一个节点上声明外部css定义。所以，一般没有复用的样式使用内联，有复用的才使用外部定义。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://reactnative.cn/docs/0.24/style.html#content&quot;&gt;链接&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;section-10&quot;&gt;开发环境&lt;/h1&gt;
+
+&lt;h2 id=&quot;ios&quot;&gt;ios&lt;/h2&gt;
+
+&lt;p&gt;xcode+app的ios代码+js编辑器+rn开发服务器+真机or模拟器&lt;/p&gt;
+
+&lt;h2 id=&quot;android&quot;&gt;android&lt;/h2&gt;
+
+&lt;p&gt;jdk+androidSdk+androidStudio+app的android代码+js编辑器+rn开发服务器+真机or模拟器&lt;/p&gt;
+
+&lt;h1 id=&quot;section-11&quot;&gt;开发过程&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;启动rn开发服务器&lt;/li&gt;
+  &lt;li&gt;启动模拟器，点开app，设置自动reload&lt;/li&gt;
+  &lt;li&gt;启动js代码编辑器，coding—save—看效果&lt;/li&gt;
+  &lt;li&gt;tips:可以直接让首页显示你要开发的页面，可以快速查看效果&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// tips用到的代码，替换index页面的最后一行
+AppRegistry.registerComponent(&#39;Ask&#39;, () =&amp;gt; require(&#39;../../../demo/demo1/animate/drag2&#39;));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;section-12&quot;&gt;调试过程&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;console.log&lt;/li&gt;
+  &lt;li&gt;js断点调试&lt;/li&gt;
+  &lt;li&gt;alert&lt;/li&gt;
+  &lt;li&gt;页面元素检测器&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;section-13&quot;&gt;组件设计&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/cnsnake11/blog/blob/master/ReactNative%E5%BC%80%E5%8F%91%E6%8C%87%E5%AF%BC/ReactNative%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1.md&quot;&gt;链接&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;section-14&quot;&gt;坑坑坑&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;android的textinput不能设置边框圆角&lt;/li&gt;
+  &lt;li&gt;android的图片resizemodal=contain不好用&lt;/li&gt;
+  &lt;li&gt;循环依赖报错的问题&lt;/li&gt;
+  &lt;li&gt;安卓rn首屏白屏时间长&lt;/li&gt;
+  &lt;li&gt;安卓的中绝对定位元素移动出父元素会不可见，设置overflow=hidden也不好使&lt;/li&gt;
+  &lt;li&gt;不支持隐藏元素&lt;/li&gt;
+  &lt;li&gt;安卓中，使用缓存rootview，并且键盘打开情况下，直接后退出rn模块，在进入会报错&lt;/li&gt;
+  &lt;li&gt;魅族smartbar不占高&lt;/li&gt;
+  &lt;li&gt;android中，设置overflow=hidden，父容器高度不能为0，至少为0.01，否则hidden无效&lt;/li&gt;
+  &lt;li&gt;加固后动画有掉帧现象&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;section-15&quot;&gt;架构设计&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;业务模块
+业务框架
+技术框架
+reactnative
+android、ios操作系统
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;section-16&quot;&gt;框架设计&lt;/h1&gt;
+
+&lt;p&gt;参考技术框架和业务框架的目录结构介绍。&lt;/p&gt;
+
+&lt;h1 id=&quot;section-17&quot;&gt;版本发布&lt;/h1&gt;
+
+&lt;h2 id=&quot;section-18&quot;&gt;全量发布&lt;/h2&gt;
+
+&lt;p&gt;全量发布是将rn相关资源打包进app中，是无需网络下载的。&lt;/p&gt;
+
+&lt;p&gt;一般过程：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;coding结束&lt;/li&gt;
+  &lt;li&gt;使用全量打包命令，打出android和ios全量包&lt;/li&gt;
+  &lt;li&gt;将包拷贝到android和ios工程约定好的位置&lt;/li&gt;
+  &lt;li&gt;按照android和ios原有打包方式进行打包即可&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;section-19&quot;&gt;增量发布&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/cnsnake11/blog/blob/master/ReactNative%E5%BC%80%E5%8F%91%E6%8C%87%E5%AF%BC/ReactNative%E5%A2%9E%E9%87%8F%E5%8D%87%E7%BA%A7%E6%96%B9%E6%A1%88.md&quot;&gt;增量升级方案&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;一般过程：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;coding结束&lt;/li&gt;
+  &lt;li&gt;使用全量打包命令，打出android和ios全量包&lt;/li&gt;
+  &lt;li&gt;使用增量打包命令，打出android和ios增量包&lt;/li&gt;
+  &lt;li&gt;将增量包上传到后台管理系统，上线即可&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Wed, 04 May 2016 18:00:00 +0800</pubDate>
+        <link>http://bystep15.github.io//front/article/2016/05/04/ReactNative%E5%88%86%E4%BA%AB%E6%8F%90%E7%BA%B2.html</link>
+        <guid isPermaLink="true">http://bystep15.github.io//front/article/2016/05/04/ReactNative%E5%88%86%E4%BA%AB%E6%8F%90%E7%BA%B2.html</guid>
+        
+        
+        <category>front</category>
+        
+        <category>article</category>
+        
+      </item>
+    
+      <item>
+        <title>MVC(前端)架构基础知识</title>
+        <description>&lt;h1 id=&quot;mvc-&quot;&gt;MVC 架构简介&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;MVC 是一个软件框架模式。自从 1982 被提出至今，MVC 一直存在于软件行业的各个领域，
+为整个软件的基础架构设计、层级设计、模块划分、代码组织逻辑等等行为提供有力的理论支持&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;知识背景&lt;/h2&gt;
+
+&lt;p&gt;上世纪 80 年代初，全球图形界面软件快速发展，在软件规模不断变大的情况下，需要一种明确的软件框架模式对大中型软件进行合理规划。
+Xerox PARC 提出了 &lt;strong&gt;模型－视图－控制器（MVC）&lt;/strong&gt; 模式，进行框架层级的划分和代码上的分离。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mvc/1.png&quot; alt=&quot;MVC frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;MVC 提出后被各个图形软件广泛采用。因其具有清晰的逻辑层次和优秀的工程管理性质，被企业软件巨头之一的 Oracle 用在了 J2EE 平台软件的设计模式上。
+随着 J2EE 的兴盛和软件面向对象设计的普通采用，MVC 的思想在软件各个领域都大放异彩。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;框架思想哲理&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;写书是人类表达和展示自己的思想的重要方式&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;在老老年间，古人们写书或复制书就只能用手写，直接将字手写在纸上。数据的来源和展现都通过纸面这唯一中间过程。行为不可完全复制。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mvc/2.jpg&quot; alt=&quot;MVC frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;后来，活字印刷术的出现将上述过程进行统一标准化。将整个过程划分为三部分：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mvc/3.jpg&quot; alt=&quot;MVC frame&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;统一的、持久化的数据源：活字 （Model）;&lt;/li&gt;
+  &lt;li&gt;标准化的业务逻辑过程：排版 （Controller）;&lt;/li&gt;
+  &lt;li&gt;纯粹的渲染展示：印刷 （View）;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;如此一来，整个印刷过程根据侧重点的不同分为三部分。每一部分在业务上能够做到相对独立，复用程度提高，后期的维护也简单不少。&lt;/p&gt;
+
+&lt;p&gt;MVC 的思想其实在我们生活的各个方面都有展现。将普通作业进行工程化改造，有利于作业过程管理，思维上更加清晰明确。提高工作效率和后期维护度。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mvc/lichen.png&quot; alt=&quot;MVC frame&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;mvc--1&quot;&gt;主流前端框架的 MVC 简要分析&lt;/h2&gt;
+
+&lt;p&gt;下面，以 &lt;code class=&quot;highlighter-rouge&quot;&gt;backbone&lt;/code&gt;、 &lt;code class=&quot;highlighter-rouge&quot;&gt;angularjs 1&lt;/code&gt;、 &lt;code class=&quot;highlighter-rouge&quot;&gt;reactjs&lt;/code&gt; 为例，简要说明一下当 MVC 做为前端的一个新兴的事物，是如何被我们所利用的。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;backbone&quot;&gt;Backbone&lt;/h3&gt;
+
+&lt;p&gt;Backbone 框架是三者中最简练，但是最标准的 MVC 前端框架。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-2&quot;&gt;基本特性&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mvc/backbone.png&quot; alt=&quot;MVC frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;backbone 的中文字面翻译叫 “脊椎” 。如其名，它本是框架特性就是提供了一个明确的结构划分，有良好的扩展性，没有添加过多的“自动化”方法。强依赖 &lt;code class=&quot;highlighter-rouge&quot;&gt;Underscore&lt;/code&gt; 、&lt;code class=&quot;highlighter-rouge&quot;&gt;jquery&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;zepto&lt;/code&gt;，从中你可以使用依赖库所提供的方法，比如&lt;code class=&quot;highlighter-rouge&quot;&gt;this._&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;this.$&lt;/code&gt;。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;注意：在 backbone 类的内部调用 jquery：&lt;code class=&quot;highlighter-rouge&quot;&gt;this.$&lt;/code&gt; 有 dom 控制域的限制，这也许被很多刚开始接触的人认为这是一个坑，实际上这个限制正是 backbone 在模块划分上的一种规范，backbone 建议由此来限制用户在控制器内只对 &lt;code class=&quot;highlighter-rouge&quot;&gt;el&lt;/code&gt; 中指定的 dom 元素进行操作，强制用户进行更好的模块划分。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;你会发现上图中缺少 “视图” 元素，这也体现了 backbone 的灵活性，它没有自带的模板引擎，你可以使用依赖库 &lt;code class=&quot;highlighter-rouge&quot;&gt;Underscore&lt;/code&gt; 的 &lt;code class=&quot;highlighter-rouge&quot;&gt;_.template(&quot;———模板内容———&quot;)&lt;/code&gt; 作为模板引擎，也可以使用其它的模板引擎。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;AppView&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Backbone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;extend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;#appele&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;&amp;lt;p&amp;gt;这是一个模板内容&amp;lt;br&amp;gt;&amp;lt;span style=&quot;font-size: 30px;&quot;&amp;gt;&amp;lt;%=value%&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;initialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;listenTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;add&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;哈哈&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}));&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;.dom&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;section-3&quot;&gt;（视图）模板渲染原理&lt;/h4&gt;
+
+&lt;p&gt;backbone 是弱单向的数据绑定框架，你只能手动的将所需的数据事件绑定到指定的 Model 上，完全没有视图端的数据变化监听，也不去管数据变化后视图怎么变。它把 render 方法抛给了用户，完全由用户决定怎么弄。&lt;br /&gt;
+backbone 官方实际引导大家使用一个 简单、粗暴、有成效 的方式，就是 &lt;strong&gt;整个重新渲染&lt;/strong&gt; ，而不是“细致”的根据变化的数据来去操作 DOM 一个一个的改。&lt;br /&gt;
+这实际也是 MVC 的一个核心思想：&lt;strong&gt;数据驱动&lt;/strong&gt; — 用户不应该直接操作视图，应该把重心放到数据和业务逻辑上来。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;注：&lt;strong&gt;整个重新渲染&lt;/strong&gt; 在很多情况下并不粗暴，也是有性能考虑的根据的，dom 的频繁改动是页面性能的一个痛点，与其改10个，不如一次换1个，除非你能做到极致。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;reactjs&quot;&gt;reactjs&lt;/h3&gt;
+
+&lt;p&gt;reactjs PS: 我在这里是充数的，其实，我只是个 UI 。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;JUST THE UI&lt;br /&gt;
+Lots of people use React as the V in MVC. Since React makes no assumptions about the rest of your technology stack, it’s easy to try it out on a small feature in an existing project.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;section-4&quot;&gt;基本特征&lt;/h4&gt;
+
+&lt;p&gt;如果说 “正规” 的 MVC 概念重心是进行层级的横向划分，那么 reactjs 的核心概念 Component 则提供一种(页面)模块的纵向划分思想。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mvc/vh.png&quot; alt=&quot;v or h&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“横向划分”与“纵向划分”（“水平拆分”与“垂直拆分”）是软件设计的两种最基本思想，相互补充，最终向整个软件系统“组模式”进化。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;举个例子，大家手头有这样一个页面&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;header&amp;gt;&lt;/span&gt;
+        ...&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 此处省去50行 and 其它页面也用--&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/header&amp;gt;&lt;/span&gt;
+    
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;aside&amp;gt;&lt;/span&gt;
+        ...&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 此处省去300行 --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/aside&amp;gt;&lt;/span&gt;
+    
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;section&amp;gt;&lt;/span&gt;
+        ...&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 此处省去500行 --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/section&amp;gt;&lt;/span&gt;
+    
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;footer&amp;gt;&lt;/span&gt;
+        ...&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 此处省去30行 and 其它页面也用 --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/footer&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这么“庞大”的一个页面，你会怎么分隔，也许你会说，可以用 php 把它折开啊~那么用前端的技术和方法呢？&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;其实，php 和 java 的一些模板引擎早已做到这一步了，而且有着很好的实用性。现在需要用前端的技术完成“前端”的工作。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;现在有了 react 提供的页面组件化方式，你就不用把这么繁多的标签挤在一个页面里了。你的入口主页真的会变成这样:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;MyHeader&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;MyAside&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;MySection&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;MyFooter&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;你只需要在主页面（JS）中 “引入” 每一块的的 JS ，就是会得到你想要的结果，页面包含完整的功能与样式哦。就像这样:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;index.jsx&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//react&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;react&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//各个页面模块&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MyHeader&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;./MyHeader&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MyAside&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;./MyAside&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MySection&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;./MySection&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MyFooter&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;./MyFooter&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//整体需要的样式&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;./style/reset.less&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;./style/layout.less&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Index&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;MyHeader&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;MyAside&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;MySection&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;MyFooter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kr&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;mySection.jsx&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//react&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;react&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//MySection 模块中需要的样式&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;./style/my_section.less&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MySection&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;section&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;此处省去&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;行&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/section&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kr&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MySection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;通过 react 制作的每一个模块都是独立的，你不用再去纠结一个模块的 HTML结构、样式、JS脚本怎么分别弄进来，webpack 的强大的打包能力最终生成的文件肯定让你满意—当然这得自己去配置。&lt;/p&gt;
+
+&lt;h4 id=&quot;mvc--2&quot;&gt;MVC 特性&lt;/h4&gt;
+
+&lt;p&gt;从总体框架上来看，虽说 react 不是一个 MVC 框架，但其内在方法的划分和设计原理还是有明显的 MVC 思想。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;state&lt;/strong&gt; 和 &lt;strong&gt;render&lt;/strong&gt;。react 在数据和视图的关系上采用单向数据绑定的数据驱动模式，也就是数据模型和视图是一一对应的，不过数据改动后视图不一定立刻跟着变化，而是需要你自发的用 &lt;strong&gt;setState&lt;/strong&gt; 去触发视图内容更新。&lt;/p&gt;
+
+&lt;p&gt;但是 react 不像 backbone 那么懒，把渲染视图的过程也抛给用户，react 有自己的一套非常先进的视图渲染系统—基于虚拟 dom 的最少改动方案。大致过程如下图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mvc/v-dom.png&quot; alt=&quot;react 虚拟 DOM&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;注：策略上的区别对待是看 dom 更新的情况来确定是重新刷一遍、修改内容、还是替换等&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;section-5&quot;&gt;渲染的优化点&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;将只是内在用的、和视图无关的标识变量不要放在 state 下；&lt;/li&gt;
+  &lt;li&gt;连续多次的修改 state 下的数据时，可以前几步用直接赋值：
+  如：this.state.data = ‘new data’
+  最后再统一调起 setState，如：this.setState(data: xxx)&lt;/li&gt;
+  &lt;li&gt;尽可能的给每一个数组型的 dom 元素定死一个持久化的、唯一的 key，不要用随机值、遍历的 index 等不稳定的值；&lt;/li&gt;
+  &lt;li&gt;精确控制 shouldComponentUpdate 和 componentWillUpdate，帮助 react 进行过滤。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;相比 backbone reactjs 就是算是把“DOM 操作”精细化到极致的人，我们最终看到的页面上的东西，不是完全真实的，而存在在内存里的 虚拟DOM 某种意义上才是和你的数据模型完全对应的 dom。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;angular&quot;&gt;angular&lt;/h3&gt;
+
+&lt;p&gt;angular 框架是三者中最大，当然也是最 “强” 的 MVC 前端框架。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-6&quot;&gt;基本特性&lt;/h4&gt;
+
+&lt;p&gt;angular 本质上是一个 MVVM 框架，也就是 &lt;strong&gt;数据模型-视图&lt;/strong&gt; 双向绑定框架，自己就能提供框架所需的全部功能，当然你也可以再加入其它 js 类库，不过那之前我建议你还是先去认真找一找 angular 是否已经有了 -_-。&lt;/p&gt;
+
+&lt;p&gt;从 MVC 的基本要点出发，这里简要说一下以下几种模块类型：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mvc/angular.png&quot; alt=&quot;angular&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;为了让大家大致了解各部分是干什么的，先说一下任何一个 WEB 应用框架的主要流程大概都是这样的：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mvc/web-app.png&quot; alt=&quot;angular&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;在这里又要吐糟一下了，Js 总体来说，要比一些成熟的面向对象语言要弱的多，不论从前端框架还是整个 JS 语言的进化来看，都是在不断的追随着如 JAVA、C 等高级语言&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这样，我们从路由 ROUTER 入手，来一步步简要分析一下 angular。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;my_mvc&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;ngRoute&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;ngResource&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$routeProvider&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&#39;use strict&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;routeConfig&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;controller&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;IndexController&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;//对应的 Controller&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;templateUrl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;js/views/index.html&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;//对应的 html View &lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;                           &lt;span class=&quot;c1&quot;&gt;//获取所需的 Model 操作对象 &lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dataFactory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;c1&quot;&gt;//获取数据源&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dataFactory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Fetch the todo records in the background.&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;$routeProvider&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;when&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;/&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;routeConfig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;otherwise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;redirectTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;/&#39;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;在路由中，angular 就对 controller 、view、model 进行了明确的组装。
+下面就来看看 controller、model 是怎么编写的。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/**
+ * 控制器 IndexController
+ */&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;my_mvc&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;controller&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;IndexController&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;IndexController&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&#39;use strict&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;//从 service 里取数据操作对象&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;datalist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;datalist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;datalist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;//====为了测试用&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;datalist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;datalist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$apply&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;//计算数组元素的个数，并进行及时的监控&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;datalist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$watch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;datalist&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;datalist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    
+    &lt;span class=&quot;cm&quot;&gt;/*
+     * 给页面提供的方法
+     */&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;//年龄加一&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_addAge&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;edit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;//加一条记录&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_insertData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;小王&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;19&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/**
+ * 业务逻辑层 dataFactory
+ * 这里用了 factory 的封装形式
+ */&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;my_mvc&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;factory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;dataFactory&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$http&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$injector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&#39;use strict&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$http&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;http//localhost/api&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$injector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;http&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$injector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;localStorage&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+    
+    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;factory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;http&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$resource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&#39;use strict&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;datalist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//用$resource构造 restful API 的 http 的远程接口&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;api&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$resource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;http//localhost/api/data/:id&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;PUT&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}),&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//数据操作方法&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;api&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+					&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;datalist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+				&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+			&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;edit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;api&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+					&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;realData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;datalist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;slice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+				&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;api&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+					&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+						&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;resp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+						&lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;datalist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+					&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+						&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;realData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;datalist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+					&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+					&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;factory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;localStorage&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&#39;use strict&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;LOCALSTORAGE_ID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;my_mvc&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;datalist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//通过的从 localstorage 存取数据的方法&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;_getFromLocalStorage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localStorage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LOCALSTORAGE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;[]&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;_saveToLocalStorage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;datalist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;localStorage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LOCALSTORAGE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stringify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;datalist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//数据操作方法&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;deferred&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;defer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+				&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_getFromLocalStorage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;datalist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+				&lt;span class=&quot;nx&quot;&gt;deferred&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;datalist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+				&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;deferred&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;edit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;deferred&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;defer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;
+                    &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;datalist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;datalist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                        &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;datalist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_saveToLocalStorage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;datalist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;deferred&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;datalist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;deferred&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;deferred&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;defer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;datalist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_saveToLocalStorage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;datalist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;deferred&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;datalist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;deferred&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            
+        &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这里要专门说一下 angular 的 service 层。做为一个前端框架，ng 的 service 层异常强大，直接把后台常用的 service 层概念都搬了过来，而且功能实现的都有模有样的。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;支持依赖注入 — $injector (JAVA的一个卖点)&lt;/li&gt;
+  &lt;li&gt;支持 restful 的接口调用 — $resource&lt;/li&gt;
+  &lt;li&gt;有三种表达形式 — factory、service、provider&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;angular-&quot;&gt;angular 双向绑定机制的简要分析&lt;/h4&gt;
+
+&lt;p&gt;Angular 通过 $watch、$apply、$digest 三个内方法来实现两端的监听&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;$watch&lt;/strong&gt; 是 model 数据的变化监听队列&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;section&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mvcapp&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-repeat=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;data in datalist track by $index&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-click=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;_addAge(data)&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            姓名: , 年龄：
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;点一下加一岁哦~&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;共有条记录&lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ng-click=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;_insertData()&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;加一条记录&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/section&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;每当有 controller 最的变量被“写”到模板里时，就 会在 $watch 里添加一条的监听&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;在说明 $apply、$digest 的功能前，先提问一个问题？
+你有没有想过这个问题：
+Angular 没有提供类似 get(‘data’)、 setState 的特定方法来在数据变动时视图的更新，而是简单的常规 js 对象赋值就能同步改变视图。&lt;br /&gt;
+比如：只是这样 data.age = data.age + 1 ，页面里的年龄就加了一岁。
+要知道，事件监听只是页面 DOM 才有的东西，单纯 JS 数据可没有事件机制的。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;？？？？？？？？？？？？？？？？？？&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Angular content&lt;/strong&gt; — 双向绑定背景的重要概念&lt;/p&gt;
+
+&lt;p&gt;angular 实际没有直接对数据做出监听（本质上也不可能为到），angular 为自己营造了一个叫angular content 的运行环境，任何 “ng-”自定义事件的触发和带有”ng-”指令的 DOM 变化，都会调起下面要说的 $apply 指令，来进行下一步的更新工作。&lt;/p&gt;
+
+&lt;p&gt;在上面的 controller 代码中，&lt;strong&gt;//====为了测试用&lt;/strong&gt; 的下面两行，我估意向 window 暴露了两个对象(方法)，当你直接通过 window.datalist 来修改数据时，页面视图是不会发生变化的，因为这个修改没有被 angular content 捕捉到。当你调用一下 window.$apply 时，页面又和数据同步了，因为 $apply 是调起页面渲染的功能。&lt;/p&gt;
+
+&lt;p&gt;angular content —&amp;gt; $apply —&amp;gt; $digest 流程如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mvc/angular-liuchen.png&quot; alt=&quot;angular&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;section-7&quot;&gt;渲染的优化点&lt;/h4&gt;
+
+&lt;p&gt;…好吧，我只能假装一下有优化点&lt;/p&gt;
+
+&lt;p&gt;Angular 双向绑定的 $watch、$apply、$digest 机制比较固化，留给使用自己的改进很少。
+其中 ng 的数据监听是重点，为了不漏掉任何一个可能会影响数据变化的情况，angular 生成的 $watch 比模板上能看到的要多，还好 js 的处理速度非常快，表现在页面上不会感觉到慢。（但的确比单向绑定框架更耗资源）&lt;/p&gt;
+
+&lt;p&gt;ECMAscript 6 中提到了新的特性 Object.observe 。希望浏览器内核提供原生支持后，双向绑定应该会变得更好。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;总结：mvc 是一种思想，再优秀的 MVC 框架也不一定写出和符合 MVC 逻辑的代码，当然，即使没有 MVC 框架，也可以写出层级清晰的程序。&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 30 Apr 2016 20:02:01 +0800</pubDate>
+        <link>http://bystep15.github.io//front/article/2016/04/30/mvc(%E5%89%8D%E7%AB%AF)%E6%9E%B6%E6%9E%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.html</link>
+        <guid isPermaLink="true">http://bystep15.github.io//front/article/2016/04/30/mvc(%E5%89%8D%E7%AB%AF)%E6%9E%B6%E6%9E%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.html</guid>
+        
+        
+        <category>front</category>
+        
+        <category>article</category>
+        
+      </item>
+    
+      <item>
+        <title>MG——基于的模块浏览器端延迟请求加载</title>
+        <description>&lt;h1 id=&quot;mg&quot;&gt;MG&lt;/h1&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;MG，Module Generation，模块时代。以Sea.js为基础，构建遵循CMD规范的模块。
+解决两个问题：
+1. 解决模板中对脚本随意引用而引起的复和杂问题，实现解耦；
+2. 将脚本依赖从模板中迁移到脚本中，更接近使用的地方，实现内聚。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;客户端延迟请求&lt;/h2&gt;
+&lt;p&gt;页面中，大多数脚本处于等待使用的状态，这部分脚本完全可以按需加载，将依赖分析后移到浏览器端业务执行时，基于Sea.js实现客户端延迟请求解决方案。&lt;/p&gt;
+
+&lt;p&gt;页面加载完成之后，基于HTTP 1.1协议中的&lt;code class=&quot;highlighter-rouge&quot;&gt;Connection: keep-alive&lt;/code&gt;和浏览器的并发加载，是否真的会比全部合并加载快。&lt;/p&gt;
+
+&lt;p&gt;HTTP 2.0协议普及之后，combo的过程都可以省略，文件的加载将不是问题。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;基础&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$header&lt;/code&gt;（&lt;code class=&quot;highlighter-rouge&quot;&gt;HeaderLite&lt;/code&gt;类的全局单例）和&lt;code class=&quot;highlighter-rouge&quot;&gt;$footer&lt;/code&gt;（&lt;code class=&quot;highlighter-rouge&quot;&gt;FooterLite&lt;/code&gt;类的全局单例）中的&lt;code class=&quot;highlighter-rouge&quot;&gt;importJavascript&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;importCss&lt;/code&gt;两个静态资源引用方法会自动合并并更新资源的版本号（&lt;code class=&quot;highlighter-rouge&quot;&gt;?ver=最新版本号&lt;/code&gt;），用这两个方法引用的静态资源不用关心CDN缓存的问题。&lt;/p&gt;
+
+&lt;p&gt;Header中的关键代码
+&lt;code class=&quot;highlighter-rouge&quot;&gt;php
+$header-&amp;gt;importJavascript(&#39;/img/mg/dist/lib/seajs/2.3.0/sea.js&#39;);
+$header-&amp;gt;importJavascript(&#39;/img/mg/dist/lib/seajs-preload/1.0.0/seajs-preload.js&#39;);
+$header-&amp;gt;importJavascript(&#39;/img/mg/dist/lib/seajs-css/1.0.4/seajs-css.js&#39;);
+$header-&amp;gt;importJavascript(&#39;/img/mg/dist/lib/seajs-combo/1.1.2/seajs-combo.js&#39;);
+$header-&amp;gt;importJavascript(&#39;/img/mg/dist/lib/seajs-flush/1.0.1/seajs-flush.js&#39;);
+$header-&amp;gt;importJavascript(&#39;/img/mg/dist/config.js&#39;);
+&lt;/code&gt;
+Footer中的关键代码
+&lt;code class=&quot;highlighter-rouge&quot;&gt;js
+seajs.flush();
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;JS模块代码进行Transport处理时，会自动为模块中依赖的JS脚本添加hash版本号解决CND缓存的问题。&lt;/p&gt;
+
+&lt;p&gt;页面中以模块为基本逻辑和代码组织单位，在单独的模块中引用对应的seajs_config.js入口配置文件，一个页面中可以多次引用，Sea.js会自动合并配置。&lt;/p&gt;
+
+&lt;p&gt;目的：提升使用的快感，解决无法编译的问题。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;php
+&amp;lt;?php
+    $footer-&amp;gt;importJavaScript(&#39;/img/mg/dist/project/common/js/seajs_config.js&#39;);
+?&amp;gt;
+&amp;lt;script&amp;gt;
+    seajs.use(&#39;header&#39;);
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;js&quot;&gt;页面中需要引入的JS文件&lt;/h2&gt;
+&lt;p&gt;在页面的头部中共需要引入如下6个JS文件，前5个是Sea.js的基本文件。config.js是全局配置文件。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;&#39;lib/seajs/2.3.0/sea.js&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&#39;lib/seajs-preload/1.0.0/seajs-preload.js&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&#39;lib/seajs-css/1.0.4/seajs-css.js&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&#39;lib/seajs-combo/1.1.2/seajs-combo.js&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&#39;lib/seajs-flush/1.0.1/seajs-flush.js&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&#39;config.js&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;configjs&quot;&gt;全局配置文件config.js详细&lt;/h2&gt;
+&lt;p&gt;全局配置文件的作用共4个：
+1. 基于版本号统一管理Lib库中引用的第三方资源，当第三方资源更新时，只需要更新配置文件中的版本号，重新编译Lib库和config.js配置文件并上线即可在业务代码中生效；
+2. 设置统一的debug开关，当URL中出现dev参数时，即可调用debug版本的js；
+3. 设置模板后缀名映射；
+4. combo合并请求配置参数设置。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;seajs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&#39;use strict&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;s1&quot;&gt;&#39;jquery&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;lib/jquery/1.11.2/jquery&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s1&quot;&gt;&#39;hogan&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;lib/hogan/3.0.2/hogan&#39;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;tpl$/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;.tpl.js&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/*
+     * 匹配以下形式
+     * ?dev
+     * ?dev=***
+     * &amp;amp;dev
+     * &amp;amp;dev=
+     * 不匹配以下形式
+     * ?dev****
+     * &amp;amp;dev****
+     */&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;(?:\?&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&amp;amp;)&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;dev&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;(?:&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;=|&amp;amp;|$&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\-&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;debug&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;js$|&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;js$/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;-debug.js&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;seajs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;comboSyntax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;??/img/mg/dist/&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;,/img/mg/dist/&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;comboBase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;seajs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;base&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;}(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;seajs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;lib&quot;&gt;第三方资源Lib管理&lt;/h2&gt;
+
+&lt;h3 id=&quot;lib-1&quot;&gt;Lib目录结构设计&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/images/mg/lib-structure.png&quot; alt=&quot;Lib目录结构&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;lib-2&quot;&gt;Lib库编译&lt;/h3&gt;
+&lt;p&gt;Lib库中引用的第三方JS共有两类，一是Sea.js相关文件，只进行Uglify压缩处理；二是jQuery、Hogan等第三方库，引入源码文件并手工修改为CMD格式，随后按如下流程处理。&lt;/p&gt;
+
+&lt;p&gt;主要处理流程如下：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;SeaJs文件Uglify压缩；&lt;/li&gt;
+  &lt;li&gt;第三方库CSS文件压缩；&lt;/li&gt;
+  &lt;li&gt;第三方库JS文件Transport；&lt;/li&gt;
+  &lt;li&gt;第三方库JS文件拷贝Debug版本；&lt;/li&gt;
+  &lt;li&gt;第三方库JS文件Uglify压缩。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;css&quot;&gt;针对项目CSS编译&lt;/h2&gt;
+&lt;p&gt;每个页面只引用1个CSS文件，CSS的依赖通过Less的&lt;code class=&quot;highlighter-rouge&quot;&gt;@import&lt;/code&gt;解决。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mg/project-css-structure.png&quot; alt=&quot;CSS目录结构&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;主要处理流程如下：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Less文件预处理；&lt;/li&gt;
+  &lt;li&gt;CSSLint；&lt;/li&gt;
+  &lt;li&gt;ICON图片合并；&lt;/li&gt;
+  &lt;li&gt;图片文件Hash化；&lt;/li&gt;
+  &lt;li&gt;图片路径转换（符合静态资源部署规则）；&lt;/li&gt;
+  &lt;li&gt;CSS文件压缩。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;js-1&quot;&gt;针对项目JS编译&lt;/h2&gt;
+&lt;p&gt;JS目录的组织，每个业务或功能模块分别建立单独的文件夹，文件夹中以main.js为其入口文件，并以该文件夹名为启动入口名。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mg/project-js-structure.png&quot; alt=&quot;JS目录结构&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;主要处理流程如下：
+1. 代码质量检查（JsLint，出现错误立刻中止）；
+2. JS文件Transport；
+3. JS文件拷贝Debug版本；
+4. JS文件Uglify压缩；
+5. 生成模块入口配置文件（&lt;code class=&quot;highlighter-rouge&quot;&gt;seajs_config.js&lt;/code&gt;）。&lt;/p&gt;
+
+&lt;h3 id=&quot;seajsconfigjs&quot;&gt;生成的seajs_config.js文件示例&lt;/h3&gt;
+
+&lt;p&gt;该文件的作用是避免模块入口启动文件的CND缓存问题。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;activity-detail&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/activity-detail/main-4924f514&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;activity&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/activity/main-edcaa876&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;address&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/address/main-c13c8fd9&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;apply-detail&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/apply-detail/main-995383a0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;attr&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/attr/main-91c9a520&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;comment&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/comment/main-e68e2a37&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;index&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/index/main-1bccee4f&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;report&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/report/main-72bdd139&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;reportlist&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/reportlist/main-30f4f51c&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;rule&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/rule/main-911e02e7&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;search&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/search/main-1323a6f8&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;settitle&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/settitle/main-6531f08a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;survey&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/survey/main-6b945589&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;unlist&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/unlist/main-96ff2afe&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}})}(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;seajs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bui&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;目前存在的问题&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;文件编译的性能问题；&lt;/li&gt;
+  &lt;li&gt;入口文件名标识容易冲突的问题；&lt;/li&gt;
+  &lt;li&gt;可以增加以单个JS文件为粒度的客户端持久化缓存；&lt;/li&gt;
+  &lt;li&gt;Sea.js的CMD不符合国际事实，Require.js的AMD更友好，或者找到更好的方案；&lt;/li&gt;
+  &lt;li&gt;gulp的流模式比Grunt的配置在工程化上更有优势；&lt;/li&gt;
+  &lt;li&gt;将开发开发构建和生产环境构建分离；&lt;/li&gt;
+  &lt;li&gt;JS、CSS和图片等静态资源和HTTP/2的兼容；&lt;/li&gt;
+  &lt;li&gt;图片的优化处理（gulp方案中存在）；&lt;/li&gt;
+  &lt;li&gt;NPM管理第三方库资源；&lt;/li&gt;
+  &lt;li&gt;按正宗的CommonJS方案去写代码；&lt;/li&gt;
+  &lt;li&gt;Babel和ES6的使用；&lt;/li&gt;
+  &lt;li&gt;肯定还有很多其他问题，需要大家一起携手搞定。&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Thu, 17 Mar 2016 18:00:00 +0800</pubDate>
+        <link>http://bystep15.github.io//front/article/2016/03/17/mg.html</link>
+        <guid isPermaLink="true">http://bystep15.github.io//front/article/2016/03/17/mg.html</guid>
+        
+        
+        <category>front</category>
+        
+        <category>article</category>
+        
+      </item>
     
       <item>
         <title>http/2 试部署测试总结</title>
