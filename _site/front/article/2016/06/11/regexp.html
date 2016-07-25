@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Javascript正则表达式分享</title>
+  <meta name="description" content="拖欠大家的正则表达式分享终于兑现了，请叫我拖延症晚期大叔……">
+
+  <link rel="stylesheet" href="/stylesheets/stylesheet.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://bystep15.github.io//front/article/2016/06/11/regexp.html">
+  <link rel="alternate" type="application/rss+xml" title="宝宝树前端团队" href="http://bystep15.github.io//feed.xml">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+  <body>
+
+    <header class="main-header">
+    <div class="inner">
+        <h1>宝宝树前端团队博客</h1>
+        <h2>Bystep15.GitHub.io</h2>
+        <a href="https://github.com/bystep15" class="button"><small>Follow me on</small> GitHub</a>
+    </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <nav>当前位置：<a href="/">首页</a> &gt; <a href="/front/article/2016/06/11/regexp.html">Javascript正则表达式分享</a></nav>
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Javascript正则表达式分享</h1>
+    <p class="post-meta"><time datetime="2016-06-11T10:30:00+08:00" itemprop="datePublished">Jun 11, 2016</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">武明礼</span></span></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h3 id="section">什么是正则表达式？</h3>
+
+<p>正则表达式，又叫<code class="highlighter-rouge">“正规表示法”</code>、<code class="highlighter-rouge">“常规表示法”</code>，英文名<code class="highlighter-rouge">Regular Expression</code>。它使用单个字符串来描述、匹配符合某个句法规则的字符串。</p>
+
+<p>正则表达式通常用来检索、替换那些符合某种模式的文本。我们平时在开发机上用Grep，或者命令模式下%s，都可以通过正则来匹配（替换）精准的模式。</p>
+
+<h3 id="section-1">正则表达式能干啥？</h3>
+
+<ul>
+  <li>检测给定的字符串是否符合正则表达式的过滤逻辑（称作<code class="highlighter-rouge">匹配</code>或<code class="highlighter-rouge">数据验证</code>）。如可以测试字符串中是否包含电话号码。</li>
+  <li>可以通过正则表达式，从字符串中获取我们想要的特定部分。</li>
+  <li>替换文本。可以使用正则表达式来识别文档中的特定文本，完全删除该文本或者用其他文本替换它。</li>
+</ul>
+
+<h3 id="section-2">正则表达式有啥特点？</h3>
+<ul>
+  <li>灵活性、逻辑性和功能性强</li>
+  <li>可以迅速地用简单的方式达到字符串的复杂控制</li>
+  <li>对刚接触的人来说，有点晦涩难懂</li>
+</ul>
+
+<h3 id="section-3">语法</h3>
+<p>正则表达式是由<code class="highlighter-rouge">普通字符</code>（例如字符 a 到 z）以及<code class="highlighter-rouge">特殊字符</code>（称为元字符，使用时需转义）组成的文字模式。该模式描述在查找文字主体时待匹配的一个或多个字符串。正则表达式作为一个模板，将某个字符模式与所搜索的字符串进行匹配。</p>
+
+<p>定义一个正则表达式，有两种方法，<code class="highlighter-rouge">构造函数</code>和<code class="highlighter-rouge">字面量方式</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cm">/*
+ * RegExp构造函数第一个参数为正则表达式的文本内容,而第二个参数则为可选项标志.
+ * 标志可以组合使用
+ * 当使用构造函数创造正则对象时，需要常规的字符转义规则（在前面加反斜杠 \）
+*/</span>
+<span class="kd">var</span> <span class="nx">re</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s1">'\\w+'</span><span class="p">,</span> <span class="s1">'g'</span><span class="p">);</span>
+<span class="cm">/*
+ * g(全局)
+ * i(忽略大小写)
+ * m(多行)
+*/</span>
+<span class="kd">var</span> <span class="nx">re</span> <span class="o">=</span> <span class="sr">/</span><span class="se">\w</span><span class="sr">+/gim</span><span class="p">;</span> 
+</code></pre>
+</div>
+
+<h4 id="section-4">普通字符</h4>
+<p>普通字符包括没有显式指定为元字符的所有可打印和不可打印字符。这包括所有大写和小写字母、所有数字、所有标点符号和一些其他符号。</p>
+
+<h5 id="section-5">非打印字符</h5>
+<p>非打印字符也可以是正则表达式的组成部分。下表列出了表示非打印字符的转义序列：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>字符</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>\cx</td>
+      <td>匹配由x指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 ‘c’ 字符。</td>
+    </tr>
+    <tr>
+      <td>\f</td>
+      <td>匹配一个换页符。等价于 \x0c 和 \cL。</td>
+    </tr>
+    <tr>
+      <td>\n</td>
+      <td>匹配一个换行符。等价于 \x0a 和 \cJ。</td>
+    </tr>
+    <tr>
+      <td>\r</td>
+      <td>匹配一个回车符。等价于 \x0d 和 \cM。</td>
+    </tr>
+    <tr>
+      <td>\s</td>
+      <td>匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。</td>
+    </tr>
+    <tr>
+      <td>\S</td>
+      <td>匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。</td>
+    </tr>
+    <tr>
+      <td>\t</td>
+      <td>匹配一个制表符。等价于 \x09 和 \cI。</td>
+    </tr>
+    <tr>
+      <td>\v</td>
+      <td>匹配一个垂直制表符。等价于 \x0b 和 \cK。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="section-6">特殊字符</h5>
+<p>所谓特殊字符，就是一些有特殊含义的字符，如上面说的”*.txt”中的*，简单的说就是表示任何字符串的意思。如果要查找文件名中有*的文件，则需要对*进行转义，即<code class="highlighter-rouge">在其前加一个\</code>。ls \*.txt。
+许多元字符要求在试图匹配它们时特别对待。若要匹配这些特殊字符，必须首先使字符”转义”，即，将反斜杠字符 (\) 放在它们前面。下表列出了正则表达式中的特殊字符：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>特殊字符</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$</td>
+      <td>匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $ 也匹配 ‘\n’ 或 ‘\r’。要匹配 $ 字符本身，请使用 \$。</td>
+    </tr>
+    <tr>
+      <td>()</td>
+      <td>标记一个子表达式的开始和结束位置。子表达式可以获取供以后使用。要匹配这些字符，请使用 \( 和 \)。</td>
+    </tr>
+    <tr>
+      <td>*</td>
+      <td>匹配前面的子表达式零次或多次。要匹配 * 字符，请使用 \*。</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>匹配前面的子表达式一次或多次。要匹配 + 字符，请使用 \+。</td>
+    </tr>
+    <tr>
+      <td>.</td>
+      <td>匹配除换行符 \n之外的任何单字符。要匹配 .，请使用 \.。</td>
+    </tr>
+    <tr>
+      <td>[</td>
+      <td>标记一个中括号表达式的开始。要匹配 [，请使用 \[。</td>
+    </tr>
+    <tr>
+      <td>?</td>
+      <td>匹配前面的子表达式零次或一次，或指明一个非贪婪限定符。要匹配 ? 字符，请使用 \?。</td>
+    </tr>
+    <tr>
+      <td>\</td>
+      <td>将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， ‘n’ 匹配字符 ‘n’。’\n’ 匹配换行符。序列 ‘\\’ 匹配 “\“，而 ‘\(‘ 则匹配 “(“。</td>
+    </tr>
+    <tr>
+      <td>^</td>
+      <td>匹配输入字符串的开始位置，除非在方括号表达式中使用，此时它表示不接受该字符集合。要匹配 ^ 字符本身，请使用 \^。</td>
+    </tr>
+    <tr>
+      <td>{</td>
+      <td>标记限定符表达式的开始。要匹配 {，请使用 \{。</td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td>指明两项之间的一个选择。要匹配 |，请使用 \|。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="section-7">限定符</h4>
+<p>限定符用来指定正则表达式的一个给定组件必须要出现多少次才能满足匹配。有*或+或?或{n}或{n,}或{n,m}共6种。正则表达式的限定符有：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>字符</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>*</td>
+      <td>匹配前面的子表达式零次或多次。例如，zo* 能匹配 “z” 以及 “zoo”。* 等价于{0,}。</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>匹配前面的子表达式一次或多次。例如，’zo+’ 能匹配 “zo” 以及 “zoo”，但不能匹配 “z”。+ 等价于 {1,}。</td>
+    </tr>
+    <tr>
+      <td>?</td>
+      <td>匹配前面的子表达式零次或一次。例如，”do(es)?” 可以匹配 “do” 或 “does” 中的”do” 。? 等价于 {0,1}。</td>
+    </tr>
+    <tr>
+      <td>{n}</td>
+      <td>n 是一个非负整数。匹配确定的 n 次。例如，’o{2}’ 不能匹配 “Bob” 中的 ‘o’，但是能匹配 “food” 中的两个 o。</td>
+    </tr>
+    <tr>
+      <td>{n,}</td>
+      <td>n 是一个非负整数。至少匹配n 次。例如，’o{2,}’ 不能匹配 “Bob” 中的 ‘o’，但能匹配 “foooood” 中的所有 o。’o{1,}’ 等价于 ‘o+’。’o{0,}’ 则等价于 ‘o*‘。</td>
+    </tr>
+    <tr>
+      <td>{n,m}</td>
+      <td>m 和 n 均为非负整数，其中n &lt;= m。最少匹配 n 次且最多匹配 m 次。例如，”o{1,3}” 将匹配 “fooooood” 中的前三个 o。’o{0,1}’ 等价于 ‘o?’。请注意在逗号和两个数之间不能有空格。</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>由于章节编号在大的输入文档中会很可能超过九，所以您需要一种方式来处理两位或三位章节编号。限定符给您这种能力。下面的正则表达式匹配编号为任何位数的章节标题：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">/</span><span class="nx">Chapter</span> <span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="mi">9</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">*</span><span class="sr">/</span><span class="err">
+</span></code></pre>
+</div>
+
+<p>请注意，限定符出现在范围表达式之后。因此，它应用于整个范围表达式，在本例中，只指定从 0 到 9 的数字（包括 0 和 9）。
+这里不使用 + 限定符，因为在第二个位置或后面的位置不一定需要有一个数字。也不使用？字符，因为它将章节编号限制到只有两位数。您需要至少匹配 Chapter 和空格字符后面的一个数字。
+如果您知道章节编号被限制为只有 99 章，可以使用下面的表达式来至少指定一位但至多两位数字。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">/</span><span class="nx">Chapter</span> <span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">}</span><span class="sr">/</span><span class="err">
+</span></code></pre>
+</div>
+
+<p>上面的表达式的缺点是，大于 99 的章节编号仍只匹配开头两位数字。另一个缺点是 Chapter 0 也将匹配。只匹配两位数字的更好的表达式如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">/</span><span class="nx">Chapter</span> <span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="mi">9</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]?</span><span class="sr">/</span><span class="err">
+</span><span class="c1">//或：</span>
+<span class="sr">/Chapter </span><span class="se">[</span><span class="sr">1-9</span><span class="se">][</span><span class="sr">0-9</span><span class="se">]{0,1}</span><span class="sr">/</span>
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">*、+和?限定符都是贪婪的，因为它们会尽可能多的匹配文字，只有在它们的后面加上一个?就可以实现非贪婪或最小匹配。</code>
+例如，您可能搜索 HTML 文档，以查找括在 H1 标记内的章节标题。该文本在您的文档中如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;H1&gt;</span>Chapter 1 – Introduction to Regular Expressions<span class="nt">&lt;/H1&gt;</span>
+</code></pre>
+</div>
+<p>下面的表达式匹配从开始小于符号 (&lt;) 到关闭 H1 标记的大于符号 (&gt;) 之间的所有内容。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">/&lt;</span><span class="p">.</span><span class="o">*&gt;</span><span class="sr">/</span><span class="err">
+</span></code></pre>
+</div>
+<p>测试代码：</p>
+<iframe width="100%" height="120" src="http://jsfiddle.net/coqL5ewx/embedded/js,result" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>如果您只需要匹配开始 H1 标记，下面的"非贪婪"表达式只匹配 &lt;H1&gt;。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">/&lt;</span><span class="p">.</span><span class="o">*</span><span class="p">?</span><span class="o">&gt;</span><span class="sr">/</span><span class="err">
+</span></code></pre>
+</div>
+<p>通过在 *、+ 或 ? 限定符之后放置 ?，该表达式从“贪婪”表达式转换为“非贪婪”表达式或者最小匹配。</p>
+
+<p>测试代码：</p>
+<iframe width="100%" height="120" src="//jsfiddle.net/qhebay8L/embedded/js,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<h4 id="section-8">定位符</h4>
+<p>定位符使您能够将正则表达式固定到行首或行尾。它们还使您能够创建这样的正则表达式，这些正则表达式出现在一个单词内、在一个单词的开头或者一个单词的结尾。
+定位符用来描述字符串或单词的边界，^和$分别指字符串的开始与结束，\b描述单词的前或后边界，\B表示非单词边界。
+正则表达式的限定符有：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>字符</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>^</td>
+      <td>匹配输入字符串开始的位置。如果设置了 RegExp 对象的 Multiline 属性，^ 还会与 \n 或 \r 之后的位置匹配。</td>
+    </tr>
+    <tr>
+      <td>$</td>
+      <td>匹配输入字符串结尾的位置。如果设置了 RegExp 对象的 Multiline 属性，$ 还会与 \n 或 \r 之前的位置匹配。</td>
+    </tr>
+    <tr>
+      <td>\b</td>
+      <td>匹配一个字边界，即字与空格间的位置。</td>
+    </tr>
+    <tr>
+      <td>\B</td>
+      <td>非字边界匹配。</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="highlighter-rouge">注意：</code>不能将限定符与定位点一起使用。由于在紧靠换行或者字边界的前面或后面不能有一个以上位置，因此不允许诸如 ^* 之类的表达式。
+若要匹配一行文本开始处的文本，请在正则表达式的开始使用 ^ 字符。不要将 ^ 的这种用法与中括号表达式内的用法混淆。
+若要匹配一行文本的结束处的文本，请在正则表达式的结束处使用 $ 字符。
+若要在搜索章节标题时使用定位点，下面的正则表达式匹配一个章节标题，该标题只包含两个尾随数字，并且出现在行首：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">/^</span><span class="nx">Chapter</span> <span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="mi">9</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span><span class="sr">/</span><span class="err">
+</span></code></pre>
+</div>
+<p>测试代码：</p>
+<iframe width="100%" height="180" src="//jsfiddle.net/wmy8r83L/embedded/js,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>真正的章节标题不仅出现行的开始处，而且它还是该行中仅有的文本。它即出现在行首又出现在同一行的结尾。下面的表达式能确保指定的匹配只匹配章节而不匹配交叉引用。通过创建只匹配一行文本的开始和结尾的正则表达式，就可做到这一点。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">/^</span><span class="nx">Chapter</span> <span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="mi">9</span><span class="p">][</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span><span class="nx">$</span><span class="o">/</span>
+</code></pre>
+</div>
+<p>测试代码：</p>
+<iframe width="100%" height="180" src="//jsfiddle.net/3dncgsdh/embedded/js,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+
+  </div>
+
+</article>
+<!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="/front/article/2016/06/11/regexp" data-title="Javascript正则表达式分享" data-url="/front/article/2016/06/11/regexp.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"bystep15"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+<!-- 多说公共JS代码 end -->
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">宝宝树前端团队</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li><a href="/about/">宝宝树前端团队</a></li>
+          <li><a href="mailto:front-end@babytree-inc.com">front-end@babytree-inc.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/bystep15"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">bystep15</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>宝宝树前端项目组技术博客，欢迎补充
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

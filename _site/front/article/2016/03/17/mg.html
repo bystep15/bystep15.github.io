@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>MG——基于的模块浏览器端延迟请求加载</title>
+  <meta name="description" content="MG，Module Generation，模块时代。以Sea.js为基础，构建遵循CMD规范的模块">
+
+  <link rel="stylesheet" href="/stylesheets/stylesheet.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://bystep15.github.io//front/article/2016/03/17/mg.html">
+  <link rel="alternate" type="application/rss+xml" title="宝宝树前端团队" href="http://bystep15.github.io//feed.xml">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+  <body>
+
+    <header class="main-header">
+    <div class="inner">
+        <h1>宝宝树前端团队博客</h1>
+        <h2>Bystep15.GitHub.io</h2>
+        <a href="https://github.com/bystep15" class="button"><small>Follow me on</small> GitHub</a>
+    </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <nav>当前位置：<a href="/">首页</a> &gt; <a href="/front/article/2016/03/17/mg.html">MG——基于的模块浏览器端延迟请求加载</a></nav>
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">MG——基于的模块浏览器端延迟请求加载</h1>
+    <p class="post-meta"><time datetime="2016-03-17T18:00:00+08:00" itemprop="datePublished">Mar 17, 2016</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">胡继伟</span></span></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h1 id="mg">MG</h1>
+<blockquote>
+  <p>MG，Module Generation，模块时代。以Sea.js为基础，构建遵循CMD规范的模块。
+解决两个问题：
+1. 解决模板中对脚本随意引用而引起的复和杂问题，实现解耦；
+2. 将脚本依赖从模板中迁移到脚本中，更接近使用的地方，实现内聚。</p>
+</blockquote>
+
+<h2 id="section">客户端延迟请求</h2>
+<p>页面中，大多数脚本处于等待使用的状态，这部分脚本完全可以按需加载，将依赖分析后移到浏览器端业务执行时，基于Sea.js实现客户端延迟请求解决方案。</p>
+
+<p>页面加载完成之后，基于HTTP 1.1协议中的<code class="highlighter-rouge">Connection: keep-alive</code>和浏览器的并发加载，是否真的会比全部合并加载快。</p>
+
+<p>HTTP 2.0协议普及之后，combo的过程都可以省略，文件的加载将不是问题。</p>
+
+<h2 id="section-1">基础</h2>
+<p><code class="highlighter-rouge">$header</code>（<code class="highlighter-rouge">HeaderLite</code>类的全局单例）和<code class="highlighter-rouge">$footer</code>（<code class="highlighter-rouge">FooterLite</code>类的全局单例）中的<code class="highlighter-rouge">importJavascript</code>和<code class="highlighter-rouge">importCss</code>两个静态资源引用方法会自动合并并更新资源的版本号（<code class="highlighter-rouge">?ver=最新版本号</code>），用这两个方法引用的静态资源不用关心CDN缓存的问题。</p>
+
+<p>Header中的关键代码
+<code class="highlighter-rouge">php
+$header-&gt;importJavascript('/img/mg/dist/lib/seajs/2.3.0/sea.js');
+$header-&gt;importJavascript('/img/mg/dist/lib/seajs-preload/1.0.0/seajs-preload.js');
+$header-&gt;importJavascript('/img/mg/dist/lib/seajs-css/1.0.4/seajs-css.js');
+$header-&gt;importJavascript('/img/mg/dist/lib/seajs-combo/1.1.2/seajs-combo.js');
+$header-&gt;importJavascript('/img/mg/dist/lib/seajs-flush/1.0.1/seajs-flush.js');
+$header-&gt;importJavascript('/img/mg/dist/config.js');
+</code>
+Footer中的关键代码
+<code class="highlighter-rouge">js
+seajs.flush();
+</code></p>
+
+<p>JS模块代码进行Transport处理时，会自动为模块中依赖的JS脚本添加hash版本号解决CND缓存的问题。</p>
+
+<p>页面中以模块为基本逻辑和代码组织单位，在单独的模块中引用对应的seajs_config.js入口配置文件，一个页面中可以多次引用，Sea.js会自动合并配置。</p>
+
+<p>目的：提升使用的快感，解决无法编译的问题。
+<code class="highlighter-rouge">php
+&lt;?php
+    $footer-&gt;importJavaScript('/img/mg/dist/project/common/js/seajs_config.js');
+?&gt;
+&lt;script&gt;
+    seajs.use('header');
+&lt;/script&gt;
+</code></p>
+
+<h2 id="js">页面中需要引入的JS文件</h2>
+<p>在页面的头部中共需要引入如下6个JS文件，前5个是Sea.js的基本文件。config.js是全局配置文件。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="s1">'lib/seajs/2.3.0/sea.js'</span><span class="p">;</span>
+<span class="s1">'lib/seajs-preload/1.0.0/seajs-preload.js'</span><span class="p">;</span>
+<span class="s1">'lib/seajs-css/1.0.4/seajs-css.js'</span><span class="p">;</span>
+<span class="s1">'lib/seajs-combo/1.1.2/seajs-combo.js'</span><span class="p">;</span>
+<span class="s1">'lib/seajs-flush/1.0.1/seajs-flush.js'</span><span class="p">;</span>
+<span class="s1">'config.js'</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<h2 id="configjs">全局配置文件config.js详细</h2>
+<p>全局配置文件的作用共4个：
+1. 基于版本号统一管理Lib库中引用的第三方资源，当第三方资源更新时，只需要更新配置文件中的版本号，重新编译Lib库和config.js配置文件并上线即可在业务代码中生效；
+2. 设置统一的debug开关，当URL中出现dev参数时，即可调用debug版本的js；
+3. 设置模板后缀名映射；
+4. combo合并请求配置参数设置。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">seajs</span><span class="p">,</span> <span class="nx">location</span><span class="p">)</span> <span class="p">{</span>
+    <span class="s1">'use strict'</span><span class="p">;</span>
+
+    <span class="kd">var</span> <span class="nx">alias</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">'jquery'</span><span class="p">:</span> <span class="s1">'lib/jquery/1.11.2/jquery'</span><span class="p">,</span>
+            <span class="s1">'hogan'</span><span class="p">:</span> <span class="s1">'lib/hogan/3.0.2/hogan'</span>
+        <span class="p">},</span>
+        <span class="nx">map</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">[</span><span class="sr">/</span><span class="se">\.</span><span class="sr">tpl$/</span><span class="p">,</span> <span class="s1">'.tpl.js'</span><span class="p">]</span>
+        <span class="p">];</span>
+
+    <span class="cm">/*
+     * 匹配以下形式
+     * ?dev
+     * ?dev=***
+     * &amp;dev
+     * &amp;dev=
+     * 不匹配以下形式
+     * ?dev****
+     * &amp;dev****
+     */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="sr">/</span><span class="se">(?:\?</span><span class="sr">|</span><span class="se">\&amp;)</span><span class="sr">dev</span><span class="se">(?:</span><span class="sr">=|&amp;|$</span><span class="se">)</span><span class="sr">/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">map</span><span class="p">.</span><span class="nx">push</span><span class="p">([</span><span class="sr">/</span><span class="se">\-</span><span class="sr">debug</span><span class="se">\.</span><span class="sr">js$|</span><span class="se">\.</span><span class="sr">js$/</span><span class="p">,</span> <span class="s1">'-debug.js'</span><span class="p">]);</span>
+    <span class="p">}</span>
+
+    <span class="nx">seajs</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
+        <span class="na">alias</span><span class="p">:</span> <span class="nx">alias</span><span class="p">,</span>
+        <span class="na">map</span><span class="p">:</span> <span class="nx">map</span><span class="p">,</span>
+        <span class="na">comboSyntax</span><span class="p">:</span> <span class="p">[</span><span class="s1">'??/img/mg/dist/'</span><span class="p">,</span> <span class="s1">',/img/mg/dist/'</span><span class="p">],</span>
+        <span class="na">comboBase</span><span class="p">:</span> <span class="nx">seajs</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">base</span>
+    <span class="p">});</span>
+
+<span class="p">}(</span><span class="k">this</span><span class="p">.</span><span class="nx">seajs</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">location</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<h2 id="lib">第三方资源Lib管理</h2>
+
+<h3 id="lib-1">Lib目录结构设计</h3>
+<p><img src="/images/mg/lib-structure.png" alt="Lib目录结构" /></p>
+
+<h3 id="lib-2">Lib库编译</h3>
+<p>Lib库中引用的第三方JS共有两类，一是Sea.js相关文件，只进行Uglify压缩处理；二是jQuery、Hogan等第三方库，引入源码文件并手工修改为CMD格式，随后按如下流程处理。</p>
+
+<p>主要处理流程如下：</p>
+
+<ol>
+  <li>SeaJs文件Uglify压缩；</li>
+  <li>第三方库CSS文件压缩；</li>
+  <li>第三方库JS文件Transport；</li>
+  <li>第三方库JS文件拷贝Debug版本；</li>
+  <li>第三方库JS文件Uglify压缩。</li>
+</ol>
+
+<h2 id="css">针对项目CSS编译</h2>
+<p>每个页面只引用1个CSS文件，CSS的依赖通过Less的<code class="highlighter-rouge">@import</code>解决。</p>
+
+<p><img src="/images/mg/project-css-structure.png" alt="CSS目录结构" /></p>
+
+<p>主要处理流程如下：</p>
+
+<ol>
+  <li>Less文件预处理；</li>
+  <li>CSSLint；</li>
+  <li>ICON图片合并；</li>
+  <li>图片文件Hash化；</li>
+  <li>图片路径转换（符合静态资源部署规则）；</li>
+  <li>CSS文件压缩。</li>
+</ol>
+
+<h2 id="js-1">针对项目JS编译</h2>
+<p>JS目录的组织，每个业务或功能模块分别建立单独的文件夹，文件夹中以main.js为其入口文件，并以该文件夹名为启动入口名。</p>
+
+<p><img src="/images/mg/project-js-structure.png" alt="JS目录结构" /></p>
+
+<p>主要处理流程如下：
+1. 代码质量检查（JsLint，出现错误立刻中止）；
+2. JS文件Transport；
+3. JS文件拷贝Debug版本；
+4. JS文件Uglify压缩；
+5. 生成模块入口配置文件（<code class="highlighter-rouge">seajs_config.js</code>）。</p>
+
+<h3 id="seajsconfigjs">生成的seajs_config.js文件示例</h3>
+
+<p>该文件的作用是避免模块入口启动文件的CND缓存问题。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">!</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">,</span><span class="nx">c</span><span class="p">){</span><span class="nx">b</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span><span class="na">alias</span><span class="p">:{</span><span class="s2">"activity-detail"</span><span class="p">:</span><span class="s2">"project/trials-m/js/activity-detail/main-4924f514"</span><span class="p">,</span><span class="s2">"activity"</span><span class="p">:</span><span class="s2">"project/trials-m/js/activity/main-edcaa876"</span><span class="p">,</span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"project/trials-m/js/address/main-c13c8fd9"</span><span class="p">,</span><span class="s2">"apply-detail"</span><span class="p">:</span><span class="s2">"project/trials-m/js/apply-detail/main-995383a0"</span><span class="p">,</span><span class="s2">"attr"</span><span class="p">:</span><span class="s2">"project/trials-m/js/attr/main-91c9a520"</span><span class="p">,</span><span class="s2">"comment"</span><span class="p">:</span><span class="s2">"project/trials-m/js/comment/main-e68e2a37"</span><span class="p">,</span><span class="s2">"index"</span><span class="p">:</span><span class="s2">"project/trials-m/js/index/main-1bccee4f"</span><span class="p">,</span><span class="s2">"report"</span><span class="p">:</span><span class="s2">"project/trials-m/js/report/main-72bdd139"</span><span class="p">,</span><span class="s2">"reportlist"</span><span class="p">:</span><span class="s2">"project/trials-m/js/reportlist/main-30f4f51c"</span><span class="p">,</span><span class="s2">"rule"</span><span class="p">:</span><span class="s2">"project/trials-m/js/rule/main-911e02e7"</span><span class="p">,</span><span class="s2">"search"</span><span class="p">:</span><span class="s2">"project/trials-m/js/search/main-1323a6f8"</span><span class="p">,</span><span class="s2">"settitle"</span><span class="p">:</span><span class="s2">"project/trials-m/js/settitle/main-6531f08a"</span><span class="p">,</span><span class="s2">"survey"</span><span class="p">:</span><span class="s2">"project/trials-m/js/survey/main-6b945589"</span><span class="p">,</span><span class="s2">"unlist"</span><span class="p">:</span><span class="s2">"project/trials-m/js/unlist/main-96ff2afe"</span><span class="p">}})}(</span><span class="k">this</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">seajs</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">bui</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<h2 id="section-2">目前存在的问题</h2>
+<ol>
+  <li>文件编译的性能问题；</li>
+  <li>入口文件名标识容易冲突的问题；</li>
+  <li>可以增加以单个JS文件为粒度的客户端持久化缓存；</li>
+  <li>Sea.js的CMD不符合国际事实，Require.js的AMD更友好，或者找到更好的方案；</li>
+  <li>gulp的流模式比Grunt的配置在工程化上更有优势；</li>
+  <li>将开发开发构建和生产环境构建分离；</li>
+  <li>JS、CSS和图片等静态资源和HTTP/2的兼容；</li>
+  <li>图片的优化处理（gulp方案中存在）；</li>
+  <li>NPM管理第三方库资源；</li>
+  <li>按正宗的CommonJS方案去写代码；</li>
+  <li>Babel和ES6的使用；</li>
+  <li>肯定还有很多其他问题，需要大家一起携手搞定。</li>
+</ol>
+
+  </div>
+
+</article>
+<!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="/front/article/2016/03/17/mg" data-title="MG——基于的模块浏览器端延迟请求加载" data-url="/front/article/2016/03/17/mg.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"bystep15"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+<!-- 多说公共JS代码 end -->
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">宝宝树前端团队</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li><a href="/about/">宝宝树前端团队</a></li>
+          <li><a href="mailto:front-end@babytree-inc.com">front-end@babytree-inc.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/bystep15"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">bystep15</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>宝宝树前端项目组技术博客，欢迎补充
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

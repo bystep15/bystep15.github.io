@@ -419,6 +419,7 @@ optgroup {
 table {
   border-spacing: 0;
   border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
 td,
@@ -570,7 +571,7 @@ pre {
 pre code {
   padding: 0;
   color: #2879d0;
-  background-color: #fff;
+  /*background-color: #fff;*/
   border: none;
 }
 
@@ -594,14 +595,26 @@ table {
   border: 1px solid #ebebeb;
 }
 
+tr th {
+    border: 1px solid #ccc;
+}
 th {
   font-weight: 500;
+  white-space: nowrap;
+  padding: 10px 1rem;
+  text-align: left;
+  background-color: #555;
+  color: #fff;
+}
+tr:nth-child(even) {
+  background-color: #f6f4f0;
 }
 
 td {
   font-weight: 300;
-  text-align: center;
-  border: 1px solid #ebebeb;
+  /*text-align: center;*/
+  border: 1px solid #ccc;
+  padding: 10px 1rem;
 }
 
 form {
@@ -666,7 +679,7 @@ form {
 #main-content h4 {
   margin-bottom: 8px;
   font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: bold;
   color: #474747;
   text-indent: 3px;
@@ -674,7 +687,6 @@ form {
 
 h4:before {
   padding-right: 0.3em;
-  margin-left: -2.8em;
   content: "////";
   color: #9ddcff;
 }
@@ -682,13 +694,12 @@ h4:before {
 #main-content h5 {
   margin-bottom: 8px;
   font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
-  font-size: 14px;
+  font-size: 16px;
   color: #474747;
   text-indent: 3px;
 }
 h5:before {
   padding-right: 0.3em;
-  margin-left: -3.2em;
   content: "/////";
   color: #9ddcff;
 }

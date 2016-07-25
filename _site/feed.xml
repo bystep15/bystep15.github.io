@@ -6,9 +6,709 @@
 </description>
     <link>http://bystep15.github.io//</link>
     <atom:link href="http://bystep15.github.io//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 26 Feb 2016 17:51:28 +0800</pubDate>
-    <lastBuildDate>Fri, 26 Feb 2016 17:51:28 +0800</lastBuildDate>
+    <pubDate>Mon, 27 Jun 2016 15:33:16 +0800</pubDate>
+    <lastBuildDate>Mon, 27 Jun 2016 15:33:16 +0800</lastBuildDate>
     <generator>Jekyll v3.0.2</generator>
+    
+      <item>
+        <title>Javascript正则表达式分享</title>
+        <description>&lt;h3 id=&quot;section&quot;&gt;什么是正则表达式？&lt;/h3&gt;
+
+&lt;p&gt;正则表达式，又叫&lt;code class=&quot;highlighter-rouge&quot;&gt;“正规表示法”&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;“常规表示法”&lt;/code&gt;，英文名&lt;code class=&quot;highlighter-rouge&quot;&gt;Regular Expression&lt;/code&gt;。它使用单个字符串来描述、匹配符合某个句法规则的字符串。&lt;/p&gt;
+
+&lt;p&gt;正则表达式通常用来检索、替换那些符合某种模式的文本。我们平时在开发机上用Grep，或者命令模式下%s，都可以通过正则来匹配（替换）精准的模式。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;正则表达式能干啥？&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;检测给定的字符串是否符合正则表达式的过滤逻辑（称作&lt;code class=&quot;highlighter-rouge&quot;&gt;匹配&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;数据验证&lt;/code&gt;）。如可以测试字符串中是否包含电话号码。&lt;/li&gt;
+  &lt;li&gt;可以通过正则表达式，从字符串中获取我们想要的特定部分。&lt;/li&gt;
+  &lt;li&gt;替换文本。可以使用正则表达式来识别文档中的特定文本，完全删除该文本或者用其他文本替换它。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;正则表达式有啥特点？&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;灵活性、逻辑性和功能性强&lt;/li&gt;
+  &lt;li&gt;可以迅速地用简单的方式达到字符串的复杂控制&lt;/li&gt;
+  &lt;li&gt;对刚接触的人来说，有点晦涩难懂&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;语法&lt;/h3&gt;
+&lt;p&gt;正则表达式是由&lt;code class=&quot;highlighter-rouge&quot;&gt;普通字符&lt;/code&gt;（例如字符 a 到 z）以及&lt;code class=&quot;highlighter-rouge&quot;&gt;特殊字符&lt;/code&gt;（称为元字符，使用时需转义）组成的文字模式。该模式描述在查找文字主体时待匹配的一个或多个字符串。正则表达式作为一个模板，将某个字符模式与所搜索的字符串进行匹配。&lt;/p&gt;
+
+&lt;p&gt;定义一个正则表达式，有两种方法，&lt;code class=&quot;highlighter-rouge&quot;&gt;构造函数&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;字面量方式&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/*
+ * RegExp构造函数第一个参数为正则表达式的文本内容,而第二个参数则为可选项标志.
+ * 标志可以组合使用
+ * 当使用构造函数创造正则对象时，需要常规的字符转义规则（在前面加反斜杠 \）
+*/&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;re&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;RegExp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;\\w+&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;g&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;/*
+ * g(全局)
+ * i(忽略大小写)
+ * m(多行)
+*/&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;re&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\w&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;+/gim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;section-4&quot;&gt;普通字符&lt;/h4&gt;
+&lt;p&gt;普通字符包括没有显式指定为元字符的所有可打印和不可打印字符。这包括所有大写和小写字母、所有数字、所有标点符号和一些其他符号。&lt;/p&gt;
+
+&lt;h5 id=&quot;section-5&quot;&gt;非打印字符&lt;/h5&gt;
+&lt;p&gt;非打印字符也可以是正则表达式的组成部分。下表列出了表示非打印字符的转义序列：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;字符&lt;/th&gt;
+      &lt;th&gt;描述&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\cx&lt;/td&gt;
+      &lt;td&gt;匹配由x指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 ‘c’ 字符。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\f&lt;/td&gt;
+      &lt;td&gt;匹配一个换页符。等价于 \x0c 和 \cL。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\n&lt;/td&gt;
+      &lt;td&gt;匹配一个换行符。等价于 \x0a 和 \cJ。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\r&lt;/td&gt;
+      &lt;td&gt;匹配一个回车符。等价于 \x0d 和 \cM。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\s&lt;/td&gt;
+      &lt;td&gt;匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\S&lt;/td&gt;
+      &lt;td&gt;匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\t&lt;/td&gt;
+      &lt;td&gt;匹配一个制表符。等价于 \x09 和 \cI。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\v&lt;/td&gt;
+      &lt;td&gt;匹配一个垂直制表符。等价于 \x0b 和 \cK。&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h5 id=&quot;section-6&quot;&gt;特殊字符&lt;/h5&gt;
+&lt;p&gt;所谓特殊字符，就是一些有特殊含义的字符，如上面说的”*.txt”中的*，简单的说就是表示任何字符串的意思。如果要查找文件名中有*的文件，则需要对*进行转义，即&lt;code class=&quot;highlighter-rouge&quot;&gt;在其前加一个\&lt;/code&gt;。ls \*.txt。
+许多元字符要求在试图匹配它们时特别对待。若要匹配这些特殊字符，必须首先使字符”转义”，即，将反斜杠字符 (\) 放在它们前面。下表列出了正则表达式中的特殊字符：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;特殊字符&lt;/th&gt;
+      &lt;th&gt;描述&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$&lt;/td&gt;
+      &lt;td&gt;匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $ 也匹配 ‘\n’ 或 ‘\r’。要匹配 $ 字符本身，请使用 \$。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;()&lt;/td&gt;
+      &lt;td&gt;标记一个子表达式的开始和结束位置。子表达式可以获取供以后使用。要匹配这些字符，请使用 \( 和 \)。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;*&lt;/td&gt;
+      &lt;td&gt;匹配前面的子表达式零次或多次。要匹配 * 字符，请使用 \*。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;+&lt;/td&gt;
+      &lt;td&gt;匹配前面的子表达式一次或多次。要匹配 + 字符，请使用 \+。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;.&lt;/td&gt;
+      &lt;td&gt;匹配除换行符 \n之外的任何单字符。要匹配 .，请使用 \.。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[&lt;/td&gt;
+      &lt;td&gt;标记一个中括号表达式的开始。要匹配 [，请使用 \[。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;?&lt;/td&gt;
+      &lt;td&gt;匹配前面的子表达式零次或一次，或指明一个非贪婪限定符。要匹配 ? 字符，请使用 \?。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\&lt;/td&gt;
+      &lt;td&gt;将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， ‘n’ 匹配字符 ‘n’。’\n’ 匹配换行符。序列 ‘\\’ 匹配 “\“，而 ‘\(‘ 则匹配 “(“。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;^&lt;/td&gt;
+      &lt;td&gt;匹配输入字符串的开始位置，除非在方括号表达式中使用，此时它表示不接受该字符集合。要匹配 ^ 字符本身，请使用 \^。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;{&lt;/td&gt;
+      &lt;td&gt;标记限定符表达式的开始。要匹配 {，请使用 \{。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;|&lt;/td&gt;
+      &lt;td&gt;指明两项之间的一个选择。要匹配 |，请使用 \|。&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;section-7&quot;&gt;限定符&lt;/h4&gt;
+&lt;p&gt;限定符用来指定正则表达式的一个给定组件必须要出现多少次才能满足匹配。有*或+或?或{n}或{n,}或{n,m}共6种。正则表达式的限定符有：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;字符&lt;/th&gt;
+      &lt;th&gt;描述&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;*&lt;/td&gt;
+      &lt;td&gt;匹配前面的子表达式零次或多次。例如，zo* 能匹配 “z” 以及 “zoo”。* 等价于{0,}。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;+&lt;/td&gt;
+      &lt;td&gt;匹配前面的子表达式一次或多次。例如，’zo+’ 能匹配 “zo” 以及 “zoo”，但不能匹配 “z”。+ 等价于 {1,}。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;?&lt;/td&gt;
+      &lt;td&gt;匹配前面的子表达式零次或一次。例如，”do(es)?” 可以匹配 “do” 或 “does” 中的”do” 。? 等价于 {0,1}。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;{n}&lt;/td&gt;
+      &lt;td&gt;n 是一个非负整数。匹配确定的 n 次。例如，’o{2}’ 不能匹配 “Bob” 中的 ‘o’，但是能匹配 “food” 中的两个 o。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;{n,}&lt;/td&gt;
+      &lt;td&gt;n 是一个非负整数。至少匹配n 次。例如，’o{2,}’ 不能匹配 “Bob” 中的 ‘o’，但能匹配 “foooood” 中的所有 o。’o{1,}’ 等价于 ‘o+’。’o{0,}’ 则等价于 ‘o*‘。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;{n,m}&lt;/td&gt;
+      &lt;td&gt;m 和 n 均为非负整数，其中n &amp;lt;= m。最少匹配 n 次且最多匹配 m 次。例如，”o{1,3}” 将匹配 “fooooood” 中的前三个 o。’o{0,1}’ 等价于 ‘o?’。请注意在逗号和两个数之间不能有空格。&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;由于章节编号在大的输入文档中会很可能超过九，所以您需要一种方式来处理两位或三位章节编号。限定符给您这种能力。下面的正则表达式匹配编号为任何位数的章节标题：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Chapter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;请注意，限定符出现在范围表达式之后。因此，它应用于整个范围表达式，在本例中，只指定从 0 到 9 的数字（包括 0 和 9）。
+这里不使用 + 限定符，因为在第二个位置或后面的位置不一定需要有一个数字。也不使用？字符，因为它将章节编号限制到只有两位数。您需要至少匹配 Chapter 和空格字符后面的一个数字。
+如果您知道章节编号被限制为只有 99 章，可以使用下面的表达式来至少指定一位但至多两位数字。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Chapter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;上面的表达式的缺点是，大于 99 的章节编号仍只匹配开头两位数字。另一个缺点是 Chapter 0 也将匹配。只匹配两位数字的更好的表达式如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Chapter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]?&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//或：&lt;/span&gt;
+&lt;span class=&quot;sr&quot;&gt;/Chapter &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;1-9&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;0-9&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;]{0,1}&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;*、+和?限定符都是贪婪的，因为它们会尽可能多的匹配文字，只有在它们的后面加上一个?就可以实现非贪婪或最小匹配。&lt;/code&gt;
+例如，您可能搜索 HTML 文档，以查找括在 H1 标记内的章节标题。该文本在您的文档中如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;H1&amp;gt;&lt;/span&gt;Chapter 1 – Introduction to Regular Expressions&lt;span class=&quot;nt&quot;&gt;&amp;lt;/H1&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;下面的表达式匹配从开始小于符号 (&amp;lt;) 到关闭 H1 标记的大于符号 (&amp;gt;) 之间的所有内容。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;/&amp;lt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&amp;gt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;测试代码：&lt;/p&gt;
+&lt;iframe width=&quot;100%&quot; height=&quot;120&quot; src=&quot;http://jsfiddle.net/coqL5ewx/embedded/js,result&quot; allowfullscreen=&quot;allowfullscreen&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;如果您只需要匹配开始 H1 标记，下面的&quot;非贪婪&quot;表达式只匹配 &amp;lt;H1&amp;gt;。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;/&amp;lt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;通过在 *、+ 或 ? 限定符之后放置 ?，该表达式从“贪婪”表达式转换为“非贪婪”表达式或者最小匹配。&lt;/p&gt;
+
+&lt;p&gt;测试代码：&lt;/p&gt;
+&lt;iframe width=&quot;100%&quot; height=&quot;120&quot; src=&quot;//jsfiddle.net/qhebay8L/embedded/js,result/&quot; allowfullscreen=&quot;allowfullscreen&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+
+&lt;h4 id=&quot;section-8&quot;&gt;定位符&lt;/h4&gt;
+&lt;p&gt;定位符使您能够将正则表达式固定到行首或行尾。它们还使您能够创建这样的正则表达式，这些正则表达式出现在一个单词内、在一个单词的开头或者一个单词的结尾。
+定位符用来描述字符串或单词的边界，^和$分别指字符串的开始与结束，\b描述单词的前或后边界，\B表示非单词边界。
+正则表达式的限定符有：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;字符&lt;/th&gt;
+      &lt;th&gt;描述&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;^&lt;/td&gt;
+      &lt;td&gt;匹配输入字符串开始的位置。如果设置了 RegExp 对象的 Multiline 属性，^ 还会与 \n 或 \r 之后的位置匹配。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$&lt;/td&gt;
+      &lt;td&gt;匹配输入字符串结尾的位置。如果设置了 RegExp 对象的 Multiline 属性，$ 还会与 \n 或 \r 之前的位置匹配。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\b&lt;/td&gt;
+      &lt;td&gt;匹配一个字边界，即字与空格间的位置。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\B&lt;/td&gt;
+      &lt;td&gt;非字边界匹配。&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;注意：&lt;/code&gt;不能将限定符与定位点一起使用。由于在紧靠换行或者字边界的前面或后面不能有一个以上位置，因此不允许诸如 ^* 之类的表达式。
+若要匹配一行文本开始处的文本，请在正则表达式的开始使用 ^ 字符。不要将 ^ 的这种用法与中括号表达式内的用法混淆。
+若要匹配一行文本的结束处的文本，请在正则表达式的结束处使用 $ 字符。
+若要在搜索章节标题时使用定位点，下面的正则表达式匹配一个章节标题，该标题只包含两个尾随数字，并且出现在行首：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;/^&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Chapter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;测试代码：&lt;/p&gt;
+&lt;iframe width=&quot;100%&quot; height=&quot;180&quot; src=&quot;//jsfiddle.net/wmy8r83L/embedded/js,result/&quot; allowfullscreen=&quot;allowfullscreen&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;真正的章节标题不仅出现行的开始处，而且它还是该行中仅有的文本。它即出现在行首又出现在同一行的结尾。下面的表达式能确保指定的匹配只匹配章节而不匹配交叉引用。通过创建只匹配一行文本的开始和结尾的正则表达式，就可做到这一点。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;/^&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Chapter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;测试代码：&lt;/p&gt;
+&lt;iframe width=&quot;100%&quot; height=&quot;180&quot; src=&quot;//jsfiddle.net/3dncgsdh/embedded/js,result/&quot; allowfullscreen=&quot;allowfullscreen&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+
+</description>
+        <pubDate>Sat, 11 Jun 2016 10:30:00 +0800</pubDate>
+        <link>http://bystep15.github.io//front/article/2016/06/11/regexp.html</link>
+        <guid isPermaLink="true">http://bystep15.github.io//front/article/2016/06/11/regexp.html</guid>
+        
+        
+        <category>front</category>
+        
+        <category>article</category>
+        
+      </item>
+    
+      <item>
+        <title>ReactNative分享提纲</title>
+        <description>&lt;h1 id=&quot;section&quot;&gt;分享的目的&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;了解rn是什么，特点和使用场景&lt;/li&gt;
+  &lt;li&gt;本次重点是学习架构（思想）而不是学习框架（用法）&lt;/li&gt;
+  &lt;li&gt;学习组件化的思想及其好处，目标是能运用到工作中&lt;/li&gt;
+  &lt;li&gt;希望随时打断进行交流讨论&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;reactnative&quot;&gt;reactnative是个啥&lt;/h1&gt;
+
+&lt;p&gt;用js写原生app的开源框架，目前官方支持ios和android。&lt;/p&gt;
+
+&lt;p&gt;facebook2015年发布。社区关注度非常高。版本迭代很快，基本上2周左右一个版本。&lt;/p&gt;
+
+&lt;h1 id=&quot;demo&quot;&gt;安卓demo包下载&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://pan.baidu.com/s/1mhX6VoO&quot;&gt;RnDemo.apk,9MB&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;section-1&quot;&gt;优势&lt;/h1&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;开发体验&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;改代码，即时编译，即时加载&lt;/li&gt;
+  &lt;li&gt;兼容性好，代码可预测，各系统的模拟器、各型号的真机基本无差异&lt;/li&gt;
+  &lt;li&gt;组件化支撑，代码更易复用&lt;/li&gt;
+  &lt;li&gt;flexbox布局，自适应布局更容易&lt;/li&gt;
+  &lt;li&gt;手势操控系统，更易开发体验佳的触屏应用&lt;/li&gt;
+  &lt;li&gt;支持应用内更新，自由控制发版&lt;/li&gt;
+  &lt;li&gt;es6新特性，各种语法黑魔法
+    &lt;ol&gt;
+      &lt;li&gt;箭头函数&lt;/li&gt;
+      &lt;li&gt;promise&lt;/li&gt;
+      &lt;li&gt;解构赋值&lt;/li&gt;
+      &lt;li&gt;类定义、继承&lt;/li&gt;
+      &lt;li&gt;fetch&lt;/li&gt;
+      &lt;li&gt;等&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;用户体验&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;加载性能好，无白屏&lt;/li&gt;
+  &lt;li&gt;动画性能好，无卡顿&lt;/li&gt;
+  &lt;li&gt;顺畅的手势操作&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;section-4&quot;&gt;劣势&lt;/h1&gt;
+&lt;ol&gt;
+  &lt;li&gt;无web版，分享页等还要开发,react-web目前还不成熟&lt;/li&gt;
+  &lt;li&gt;无选择器的概念，定义样式很繁琐,通过开发规范部分解决&lt;/li&gt;
+  &lt;li&gt;尚未发布1.0&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;程序员首先要思考的是让用户爽，然后才是让自己爽。如果按此原则的话，劣势还是在我们接受范围内的。（用户体验和开发体验同样重要，最好是有更完美的解决方案。）&lt;/p&gt;
+
+&lt;h1 id=&quot;react&quot;&gt;react基本概念&lt;/h1&gt;
+
+&lt;h2 id=&quot;section-5&quot;&gt;组件化编程&lt;/h2&gt;
+
+&lt;h3 id=&quot;section-6&quot;&gt;组件化定义&lt;/h3&gt;
+&lt;p&gt;组件的定义：独立的可完成某些工作的部件。可能是一个button，或者一个util类。&lt;/p&gt;
+
+&lt;p&gt;组件化编程的目的：复用复用复用。站在别人肩膀上可以极大的提升开发测试效率。&lt;/p&gt;
+
+&lt;p&gt;遇到的困难：个性化定制。通过属性、事件等扩展。&lt;/p&gt;
+
+&lt;p&gt;举个web组件的例子，参考此文档的前半部分：&lt;a href=&quot;https://github.com/cnsnake11/blog/blob/master/ReactNative%E5%BC%80%E5%8F%91%E6%8C%87%E5%AF%BC/ReactNative%E7%BB%84%E4%BB%B6%E7%8A%B6%E6%80%81%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%80%83.md&quot;&gt;链接&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;react-1&quot;&gt;react做了什么&lt;/h3&gt;
+
+&lt;p&gt;react是一个组件化编程的框架，提供了组件化编程的完整解决方案。&lt;a href=&quot;http://facebook.github.io/react/&quot;&gt;例子&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;react组件的定义。 &lt;a href=&quot;http://facebook.github.io/react/docs/component-specs.html&quot;&gt;链接&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;react组件生命周期及其生命周期事件。&lt;a href=&quot;http://facebook.github.io/react/docs/component-specs.html#lifecycle-methods&quot;&gt;链接&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-7&quot;&gt;面向状态编程&lt;/h2&gt;
+
+&lt;p&gt;页面中任何组件的state的改变，都会引起页面所有组件的render方法的执行。react会根据render执行的结果与当前的虚拟dom进行比对，只进行增量的更新。&lt;a href=&quot;https://github.com/cnsnake11/blog/blob/master/ReactNative%E5%BC%80%E5%8F%91%E6%8C%87%E5%AF%BC/ReactNative%E7%BB%84%E4%BB%B6%E7%8A%B6%E6%80%81%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%80%83.md#rn设计思路&quot;&gt;链接&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;jsx&quot;&gt;jsx&lt;/h2&gt;
+&lt;p&gt;js中的xml。&lt;a href=&quot;http://facebook.github.io/react/&quot;&gt;例子&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;reactnative-1&quot;&gt;reactnative基本概念&lt;/h1&gt;
+
+&lt;h2 id=&quot;react-2&quot;&gt;和react的关系&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;rn使用react的组件化规范。&lt;/li&gt;
+  &lt;li&gt;rn使用react的面向状态编程的机制。&lt;/li&gt;
+  &lt;li&gt;rn使用react的jsx机制。&lt;/li&gt;
+  &lt;li&gt;rn提供了一系列app开发所需要的组件。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;section-8&quot;&gt;常用组件&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;div View&lt;/li&gt;
+  &lt;li&gt;span Text&lt;/li&gt;
+  &lt;li&gt;img Image&lt;/li&gt;
+  &lt;li&gt;input TextInput&lt;/li&gt;
+  &lt;li&gt;button Touch*&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;section-9&quot;&gt;样式定义&lt;/h2&gt;
+&lt;p&gt;不支持选择器。不支持选择器。不支持选择器。&lt;/p&gt;
+
+&lt;p&gt;只能内联或者在每一个节点上声明外部css定义。所以，一般没有复用的样式使用内联，有复用的才使用外部定义。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://reactnative.cn/docs/0.24/style.html#content&quot;&gt;链接&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;section-10&quot;&gt;开发环境&lt;/h1&gt;
+
+&lt;h2 id=&quot;ios&quot;&gt;ios&lt;/h2&gt;
+
+&lt;p&gt;xcode+app的ios代码+js编辑器+rn开发服务器+真机or模拟器&lt;/p&gt;
+
+&lt;h2 id=&quot;android&quot;&gt;android&lt;/h2&gt;
+
+&lt;p&gt;jdk+androidSdk+androidStudio+app的android代码+js编辑器+rn开发服务器+真机or模拟器&lt;/p&gt;
+
+&lt;h1 id=&quot;section-11&quot;&gt;开发过程&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;启动rn开发服务器&lt;/li&gt;
+  &lt;li&gt;启动模拟器，点开app，设置自动reload&lt;/li&gt;
+  &lt;li&gt;启动js代码编辑器，coding—save—看效果&lt;/li&gt;
+  &lt;li&gt;tips:可以直接让首页显示你要开发的页面，可以快速查看效果&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// tips用到的代码，替换index页面的最后一行
+AppRegistry.registerComponent(&#39;Ask&#39;, () =&amp;gt; require(&#39;../../../demo/demo1/animate/drag2&#39;));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;section-12&quot;&gt;调试过程&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;console.log&lt;/li&gt;
+  &lt;li&gt;js断点调试&lt;/li&gt;
+  &lt;li&gt;alert&lt;/li&gt;
+  &lt;li&gt;页面元素检测器&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;section-13&quot;&gt;组件设计&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/cnsnake11/blog/blob/master/ReactNative%E5%BC%80%E5%8F%91%E6%8C%87%E5%AF%BC/ReactNative%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1.md&quot;&gt;链接&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;section-14&quot;&gt;坑坑坑&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;android的textinput不能设置边框圆角&lt;/li&gt;
+  &lt;li&gt;android的图片resizemodal=contain不好用&lt;/li&gt;
+  &lt;li&gt;循环依赖报错的问题&lt;/li&gt;
+  &lt;li&gt;安卓rn首屏白屏时间长&lt;/li&gt;
+  &lt;li&gt;安卓的中绝对定位元素移动出父元素会不可见，设置overflow=hidden也不好使&lt;/li&gt;
+  &lt;li&gt;不支持隐藏元素&lt;/li&gt;
+  &lt;li&gt;安卓中，使用缓存rootview，并且键盘打开情况下，直接后退出rn模块，在进入会报错&lt;/li&gt;
+  &lt;li&gt;魅族smartbar不占高&lt;/li&gt;
+  &lt;li&gt;android中，设置overflow=hidden，父容器高度不能为0，至少为0.01，否则hidden无效&lt;/li&gt;
+  &lt;li&gt;加固后动画有掉帧现象&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;section-15&quot;&gt;架构设计&lt;/h1&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;业务模块
+业务框架
+技术框架
+reactnative
+android、ios操作系统
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;section-16&quot;&gt;框架设计&lt;/h1&gt;
+
+&lt;p&gt;参考技术框架和业务框架的目录结构介绍。&lt;/p&gt;
+
+&lt;h1 id=&quot;section-17&quot;&gt;版本发布&lt;/h1&gt;
+
+&lt;h2 id=&quot;section-18&quot;&gt;全量发布&lt;/h2&gt;
+
+&lt;p&gt;全量发布是将rn相关资源打包进app中，是无需网络下载的。&lt;/p&gt;
+
+&lt;p&gt;一般过程：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;coding结束&lt;/li&gt;
+  &lt;li&gt;使用全量打包命令，打出android和ios全量包&lt;/li&gt;
+  &lt;li&gt;将包拷贝到android和ios工程约定好的位置&lt;/li&gt;
+  &lt;li&gt;按照android和ios原有打包方式进行打包即可&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;section-19&quot;&gt;增量发布&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/cnsnake11/blog/blob/master/ReactNative%E5%BC%80%E5%8F%91%E6%8C%87%E5%AF%BC/ReactNative%E5%A2%9E%E9%87%8F%E5%8D%87%E7%BA%A7%E6%96%B9%E6%A1%88.md&quot;&gt;增量升级方案&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;一般过程：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;coding结束&lt;/li&gt;
+  &lt;li&gt;使用全量打包命令，打出android和ios全量包&lt;/li&gt;
+  &lt;li&gt;使用增量打包命令，打出android和ios增量包&lt;/li&gt;
+  &lt;li&gt;将增量包上传到后台管理系统，上线即可&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Wed, 04 May 2016 18:00:00 +0800</pubDate>
+        <link>http://bystep15.github.io//front/article/2016/05/04/ReactNative%E5%88%86%E4%BA%AB%E6%8F%90%E7%BA%B2.html</link>
+        <guid isPermaLink="true">http://bystep15.github.io//front/article/2016/05/04/ReactNative%E5%88%86%E4%BA%AB%E6%8F%90%E7%BA%B2.html</guid>
+        
+        
+        <category>front</category>
+        
+        <category>article</category>
+        
+      </item>
+    
+      <item>
+        <title>MG——基于的模块浏览器端延迟请求加载</title>
+        <description>&lt;h1 id=&quot;mg&quot;&gt;MG&lt;/h1&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;MG，Module Generation，模块时代。以Sea.js为基础，构建遵循CMD规范的模块。
+解决两个问题：
+1. 解决模板中对脚本随意引用而引起的复和杂问题，实现解耦；
+2. 将脚本依赖从模板中迁移到脚本中，更接近使用的地方，实现内聚。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;客户端延迟请求&lt;/h2&gt;
+&lt;p&gt;页面中，大多数脚本处于等待使用的状态，这部分脚本完全可以按需加载，将依赖分析后移到浏览器端业务执行时，基于Sea.js实现客户端延迟请求解决方案。&lt;/p&gt;
+
+&lt;p&gt;页面加载完成之后，基于HTTP 1.1协议中的&lt;code class=&quot;highlighter-rouge&quot;&gt;Connection: keep-alive&lt;/code&gt;和浏览器的并发加载，是否真的会比全部合并加载快。&lt;/p&gt;
+
+&lt;p&gt;HTTP 2.0协议普及之后，combo的过程都可以省略，文件的加载将不是问题。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;基础&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$header&lt;/code&gt;（&lt;code class=&quot;highlighter-rouge&quot;&gt;HeaderLite&lt;/code&gt;类的全局单例）和&lt;code class=&quot;highlighter-rouge&quot;&gt;$footer&lt;/code&gt;（&lt;code class=&quot;highlighter-rouge&quot;&gt;FooterLite&lt;/code&gt;类的全局单例）中的&lt;code class=&quot;highlighter-rouge&quot;&gt;importJavascript&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;importCss&lt;/code&gt;两个静态资源引用方法会自动合并并更新资源的版本号（&lt;code class=&quot;highlighter-rouge&quot;&gt;?ver=最新版本号&lt;/code&gt;），用这两个方法引用的静态资源不用关心CDN缓存的问题。&lt;/p&gt;
+
+&lt;p&gt;Header中的关键代码
+&lt;code class=&quot;highlighter-rouge&quot;&gt;php
+$header-&amp;gt;importJavascript(&#39;/img/mg/dist/lib/seajs/2.3.0/sea.js&#39;);
+$header-&amp;gt;importJavascript(&#39;/img/mg/dist/lib/seajs-preload/1.0.0/seajs-preload.js&#39;);
+$header-&amp;gt;importJavascript(&#39;/img/mg/dist/lib/seajs-css/1.0.4/seajs-css.js&#39;);
+$header-&amp;gt;importJavascript(&#39;/img/mg/dist/lib/seajs-combo/1.1.2/seajs-combo.js&#39;);
+$header-&amp;gt;importJavascript(&#39;/img/mg/dist/lib/seajs-flush/1.0.1/seajs-flush.js&#39;);
+$header-&amp;gt;importJavascript(&#39;/img/mg/dist/config.js&#39;);
+&lt;/code&gt;
+Footer中的关键代码
+&lt;code class=&quot;highlighter-rouge&quot;&gt;js
+seajs.flush();
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;JS模块代码进行Transport处理时，会自动为模块中依赖的JS脚本添加hash版本号解决CND缓存的问题。&lt;/p&gt;
+
+&lt;p&gt;页面中以模块为基本逻辑和代码组织单位，在单独的模块中引用对应的seajs_config.js入口配置文件，一个页面中可以多次引用，Sea.js会自动合并配置。&lt;/p&gt;
+
+&lt;p&gt;目的：提升使用的快感，解决无法编译的问题。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;php
+&amp;lt;?php
+    $footer-&amp;gt;importJavaScript(&#39;/img/mg/dist/project/common/js/seajs_config.js&#39;);
+?&amp;gt;
+&amp;lt;script&amp;gt;
+    seajs.use(&#39;header&#39;);
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;js&quot;&gt;页面中需要引入的JS文件&lt;/h2&gt;
+&lt;p&gt;在页面的头部中共需要引入如下6个JS文件，前5个是Sea.js的基本文件。config.js是全局配置文件。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;&#39;lib/seajs/2.3.0/sea.js&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&#39;lib/seajs-preload/1.0.0/seajs-preload.js&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&#39;lib/seajs-css/1.0.4/seajs-css.js&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&#39;lib/seajs-combo/1.1.2/seajs-combo.js&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&#39;lib/seajs-flush/1.0.1/seajs-flush.js&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&#39;config.js&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;configjs&quot;&gt;全局配置文件config.js详细&lt;/h2&gt;
+&lt;p&gt;全局配置文件的作用共4个：
+1. 基于版本号统一管理Lib库中引用的第三方资源，当第三方资源更新时，只需要更新配置文件中的版本号，重新编译Lib库和config.js配置文件并上线即可在业务代码中生效；
+2. 设置统一的debug开关，当URL中出现dev参数时，即可调用debug版本的js；
+3. 设置模板后缀名映射；
+4. combo合并请求配置参数设置。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;seajs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&#39;use strict&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;s1&quot;&gt;&#39;jquery&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;lib/jquery/1.11.2/jquery&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s1&quot;&gt;&#39;hogan&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;lib/hogan/3.0.2/hogan&#39;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;tpl$/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;.tpl.js&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/*
+     * 匹配以下形式
+     * ?dev
+     * ?dev=***
+     * &amp;amp;dev
+     * &amp;amp;dev=
+     * 不匹配以下形式
+     * ?dev****
+     * &amp;amp;dev****
+     */&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;(?:\?&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&amp;amp;)&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;dev&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;(?:&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;=|&amp;amp;|$&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\-&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;debug&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;js$|&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;js$/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;-debug.js&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;seajs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;comboSyntax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;??/img/mg/dist/&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;,/img/mg/dist/&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;comboBase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;seajs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;base&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;}(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;seajs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;lib&quot;&gt;第三方资源Lib管理&lt;/h2&gt;
+
+&lt;h3 id=&quot;lib-1&quot;&gt;Lib目录结构设计&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/images/mg/lib-structure.png&quot; alt=&quot;Lib目录结构&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;lib-2&quot;&gt;Lib库编译&lt;/h3&gt;
+&lt;p&gt;Lib库中引用的第三方JS共有两类，一是Sea.js相关文件，只进行Uglify压缩处理；二是jQuery、Hogan等第三方库，引入源码文件并手工修改为CMD格式，随后按如下流程处理。&lt;/p&gt;
+
+&lt;p&gt;主要处理流程如下：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;SeaJs文件Uglify压缩；&lt;/li&gt;
+  &lt;li&gt;第三方库CSS文件压缩；&lt;/li&gt;
+  &lt;li&gt;第三方库JS文件Transport；&lt;/li&gt;
+  &lt;li&gt;第三方库JS文件拷贝Debug版本；&lt;/li&gt;
+  &lt;li&gt;第三方库JS文件Uglify压缩。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;css&quot;&gt;针对项目CSS编译&lt;/h2&gt;
+&lt;p&gt;每个页面只引用1个CSS文件，CSS的依赖通过Less的&lt;code class=&quot;highlighter-rouge&quot;&gt;@import&lt;/code&gt;解决。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mg/project-css-structure.png&quot; alt=&quot;CSS目录结构&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;主要处理流程如下：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Less文件预处理；&lt;/li&gt;
+  &lt;li&gt;CSSLint；&lt;/li&gt;
+  &lt;li&gt;ICON图片合并；&lt;/li&gt;
+  &lt;li&gt;图片文件Hash化；&lt;/li&gt;
+  &lt;li&gt;图片路径转换（符合静态资源部署规则）；&lt;/li&gt;
+  &lt;li&gt;CSS文件压缩。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;js-1&quot;&gt;针对项目JS编译&lt;/h2&gt;
+&lt;p&gt;JS目录的组织，每个业务或功能模块分别建立单独的文件夹，文件夹中以main.js为其入口文件，并以该文件夹名为启动入口名。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mg/project-js-structure.png&quot; alt=&quot;JS目录结构&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;主要处理流程如下：
+1. 代码质量检查（JsLint，出现错误立刻中止）；
+2. JS文件Transport；
+3. JS文件拷贝Debug版本；
+4. JS文件Uglify压缩；
+5. 生成模块入口配置文件（&lt;code class=&quot;highlighter-rouge&quot;&gt;seajs_config.js&lt;/code&gt;）。&lt;/p&gt;
+
+&lt;h3 id=&quot;seajsconfigjs&quot;&gt;生成的seajs_config.js文件示例&lt;/h3&gt;
+
+&lt;p&gt;该文件的作用是避免模块入口启动文件的CND缓存问题。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;activity-detail&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/activity-detail/main-4924f514&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;activity&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/activity/main-edcaa876&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;address&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/address/main-c13c8fd9&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;apply-detail&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/apply-detail/main-995383a0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;attr&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/attr/main-91c9a520&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;comment&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/comment/main-e68e2a37&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;index&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/index/main-1bccee4f&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;report&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/report/main-72bdd139&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;reportlist&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/reportlist/main-30f4f51c&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;rule&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/rule/main-911e02e7&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;search&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/search/main-1323a6f8&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;settitle&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/settitle/main-6531f08a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;survey&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/survey/main-6b945589&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;unlist&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;project/trials-m/js/unlist/main-96ff2afe&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}})}(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;seajs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bui&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;目前存在的问题&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;文件编译的性能问题；&lt;/li&gt;
+  &lt;li&gt;入口文件名标识容易冲突的问题；&lt;/li&gt;
+  &lt;li&gt;可以增加以单个JS文件为粒度的客户端持久化缓存；&lt;/li&gt;
+  &lt;li&gt;Sea.js的CMD不符合国际事实，Require.js的AMD更友好，或者找到更好的方案；&lt;/li&gt;
+  &lt;li&gt;gulp的流模式比Grunt的配置在工程化上更有优势；&lt;/li&gt;
+  &lt;li&gt;将开发开发构建和生产环境构建分离；&lt;/li&gt;
+  &lt;li&gt;JS、CSS和图片等静态资源和HTTP/2的兼容；&lt;/li&gt;
+  &lt;li&gt;图片的优化处理（gulp方案中存在）；&lt;/li&gt;
+  &lt;li&gt;NPM管理第三方库资源；&lt;/li&gt;
+  &lt;li&gt;按正宗的CommonJS方案去写代码；&lt;/li&gt;
+  &lt;li&gt;Babel和ES6的使用；&lt;/li&gt;
+  &lt;li&gt;肯定还有很多其他问题，需要大家一起携手搞定。&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Thu, 17 Mar 2016 18:00:00 +0800</pubDate>
+        <link>http://bystep15.github.io//front/article/2016/03/17/mg.html</link>
+        <guid isPermaLink="true">http://bystep15.github.io//front/article/2016/03/17/mg.html</guid>
+        
+        
+        <category>front</category>
+        
+        <category>article</category>
+        
+      </item>
     
       <item>
         <title>http/2 试部署测试总结</title>
