@@ -1,3 +1,10 @@
+---
+layout: post
+title:  "ReactNative增量升级方案"
+date:   2016-08-04 14:49:42 +0800
+description: "facebook的react-native给我们带来了用js写出原生应用的同时，也使得使用RN编写的代码的在线升级变得可能，终于可以不通过应用市场来进行升级，极大的提升了app修bug和赋予新功能的能力。----使用h5的方式也可以做到，但是rn的用户体验可要远远超过h5啊。一般使用RN编写的app的线上使用方式，是将react-native......."
+categories: front article
+---
 #ReactNative增量升级方案
 
 #前言
