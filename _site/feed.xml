@@ -6,19 +6,20 @@
 </description>
     <link>http://bystep15.github.io//</link>
     <atom:link href="http://bystep15.github.io//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 16 Aug 2016 16:20:47 +0800</pubDate>
-    <lastBuildDate>Tue, 16 Aug 2016 16:20:47 +0800</lastBuildDate>
+    <pubDate>Tue, 16 Aug 2016 16:25:37 +0800</pubDate>
+    <lastBuildDate>Tue, 16 Aug 2016 16:25:37 +0800</lastBuildDate>
     <generator>Jekyll v3.0.2</generator>
     
       <item>
         <title>ReactNative Navigator configureScene 自定义动画介绍</title>
         <description>&lt;h1 id=&quot;reactnative-navigator-configurescene-&quot;&gt;ReactNative Navigator configureScene 自定义动画介绍&lt;/h1&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;span style=&quot;float: right; margin-right: 20px;&quot;&gt; @version &lt;strong&gt;rn 0.31&lt;/strong&gt;&lt;br /&gt; &lt;/span&gt;&lt;br /&gt;
-&lt;span style=&quot;float: right; margin-right: 20px;&quot;&gt; @supported by &lt;strong&gt;Caonan&lt;/strong&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
+&lt;p style=&quot;clear: both;&quot;&gt;
+&lt;span style=&quot;float: right; margin-right: 20px;&quot;&gt; @version &lt;b&gt;rn 0.31&lt;/b&gt; &lt;/span&gt;
+&lt;/p&gt;
+&lt;p style=&quot;clear: both;&quot;&gt;
+&lt;span style=&quot;float: right; margin-right: 20px;&quot;&gt; @supported by &lt;b&gt;曹楠&lt;/b&gt; &lt;/span&gt;  
+&lt;/p&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;ReactNative 已经发布一年多了，其热更新和统一 andriod + IOS 开发的优点也越来越成熟。值得大家去涉猎研究。&lt;/p&gt;

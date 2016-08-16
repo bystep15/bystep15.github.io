@@ -9,10 +9,14 @@ categories: front article
 
 # ReactNative Navigator configureScene 自定义动画介绍
 
-> <span style="float: right; margin-right: 20px;"> @version **rn 0.31**<br> </span>  
-> <span style="float: right; margin-right: 20px;"> @supported by **Caonan** </span>  
-
+<p style="clear: both;">
+<span style="float: right; margin-right: 20px;"> @version <b>rn 0.31</b> </span>
+</p>
+<p style="clear: both;">
+<span style="float: right; margin-right: 20px;"> @supported by <b>曹楠</b> </span>  
+</p>
 <p><br></p>
+
 
 ReactNative 已经发布一年多了，其热更新和统一 andriod + IOS 开发的优点也越来越成熟。值得大家去涉猎研究。
 
