@@ -6,9 +6,626 @@
 </description>
     <link>http://bystep15.github.io//</link>
     <atom:link href="http://bystep15.github.io//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 25 Jul 2016 21:39:20 +0800</pubDate>
-    <lastBuildDate>Mon, 25 Jul 2016 21:39:20 +0800</lastBuildDate>
+    <pubDate>Tue, 16 Aug 2016 16:20:47 +0800</pubDate>
+    <lastBuildDate>Tue, 16 Aug 2016 16:20:47 +0800</lastBuildDate>
     <generator>Jekyll v3.0.2</generator>
+    
+      <item>
+        <title>ReactNative Navigator configureScene 自定义动画介绍</title>
+        <description>&lt;h1 id=&quot;reactnative-navigator-configurescene-&quot;&gt;ReactNative Navigator configureScene 自定义动画介绍&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;span style=&quot;float: right; margin-right: 20px;&quot;&gt; @version &lt;strong&gt;rn 0.31&lt;/strong&gt;&lt;br /&gt; &lt;/span&gt;&lt;br /&gt;
+&lt;span style=&quot;float: right; margin-right: 20px;&quot;&gt; @supported by &lt;strong&gt;Caonan&lt;/strong&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;ReactNative 已经发布一年多了，其热更新和统一 andriod + IOS 开发的优点也越来越成熟。值得大家去涉猎研究。&lt;/p&gt;
+
+&lt;h2 id=&quot;navigator-&quot;&gt;Navigator 过渡动画&lt;/h2&gt;
+
+&lt;p&gt;Navigator 应该是 RN 的一个核心 component， 相当于 web SPA 的路由。&lt;/p&gt;
+
+&lt;p&gt;一般的 APP 在视图“页面”进出栈的时候都会有一个过渡动画，RN 当然也在 Navigator 中有相关的配置。如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Navigator&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;initialRoute&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;homepage&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}}}&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// initialRouteStack={Route}&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;renderScene&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_renderRoute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)}&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;configureScene&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;routeStack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;SceneConfigs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;PushFromRight&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// Navigator.SceneConfigs.PushFromRight             &amp;lt;--- RN 提供的过渡动画&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;sceneStyle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;navigationBar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Navigator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;NavigationBar&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;routeMapper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;NavigationBarMap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+            &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;其中 &lt;code class=&quot;highlighter-rouge&quot;&gt;configureScene&lt;/code&gt; 的配置项就用于配置“页面”进出的过渡动画。
+官方默认的配置有这几种：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    Navigator.SceneConfigs.PushFromRight (default)
+    Navigator.SceneConfigs.FloatFromRight
+    Navigator.SceneConfigs.FloatFromLeft
+    Navigator.SceneConfigs.FloatFromBottom
+    Navigator.SceneConfigs.FloatFromBottomAndroid
+    Navigator.SceneConfigs.FadeAndroid
+    Navigator.SceneConfigs.HorizontalSwipeJump
+    Navigator.SceneConfigs.HorizontalSwipeJumpFromRight
+    Navigator.SceneConfigs.VerticalUpSwipeJump
+    Navigator.SceneConfigs.VerticalDownSwipeJump
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;还是挺丰富的，不过肯定没法满足大众的种类需求啊 T_T。
+所以需要我们自己定义了。&lt;/p&gt;
+
+&lt;h2 id=&quot;navigatorsceneconfigs&quot;&gt;NavigatorSceneConfigs&lt;/h2&gt;
+
+&lt;p&gt;先找到官方过渡动画的相关文件。&lt;/p&gt;
+
+&lt;p&gt;0.31 版本在这里 &lt;code class=&quot;highlighter-rouge&quot;&gt;./react-native/Libraries/CustomComponents/Navigator/NavigatorSceneConfigs.js&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;有兴趣的可以自己去看一下。&lt;/p&gt;
+
+&lt;h2 id=&quot;eg&quot;&gt;自定义动画配置 eg&lt;/h2&gt;
+
+&lt;p&gt;估计不少人一看到上面文件中一堆代码就没耐心了，实际都是重复的各类动画的配置，关键性的动画实现代码整理如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;s1&quot;&gt;&#39;use strict&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;Dimensions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;PixelRatio&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;react-native&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;buildStyleInterpolator&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;buildStyleInterpolator&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;SCREEN_WIDTH&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Dimensions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;window&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;SCREEN_HEIGHT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Dimensions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;window&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;OutToLeft&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;transformTranslate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;SCREEN_WIDTH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;linear&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;extrapolate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;round&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PixelRatio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;translateX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;SCREEN_WIDTH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;linear&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;extrapolate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;round&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PixelRatio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// transformRotateRadians: {&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//   from: {x: 0, y: 0, z: 0, w: 1},&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//   to: {x: 0, y: 0, z: -0.47, w: 0.87},&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//   min: 0,&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//   max: 1,&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//   type: &#39;linear&#39;,&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//   extrapolate: true&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// },&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// opacity: {&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//     value: 1,&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//     type: &#39;constant&#39;&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// },&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;opacity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;linear&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;extrapolate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;round&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;constant&#39;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;InFromRight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;transformTranslate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;SCREEN_WIDTH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;linear&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;extrapolate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;round&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PixelRatio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;translateX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;SCREEN_WIDTH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;linear&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;extrapolate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;round&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PixelRatio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// opacity: {&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//     value: 1,&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//     type: &#39;constant&#39;&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// },&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;opacity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;linear&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;extrapolate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;round&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PixelRatio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;constant&#39;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    
+    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;BaseLeftToRightGesture&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// If the gesture can end and restart during one continuous touch&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;isDetachable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// How far the swipe must drag to start transitioning&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;gestureDetectMovement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// Amplitude of release velocity that is considered still&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;notMoving&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// Fraction of directional move required.&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;directionRatio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.66&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// Velocity to transition with when the gesture release was &quot;not moving&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;snapVelocity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// Region that can trigger swipe. iOS default is 30px from the left edge&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;edgeHitWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// Ratio of gesture completion when non-velocity release will cause action&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;stillCompletionRatio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+
+        &lt;span class=&quot;na&quot;&gt;fullDistance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;SCREEN_WIDTH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+
+        &lt;span class=&quot;na&quot;&gt;direction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;left-to-right&#39;&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MyScene&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// 你自定义的输出的动画名称&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;PushFromRight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// A list of all gestures that are enabled on this scene&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;gestures&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;BaseLeftToRightGesture&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+            &lt;span class=&quot;c1&quot;&gt;// Rebound spring parameters when transitioning FROM this scene&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;springFriction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;springTension&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+
+            &lt;span class=&quot;c1&quot;&gt;// Velocity to start at when transitioning without gesture&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// 默认动画的加速度&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;defaultTransitionVelocity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+
+            &lt;span class=&quot;c1&quot;&gt;// Animation interpolators for horizontal transitioning:&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;animationInterpolators&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;into&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;buildStyleInterpolator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;InFromRight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;buildStyleInterpolator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;OutToLeft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+    &lt;span class=&quot;kr&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MyScene&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;上述是笔者搞的一个横向无缩放滑动的过渡动画。如果满足你的需要，可以直接拿去用了。下面以此为例简单说明一下。&lt;/p&gt;
+
+&lt;p&gt;按接口的输出从后往前简述主要方法。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    gestures
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;手势功能动画，用于定义 APP 中的手势，比如 IOS 中大幅的从左向右滑动会退回上一页面，这个只是简单说明，实际行为的配置在 &lt;code class=&quot;highlighter-rouge&quot;&gt;BaseLeftToRightGesture&lt;/code&gt; 里，不再多述。大家可以自己看。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    springFriction
+    springTension
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;弹簧类动画的摩擦系数、弹性系数，用于微调动画结尾时的“弹性抖动”效果，自己试一下就有所体会。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    animationInterpolators
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;动画关键配置，具体的动画实现就全在这里啦。&lt;/p&gt;
+
+&lt;p&gt;以 &lt;code class=&quot;highlighter-rouge&quot;&gt;OutToLeft&lt;/code&gt; 为例，这是一个返回的过渡动画，效果是页面从左侧平行滑出，无缩放，透明度渐减。&lt;/p&gt;
+
+&lt;p&gt;其中有 &lt;code class=&quot;highlighter-rouge&quot;&gt;translateX&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;opacity&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;scale&lt;/code&gt;、等几个动画属性，看似和 CSS3 的动画很像，这对于前端童鞋来说上手就一下变简单了。&lt;/p&gt;
+
+&lt;p&gt;对于不变的属性：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;                   &lt;span class=&quot;c1&quot;&gt;//属性值，比如长度、透明度、放缩比例、角度等&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;constant&#39;&lt;/span&gt;            &lt;span class=&quot;c1&quot;&gt;//类型是常量&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;对于变化属性：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;                   &lt;span class=&quot;c1&quot;&gt;// 初始值&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;SCREEN_WIDTH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;         &lt;span class=&quot;c1&quot;&gt;// 终状态值&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;                                     &lt;span class=&quot;c1&quot;&gt;// 变化范围最小值&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;                                     &lt;span class=&quot;c1&quot;&gt;// 变化范围最大值&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;linear&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;                             &lt;span class=&quot;c1&quot;&gt;// 变化速度类型&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;extrapolate&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;                          &lt;span class=&quot;c1&quot;&gt;// 预判断&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;round&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PixelRatio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;                     &lt;span class=&quot;c1&quot;&gt;// 精确范围，eg.: PixelRatio.get() 精确到屏幕像素比倍数&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;目前源码中提到的动画属性有：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    transformTranslate          // 3D 位移变化
+    translateX                  // X 轴位移变化，类比 Y、Z
+    opacity                     // 透明度
+    scale                       // 放缩
+    transformScale              // 兼容性放缩
+    scaleX                      // X 轴放缩比例，类比 Y
+    transformRotateRadians      // 旋转弧度
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;还算是比较全的，一般的效果都可以满足。具体就看你怎么实现了。&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;结束&lt;/h2&gt;
+
+&lt;p&gt;完成以上自定义动画，引入后，如第一段代码那样引入即可。&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 04 Aug 2016 14:49:42 +0800</pubDate>
+        <link>http://bystep15.github.io//front/article/2016/08/04/SceneConfigs.html</link>
+        <guid isPermaLink="true">http://bystep15.github.io//front/article/2016/08/04/SceneConfigs.html</guid>
+        
+        
+        <category>front</category>
+        
+        <category>article</category>
+        
+      </item>
+    
+      <item>
+        <title>ReactNative增量升级方案</title>
+        <description>&lt;h1 id=&quot;reactnative&quot;&gt;ReactNative增量升级方案&lt;/h1&gt;
+
+&lt;h1 id=&quot;section&quot;&gt;前言&lt;/h1&gt;
+&lt;p&gt;facebook的react-native给我们带来了用js写出原生应用的同时，也使得使用RN编写的代码的在线升级变得可能，终于可以不通过应用市场来进行升级，极大的提升了app修bug和赋予新功能的能力。—-使用h5的方式也可以做到，但是rn的用户体验可要远远超过h5啊。&lt;/p&gt;
+
+&lt;p&gt;一般使用RN编写的app的线上使用方式，是将react-native bundle命令打出bundle文件和assets文件夹，直接内置到app中，app在viewcontroller或者activity中直接加载app内部的bundle文件，比如下图。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/rn/1.jpg&quot; alt=&quot;&quot; /&gt;￼&lt;/p&gt;
+
+&lt;p&gt;当修改了代码或者图片的时候，只要app使用新的bundle文件和assets文件夹，就完成了一次在线升级。&lt;/p&gt;
+
+&lt;p&gt;本文主要基于以上思路，讲解增量升级的解决方案。&lt;/p&gt;
+
+&lt;h1 id=&quot;section-1&quot;&gt;何为增量？&lt;/h1&gt;
+
+&lt;p&gt;一个完整的RN-app程序通常包含以下几个部分：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;native代码部分-objc或者java&lt;/li&gt;
+  &lt;li&gt;js代码部分-rn代码、依赖的第三方库、业务代码等&lt;/li&gt;
+  &lt;li&gt;图片资源部分&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;native代码别想了，没法在线升级，要是能大家就都不使用应用市场ota升级了。&lt;/p&gt;
+
+&lt;p&gt;能进行在线升级的是js代码部分和图片资源部分，具体到代码就是bundle文件和assets文件夹。&lt;/p&gt;
+
+&lt;p&gt;因为在线升级是要走网络的，我们要想办法将网络消耗降到最低，所以要使用增量升级的方式。&lt;/p&gt;
+
+&lt;p&gt;针对js代码部分（即bundle文件）的增量指的是，代码的改动有多少，增量patch的补丁就有多少，那些没有改动的代码部分是不在补丁的范围内的。&lt;/p&gt;
+
+&lt;p&gt;针对图片部分（即assets）的增量指的是，升级补丁包中只包含新增的图片和有改动的图片。&lt;/p&gt;
+
+&lt;p&gt;那么在app端，下载升级补丁包，只需要和现有的版本进行合并，就能计算出最新版本的全量包。&lt;/p&gt;
+
+&lt;p&gt;总结下流程：()中为例子&lt;/p&gt;
+
+&lt;p&gt;首先，计算增量包：新版本(v10) - 旧版本(v1到v9) = 增量包 （会有9个包，v1~v10.zip,v2~v10.zip,,,,,v9-v10.zip）&lt;/p&gt;
+
+&lt;p&gt;然后，app根据自己的当前版本(比如V6)，下载对应的增量包（V6-V10.zip）。&lt;/p&gt;
+
+&lt;p&gt;最后，app中通过 旧版本(v6) + 增量包(v6~v10.zip) = 新版本(v10) ，计算出了新版本的全量包。&lt;/p&gt;
+
+&lt;h1 id=&quot;section-2&quot;&gt;增量算法&lt;/h1&gt;
+
+&lt;p&gt;assets增量算法，比较简单，就是比对，可以很容易的比较出新增的文件，和不同的文件（使用md5）。&lt;/p&gt;
+
+&lt;p&gt;bundle文件的增量算法，确实比较复杂，刚开始没有什么头绪，后来在leader的指引下，很幸运的找到了google写的一个开源的库，可以对大字符串进行diff和patch，并且支持java、objc、js等等语言，完全的满足了我们的需求。&lt;/p&gt;
+
+&lt;p&gt;只用到2个接口，具体请参考github上的文档&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;生成增量包时候：patch_make(text1, text2) =&amp;gt; patches&lt;/li&gt;
+  &lt;li&gt;app生成全量包时候：patch_apply(patches, text1) =&amp;gt; [text2, results]&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;google开源库地址：https://github.com/bystep15/google-diff-match-patch&lt;/p&gt;
+
+&lt;h1 id=&quot;codepush&quot;&gt;codepush&lt;/h1&gt;
+
+&lt;p&gt;微软的codepush也做了类似的事情，不过由于以下原因，我们团队没敢使用其作为解决方案。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;其增量升级仅仅是针对图片资源的&lt;/li&gt;
+  &lt;li&gt;其升级服务器端程序并不开源&lt;/li&gt;
+  &lt;li&gt;其升级服务器在美国，国内访问很慢且不稳定&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;不过，codepush客户端的源码和文档也给我们提供了很多思路，在此感谢codepush团队。&lt;/p&gt;
+
+&lt;p&gt;codepush地址：http://microsoft.github.io/code-push/&lt;/p&gt;
+
+&lt;h1 id=&quot;bundleapp&quot;&gt;bundle要求的app最小版本&lt;/h1&gt;
+
+&lt;p&gt;本文中一般用min-v或者appMinV表示。&lt;/p&gt;
+
+&lt;p&gt;因为js代码是依赖于native代码的，所以，jsbundle对app的版本有要求，所以有这个概念。&lt;/p&gt;
+
+&lt;p&gt;试想，如果bundle依赖了一个native的一个新的接口，这个接口在v3版本的app中才发布，如果v2版本的app升级了这个bundle，那么必然会报错，严重的可能会导致app的崩溃。&lt;/p&gt;
+
+&lt;h1 id=&quot;section-3&quot;&gt;系统结构设计与各模块职责&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&quot;/images/rn/2.png&quot; alt=&quot;&quot; /&gt;￼&lt;/p&gt;
+
+&lt;h1 id=&quot;bundle&quot;&gt;bundle仓库设计&lt;/h1&gt;
+
+&lt;p&gt;存储全量bundle和生成增量patch&lt;/p&gt;
+
+&lt;h2 id=&quot;node-patch-&quot;&gt;node patch 命令&lt;/h2&gt;
+
+&lt;p&gt;在bundle目录下放入一个符合要求【参考目录结构说明】的新版本目录，比如0.3.0,然后执行以下命令。&lt;/p&gt;
+
+&lt;p&gt;命令：node patch 版本号 ， 示例：node patch 0.3.0&lt;/p&gt;
+
+&lt;p&gt;-d参数: node patch 版本号 -d ，如果加入-d参数，会先删除patch目录下的对应版本目录，然后进行patch生成&lt;/p&gt;
+
+&lt;p&gt;然后在patch目录中就会生成0.3.0的增量包，同时patch目录下的update.json文件也会重新生成.&lt;/p&gt;
+
+&lt;h2 id=&quot;node-updatejson-&quot;&gt;node update.json 命令&lt;/h2&gt;
+
+&lt;p&gt;在patch目录下重新生成update.json文件&lt;/p&gt;
+
+&lt;h2 id=&quot;section-4&quot;&gt;目录结构说明&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/images/rn/3.jpg&quot; alt=&quot;&quot; /&gt;￼&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle   存放全量bundle和全量assets的目录,里面的文件基本上是使用react-native bundle命令生成的
+    0.1.0
+        略
+    0.2.0
+        android
+            略，同ios
+        ios
+            config.json    此版本的配置信息，包含要求app的最低版本等，手动配置
+            index.jsbundle    全量jsbundle文件，使用react-native bundle命令生成
+            assets    全量图片目录，使用react-native bundle命令生成
+    0.3.0
+        略
+        
+patch   存放增量补丁的目录，里面文件都是命令生成的，无需手动维护    
+    0.1.0
+        第一版本无文件
+    0.2.0
+        android
+                略，同ios
+        ios
+            0.1.0-0.2.0.zip    增量包.zip
+    0.3.0
+        android
+                略，同ios
+        ios
+            0.1.0-0.3.0.zip    增量包.zip
+            0.2.0-0.3.0.zip    增量包.zip
+    update.json    所有的升级包信息
+src    存放打包用的源码
+lib    存放打包用依赖的第三方的源码
+patch.js    patch命令入口
+update.json.js    update.json命令入口
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;##config.json示例&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;v&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0.3.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//版本&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;min-v&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;4.0.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//此版本要求的最小app版本&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;date&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2016-01-01&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//打包日期&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;des&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;修复xxbug&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;添加xx功能&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;##update.json示例&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[
+  {
+    &quot;v&quot;: &quot;0.1.0&quot;,
+    &quot;min-v&quot;: &quot;4.0.0&quot;,
+    &quot;date&quot;: &quot;2016-01-01&quot;,
+    &quot;des&quot;: [
+      &quot;修复xxbug&quot;,
+      &quot;添加xx功能&quot;
+    ],
+    &quot;iosBundleMd5&quot;: &quot;11f82563f8fd3f22dccb80ad2297f7bc&quot;,
+    &quot;androidBundleMd5&quot;: &quot;11f82563f8fd3f22dccb80ad2297f7bc&quot;
+  },
+  {
+    &quot;v&quot;: &quot;0.2.0&quot;,
+    &quot;min-v&quot;: &quot;4.0.0&quot;,
+    &quot;date&quot;: &quot;2016-01-01&quot;,
+    &quot;des&quot;: [
+      &quot;修复xxbug&quot;,
+      &quot;添加xx功能&quot;
+    ],
+    &quot;iosBundleMd5&quot;: &quot;3ca2824b008132cee515c0ea29938ff2&quot;,
+    &quot;androidBundleMd5&quot;: &quot;3ca2824b008132cee515c0ea29938ff2&quot;
+  },
+  {
+    &quot;v&quot;: &quot;0.3.0&quot;,
+    &quot;min-v&quot;: &quot;4.0.0&quot;,
+    &quot;date&quot;: &quot;2016-01-01&quot;,
+    &quot;des&quot;: [
+      &quot;修复xxbug&quot;,
+      &quot;添加xx功能&quot;
+    ],
+    &quot;iosBundleMd5&quot;: &quot;dbb81d2383112abb50eb19970c486acd&quot;,
+    &quot;androidBundleMd5&quot;: &quot;dbb81d2383112abb50eb19970c486acd&quot;
+  }
+]
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;section-5&quot;&gt;升级服务器设计&lt;/h1&gt;
+
+&lt;h2 id=&quot;patchquery&quot;&gt;接口patch/query&lt;/h2&gt;
+
+&lt;p&gt;例如：http://localhost:3000/patch/query?bundleV=0.2.0&amp;amp;appV=4.0.0&amp;amp;platform=ios&lt;/p&gt;
+
+&lt;p&gt;此接口会有以下4个场景的使用情况，每个场景返回的json示例已经提供在后面文档中。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-6&quot;&gt;输入参数&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;```
+bundleV : app中的bundle版本
+appV : app版本
+platform : app的平台
+
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;json&quot;&gt;返回json各项说明&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;status : 本次请求后台是否发生了错误&lt;/li&gt;
+  &lt;li&gt;msg : 给用户看的中文提示信息，静默升级时候没什么用&lt;/li&gt;
+  &lt;li&gt;latestBundleV : 当前的最新bundle版本&lt;/li&gt;
+  &lt;li&gt;latestAppMinV : 最新bundle要求的app最低版本&lt;/li&gt;
+  &lt;li&gt;canUpdate : 能否升级，boolean&lt;/li&gt;
+  &lt;li&gt;canUpdateBundleV : 能升级的bundle版本&lt;/li&gt;
+  &lt;li&gt;canUpdateAppMinV : 能升级的bundle要求的app最低版本&lt;/li&gt;
+  &lt;li&gt;patchUrl : 补丁包相对地址&lt;/li&gt;
+  &lt;li&gt;platform : 平台：ios or android&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;section-7&quot;&gt;场景1&lt;/h3&gt;
+
+&lt;p&gt;能升级，且能升级到最新版&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;status:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;success&#39;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;msg:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;可以升级，bundle最新版为0.3.0&#39;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;latestBundleV:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;0.3.0&#39;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;latestAppMinV:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;4.0.0&#39;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;canUpdate:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;true,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;canUpdateBundleV:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;0.3.0&#39;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;canUpdateAppMinV:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;4.0.0&#39;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;patchUrl:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;patch/0.3.0/ios/0.2.0-0.3.0.zip&#39;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;platform:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;ios&#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section-8&quot;&gt;场景2&lt;/h3&gt;
+&lt;p&gt;无需升级,已经是最新版本&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;status:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;success&#39;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;msg:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;无需升级，已经是最新版本&#39;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;canUpdate:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;false,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;platform:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;ios&#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section-9&quot;&gt;场景3&lt;/h3&gt;
+&lt;p&gt;能升级,能升级到当前appMinV的最新bundle版本,但不是最新的bundle,想升最新bundle，必须先升app&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;status:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;success&#39;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;msg:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;可以升级，但app版本3.0.0太低，只能升到bundleV0.2.0，bundleV最新为0.3.0&#39;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;latestBundleV:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;0.3.0&#39;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;latestAppMinV:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;4.0.0&#39;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;canUpdate:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;true,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;canUpdateBundleV:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;0.2.0&#39;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;canUpdateAppMinV:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;3.0.0&#39;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;patchUrl:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;patch/0.2.0/ios/0.1.0-0.2.0.zip&#39;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;platform:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;ios&#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section-10&quot;&gt;场景4&lt;/h3&gt;
+&lt;p&gt;不能升级,已经是当前appMinV的最新bundle,但不是最新的bundle,想升最新bundle，必须先升app&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;status:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;success&#39;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;msg:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;不能升级，当前已经是app3.0.0的最新bundle了，但不是最新bundle0.3.0，想升级bundle到最新，请先升级app&#39;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;latestBundleV:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;0.3.0&#39;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;latestAppMinV:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;4.0.0&#39;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;canUpdate:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;false,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;platform:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;ios&#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;native&quot;&gt;native客户端设计&lt;/h1&gt;
+
+&lt;p&gt;客户端的主要工作就是发请求到升级服务器询问是否能升级，然后根据返回的信息，下载升级包，解压升级包，安装升级包。&lt;/p&gt;
+
+&lt;p&gt;过程中要保证下载的文件是正确的（md5校验），要保证补丁安装之后的全量bundle文件是正确的（md5校验）。&lt;/p&gt;
+
+&lt;p&gt;整个过程用户无感知。&lt;/p&gt;
+
+&lt;p&gt;此部分详细设计后边会补充。&lt;/p&gt;
+
+&lt;h1 id=&quot;section-11&quot;&gt;遗留问题&lt;/h1&gt;
+&lt;p&gt;目前rn将安卓的图片放入到res目录中，导致安卓图片不能使用在线升级的解决方案，但是codepush的作者已经重构了此部分内容，并提pr到rn，rn团队也接受了这个pr，会在近期的版本中发布。&lt;/p&gt;
+
+&lt;p&gt;参考地址：https://github.com/facebook/react-native/pull/4527&lt;/p&gt;
+
+&lt;h1 id=&quot;section-12&quot;&gt;近期开源&lt;/h1&gt;
+&lt;p&gt;本部分内容核心的几个部分都已经完成，近期完善之后，会开源出来。&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 04 Aug 2016 14:49:42 +0800</pubDate>
+        <link>http://bystep15.github.io//front/article/2016/08/04/ReactNative%E5%A2%9E%E9%87%8F%E5%8D%87%E7%BA%A7%E6%96%B9%E6%A1%88.html</link>
+        <guid isPermaLink="true">http://bystep15.github.io//front/article/2016/08/04/ReactNative%E5%A2%9E%E9%87%8F%E5%8D%87%E7%BA%A7%E6%96%B9%E6%A1%88.html</guid>
+        
+        
+        <category>front</category>
+        
+        <category>article</category>
+        
+      </item>
     
       <item>
         <title>Javascript正则表达式分享</title>
