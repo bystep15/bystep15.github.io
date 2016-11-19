@@ -47,7 +47,7 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 @media screen and (max-width: 800px) { .wrapper { max-width: -webkit-calc(1000px - (30px)); max-width: calc(1000px - (30px)); padding-right: 15px; padding-left: 15px; } }
 
 /** Clearfix */
-.wrapper:after, .footer-col-wrapper:after { content: ""; display: table; clear: both; }
+.wrapper:after, .footer-col-wrapper:after, .friend-link:after { content: ""; display: table; clear: both; }
 
 /** Icons */
 .icon > svg { display: inline-block; width: 16px; height: 16px; vertical-align: middle; }
@@ -85,15 +85,21 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 
 .contact-list, .social-media-list { list-style: none; margin-left: 0; }
 
-.footer-col-wrapper { font-size: 15px; color: #828282; margin-left: -15px; }
+.footer-col-wrapper { display: -webkit-box; display: -ms-flexbox; display: flex; font-size: 15px; color: #828282; margin-left: -15px; }
 
-.footer-col { float: left; margin-bottom: 15px; padding-left: 15px; }
+.footer-col { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; padding-left: 15px; }
 
 .footer-col-1 { width: -webkit-calc(35% - (30px / 2)); width: calc(35% - (30px / 2)); }
 
 .footer-col-2 { width: -webkit-calc(20% - (30px / 2)); width: calc(20% - (30px / 2)); }
 
 .footer-col-3 { width: -webkit-calc(45% - (30px / 2)); width: calc(45% - (30px / 2)); }
+
+.friend-link { font-size: 15px; color: #828282; }
+.friend-link > friend-title { font-size: 15px; color: #828282; }
+.friend-link > a { display: inline-block; margin: 6px 10px 0 0; font-size: 14px; color: #828282; }
+
+.copyright { margin-top: 20px; font-size: 15px; color: #828282; text-align: center; }
 
 @media screen and (max-width: 800px) { .footer-col-1, .footer-col-2 { width: -webkit-calc(50% - (30px / 2)); width: calc(50% - (30px / 2)); }
   .footer-col-3 { width: -webkit-calc(100% - (30px / 2)); width: calc(100% - (30px / 2)); } }
@@ -104,7 +110,7 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 .page-heading { font-size: 24px; border-bottom: 1px solid #ccc; padding-bottom: 10px; text-indent: 0.5em; font-weight: 700; }
 
 .post-list { margin-left: 0; list-style: none; }
-.post-list > li { margin-bottom: 20px; margin-left: 10px; }
+.post-list > li { margin-left: 10px; }
 
 .post-meta { font-size: 14px; color: #828282; padding: 0 0  5px 5px; border-bottom: 1px solid #ccc; }
 .post-meta em { color: #09c; font-style: normal; }

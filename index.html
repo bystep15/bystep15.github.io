@@ -1,20 +1,21 @@
 ---
 layout: default
 ---
-
 <div class="home">
-
   <h1 class="page-heading">技术相关</h1>
   <ul class="post-list">
+      <li>
+	<h2>
+	  <a class="post-link" href="http://brooch.me/2016/11/17/%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AE%A1%E7%AE%97%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E7%B2%BE%E7%A1%AE/">浮点数计算为什么不精确</a>
+	  <span class="post-meta">posted at: Nov 17, 2016 <em class="author">作者：郑星宬</em></span>
+	</h2>
+      </li>
     {% for post in site.posts %}
       <li>
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-          <span class="post-meta">posted at: {{ post.date | date: "%b %-d, %Y" }} <em class="author">{% if (post.author) %}作者：{{post.author}}{% else %}宝宝树前端团队{% endif %}</em></span>
-        </h2>
-        <p class="description-text">
-            {% if (post.description) %}{{ post.description }}... <a class="read-more" href="{{ post.url | prepend: site.baseurl }}">[阅读全文]</a> {% endif %}
-        </p>
+	<h2>
+	  <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+	  <span class="post-meta">posted at: {{ post.date | date: "%b %-d, %Y" }} <em class="author">{% if (post.author) %}作者：{{post.author}}{% else %}宝宝树前端团队{% endif %}</em></span>
+	</h2>
       </li>
     {% endfor %}
   </ul>
@@ -22,23 +23,23 @@ layout: default
   <h1 class="page-heading">培训相关</h1>
   <ul class="post-list">
       <li>
-        <span class="post-meta">posted at: 2015-12-01</span>
-        <h2>
-          <a class="post-link" href="page/flexbox/index1.html">Flexbox构建响应式图片</a>
-        </h2>
+	<span class="post-meta">posted at: 2015-12-01</span>
+	<h2>
+	  <a class="post-link" href="page/flexbox/index1.html">Flexbox构建响应式图片</a>
+	</h2>
       </li>
       <li>
-        <span class="post-meta">posted at: 2015-12-01</span>
-        <h2>
-          <a class="post-link" href="page/flexbox/index2.html">基于Flex的简单磁贴式布局</a>
-        </h2>
+	<span class="post-meta">posted at: 2015-12-01</span>
+	<h2>
+	  <a class="post-link" href="page/flexbox/index2.html">基于Flex的简单磁贴式布局</a>
+	</h2>
       </li>
       <li>
-        <span class="post-meta">posted at: 2015-12-01</span>
-        <h2>
-          <a class="post-link" href="page/flexbox/index3.html">基于Flex的简单响应式 Grid 布局</a>
-        </h2>
+	<span class="post-meta">posted at: 2015-12-01</span>
+	<h2>
+	  <a class="post-link" href="page/flexbox/index3.html">基于Flex的简单响应式 Grid 布局</a>
+	</h2>
       </li>
   </ul>
-
 </div>
+
