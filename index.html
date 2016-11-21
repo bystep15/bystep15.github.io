@@ -4,18 +4,26 @@ layout: default
 <div class="home">
   <h1 class="page-heading">技术相关</h1>
   <ul class="post-list">
+      {% for weekly in site.data.weekly %}
       <li>
 	<h2>
-	  <a class="post-link" href="http://brooch.me/2016/11/17/%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AE%A1%E7%AE%97%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E7%B2%BE%E7%A1%AE/">浮点数计算为什么不精确</a>
-	  <span class="post-meta">posted at: Nov 17, 2016 <em class="author">作者：郑星宬</em></span>
+	  <a class="post-link" href="{{ weekly.href }}">{{ weekly.title }}</a>
+	  <span class="post-meta">posted at: {{ weekly.time }} <em class="author">作者：{{ weekly.author }}</em></span>
 	</h2>
+	<p>
+	    简介：{{ weekly.description }}
+	</p>
       </li>
+      {% endfor %}
     {% for post in site.posts %}
       <li>
 	<h2>
 	  <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
 	  <span class="post-meta">posted at: {{ post.date | date: "%b %-d, %Y" }} <em class="author">{% if (post.author) %}作者：{{post.author}}{% else %}宝宝树前端团队{% endif %}</em></span>
 	</h2>
+	<p>
+	    简介：{{ post.description }}
+	</p>
       </li>
     {% endfor %}
   </ul>

@@ -33,7 +33,7 @@
     <div class="friend-link">
         <div class="friend-title">友情链接</div>
         {% for friends in site.data.friends %}
-            <a href="{{ friends.link }}">
+            <a href="{{ friends.href }}">
 		{{ friends.name }}
 	    </a>
 	{% endfor %}

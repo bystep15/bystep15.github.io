@@ -1,0 +1,47 @@
+- author: 郑星宬
+  title: 浮点数计算为什么不精确
+  time: Nov 17, 2016
+  href: http://brooch.me/2016/11/17/%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AE%A1%E7%AE%97%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E7%B2%BE%E7%A1%AE/
+  description: 浮点数计算不精确并不是bug，因为标准就是这样的。原因简单来说是这样：2进制的小数无法精确的表达10进制小数，计算机在计算10进制小数的过程中要先转换为2进制进行计算，这个过程中出现了误差。
+
+- author: 胡继伟
+  title: 浏览器截屏思路
+  time: Aug 17, 2016
+  href: http://testudy.cc/tech/2016/08/17/screen-capture.html
+  description: 小伙伴来咨询浏览器如何截屏，脑子里正好有两个思路，跟小伙伴说了一下。趁现在脑子里还有印象，赶紧记录下来。以前好像也遇到过这个需求，当时回复的是“浏览器没有这种能力”，现在回想起来，是当时自己的技术不过关，储备有限，思路过于狭隘导致的.
+
+- author: 胡继伟
+  title: SMS协议使用 
+  time: Aug 17, 2016
+  href: http://testudy.cc/tech/2016/07/07/sms.html
+  description: 在浏览器中，可以使用SMS协议打开短信应用，并将手机号码、短信内容等信息传入。
+
+- author: 尹洁
+  title: ReactNative Navigator configureScene 自定义动画介绍 
+  time: Aug 4, 2016
+  href: https://yj1438.github.io/2016/08/14/rn_sceneconfigs.html
+  description: ReactNative Navigator 自定义过渡动画的实现方式，需要的看过来。妈妈再也不用担心官方提供的动画不好看啦~~~
+
+- author: 曹楠
+  title: ReactNative增量升级方案
+  time: Aug 4, 2016
+  href: https://github.com/cnsnake11/blog/blob/master/ReactNative%E5%BC%80%E5%8F%91%E6%8C%87%E5%AF%BC/ReactNative%E5%A2%9E%E9%87%8F%E5%8D%87%E7%BA%A7%E6%96%B9%E6%A1%88.md
+  description: facebook的react-native给我们带来了用js写出原生应用的同时，也使得使用RN编写的代码的在线升级变得可能，终于可以不通过应用市场来进行升级，极大的提升了app修bug和赋予新功能的能力。----使用h5的方式也可以做到，但是rn的用户体验可要远远超过h5啊。一般使用RN编写的app的线上使用方式，是将react-native....... 
+
+- author: 曹楠
+  title: ReactNative分享提纲
+  time: May 4, 2016
+  href: https://github.com/cnsnake11/blog/blob/master/ReactNative%E5%BC%80%E5%8F%91%E6%8C%87%E5%AF%BC/ReactNative%E5%88%86%E4%BA%AB.md
+  description: ReactNative的团队内分享提纲
+
+- author: 尹洁
+  title: MVC 架构简介
+  time: Apr 30, 2016
+  href: https://yj1438.github.io/2016/04/06/mvc_introduce.html
+  description: 讲述 MVC 的基础知识和主要前端框架的 MVC 思想，进阶分析一下几个框架渲染原理
+
+- author: 尹洁
+  title: http/2 试部署测试总结
+  time: Feb 3, 2016
+  href: https://yj1438.github.io/2016/02/26/http2_statistics.html
+  description: HTTP/2 上线前期调研断断续续也有一段时间了，到此算是告一段落，所得到一些结论在这里给可能涉及到此项目的人分享一下
