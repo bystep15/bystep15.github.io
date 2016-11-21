@@ -43,6 +43,12 @@ kramdown:
 #   extensions:
 #     - footnotes
 
+# Serving
+detach: false
+port: 8000
+host: 0.0.0.0
+baseurl: "" # does not include hostname
+
 encoding: "utf-8"
 markdown_ext: markdown,mkd,mkdn,md
 
