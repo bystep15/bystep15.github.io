@@ -264,10 +264,6 @@ h2 .post-meta {
     width: 100%;
     font-size: 24px;
 }
-.main-header {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #fff;
-}
 .main-header h1 {
      font-family: 'Microsoft Yahei', Arial;
     letter-spacing: 5px;
@@ -275,6 +271,11 @@ h2 .post-meta {
     font-size: 48px;
 }
 .main-header h2 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #fff;
+}
+
+.main-header blockquote {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #fff;
 }
