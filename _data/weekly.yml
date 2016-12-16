@@ -1,3 +1,9 @@
+- author: 曹楠
+  title: 前端和开闭原则
+  time: Dec 2, 2016
+  href: https://github.com/cnsnake11/blog/blob/master/%E5%85%B6%E5%AE%83/%E5%89%8D%E7%AB%AF%E5%92%8C%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99.md
+  description: 开闭原则是面向对象设计中"可复用设计"的基石，是面向对象设计中最重要的原则之一，很多的设计模式都是实现开闭原则的一种手段。 
+
 - author: 尹洁
   title: VR基础及其在页面级应用(1) — 方向
   time: Nov 24, 2016
