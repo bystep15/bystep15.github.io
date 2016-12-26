@@ -1,8 +1,32 @@
 - author: 曹楠
+  title: 弱特征广告方案
+  time: Dec 9, 2016
+  href: https://github.com/cnsnake11/blog/blob/master/%E5%85%B6%E5%AE%83/%E5%BC%B1%E7%89%B9%E5%BE%81%E5%B9%BF%E5%91%8A%E6%96%B9%E6%A1%88.md
+  description:  浏览器对广告的屏蔽主要有两种手段，一个是拦截广告相关的请求，一个是使用样式来隐藏掉广告。
+
+- author: 曹楠
   title: 前端和开闭原则
   time: Dec 2, 2016
   href: https://github.com/cnsnake11/blog/blob/master/%E5%85%B6%E5%AE%83/%E5%89%8D%E7%AB%AF%E5%92%8C%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99.md
   description: 开闭原则是面向对象设计中"可复用设计"的基石，是面向对象设计中最重要的原则之一，很多的设计模式都是实现开闭原则的一种手段。 
+
+- author: 尹洁
+  title: VR基础及其在页面级应用(4) — 场景搭建
+  time: Dec 21, 2016
+  href: http://yj1438.github.io/2016/12/21/vr_scene_2.html
+  description: VR 的基础原理都是从3D建模和3D视觉原理过来的，这个东西本身就非常抽象，学习重点是培养感觉。  
+
+- author: 尹洁
+  title: VR基础及其在页面级应用(3) — 场景基础
+  time: Dec 12, 2016
+  href: http://yj1438.github.io/2016/12/12/vr_scene_1.html
+  description:  VR 场景肯定是一个 3D 立体场景，但“页面”只是一个2D平面。这就需要较多的利用 CSS3 的 3D 变化属性
+
+- author: 尹洁
+  title: VR基础及其在页面级应用(2) — 速度
+  time: Dec 07, 2016
+  href: http://yj1438.github.io/2016/12/07/vr_acceleration.html
+  description: 文章的主题虽然是 “速度”，但是在实际上，不管是一般的移动设备，还是高大上的 VR 设备，都没有控制、检测速度的仪器配件。 设备能感知到的，实际是速度的上级，也是本文章介绍的真正主题 —— 加速度。 
 
 - author: 尹洁
   title: VR基础及其在页面级应用(1) — 方向
