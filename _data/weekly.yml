@@ -1,3 +1,20 @@
+- author: 尹洁
+  title: js 异步代码同步化处理之 await/async
+  time: Feb 23, 2017
+  href: http://yj1438.github.io/2017/02/23/promise_2.html
+  description:在 ES7 中，又给出了一种新的特性：await/async。从字面就可以看出，这是专门解决 JS 异步过程的一种方式。 
+- author: 王姣霞
+  title: 什么是nodejs
+  time: Feb 17, 2017
+  href: https://wangjiaoxia.github.io/2017/02/17/install_nodejs.html
+  description: “Node.js不是JS应用、而是JS运行平台”。
+
+- author: 尹洁
+  title: promise 由浅入深 
+  time: Feb 14, 2017
+  href: http://yj1438.github.io/2017/02/14/promise.html
+  description: “由浅入深” 只是一个意愿，会用的挑着看，不会用的从头看~
+
 - author: 李倩
   title: this关键字
   time: Feb 9, 2017
