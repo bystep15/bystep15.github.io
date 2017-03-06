@@ -8,7 +8,8 @@
   title: js 异步代码同步化处理之 await/async
   time: Feb 23, 2017
   href: http://yj1438.github.io/2017/02/23/promise_2.html
-  description:在 ES7 中，又给出了一种新的特性：await/async。从字面就可以看出，这是专门解决 JS 异步过程的一种方式。 
+  description: 在 ES7 中，又给出了一种新的特性：await/async。从字面就可以看出，这是专门解决 JS 异步过程的一种方式。 
+
 - author: 王姣霞
   title: 什么是nodejs
   time: Feb 17, 2017
