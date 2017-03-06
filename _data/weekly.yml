@@ -1,4 +1,10 @@
 - author: 尹洁
+  title: js 异步代码同步化处理之 generator
+  time: Mar 3, 2017
+  href: http://yj1438.github.io/2017/03/02/generator.html
+  description: generator 函数的工作流和递归的组合使用可以达到我们想要的效果
+
+- author: 尹洁
   title: js 异步代码同步化处理之 await/async
   time: Feb 23, 2017
   href: http://yj1438.github.io/2017/02/23/promise_2.html
