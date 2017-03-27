@@ -1,3 +1,9 @@
+- author: 曹楠
+  title: [翻译] WebAssembly(2-1) A crash course in just-in-time (JIT) compilers JIT编译原理速成
+  time: Mar 24, 2017
+  href: https://github.com/cnsnake11/blog/blob/master/%E5%85%B6%E5%AE%83/WebAssembly(2-1)A%20crash%20course%20in%20just-in-time%20(JIT)%20compilers.md
+  description: How JavaScript is run in the browser JavaScript的浏览器运行原理 
+
 - author: 尹洁
   title: js 异步代码同步化处理之 generator
   time: Mar 3, 2017
