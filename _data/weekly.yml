@@ -1,3 +1,15 @@
+- author: 郑星宬
+  title: nodejs热更新的方法
+  time: Mar 7, 2017
+  href: Apr 
+  description: nodejs文档api require.cache 这个对象，如果这个对象中的引用被清除了，下次再调用就会重新加载，我们可以使用这个机制来热加载更新的模块。
+
+- author: 尹洁
+  title: 通过 respawn 加强需要即时生效的开发环境构建系统
+  time: Mar 30, 2017
+  href: http://yj1438.github.io/2017/03/31/respawn.html
+  description: 构建环境的持续响应程度是良好构建系统一个要点，我们不仅需要构建系统的功能完善，也需要它能及时的将结果呈现
+
 - author: 曹楠
   title: JIT编译原理速成
   time: Mar 24, 2017
