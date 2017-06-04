@@ -1,3 +1,9 @@
+- author: 胡继伟
+  title: 迭代协议
+  time: Jun 2, 2017
+  href: http://testudy.cc/tech/2017/05/30/iteration-protocols.html
+  description: 协议就是一组特定的键值对的集合，一个对象包含了该属性集合也就实现了该协议，一个协议可以被多个对象实现，一个对象也可以实现多个协议。
+
 - author: 武明礼
   title: 转转前端代码规范之js篇
   time: Jun 2, 2017
