@@ -1,3 +1,9 @@
+- author: 郑星宬
+  title: Picodom -- 1kb的Virtual DOM库
+  time: Jun 8, 2017
+  href: http://brooch.me/2017/06/09/picodom-introduce/?from=groupmessage
+  description: Picodom，这个库用了200多行代码就把 virtual dom 和 patch 算法实现了，这下好了，有了实际代码理论也好理解
+
 - author: 胡继伟
   title: 迭代协议
   time: Jun 2, 2017
