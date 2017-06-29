@@ -1,3 +1,9 @@
+- author: 尹洁
+  title: 高阶函数简介
+  time: Jun 23, 2017
+  href: https://yj1438.github.io/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/06/22/high_order_fn.html
+  description: 高阶函数是对一般“一阶函数 输入 -> 输出简单数据类型”的再度抽象，类似一个函数的“工厂模式”。
+
 - author: 郑星宬
   title: Picodom -- 1kb的Virtual DOM库
   time: Jun 8, 2017
