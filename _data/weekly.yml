@@ -1,4 +1,10 @@
 - author: 尹洁
+  title: 高阶函数简单应用
+  time: Jun 30, 2017
+  href: https://yj1438.github.io/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/06/28/high_order_fn_2.html
+  description: 此章中，以例子中的实际场景，体验一下高阶函数能带给我们什么。 继续由浅入深。
+
+- author: 尹洁
   title: 高阶函数简介
   time: Jun 23, 2017
   href: https://yj1438.github.io/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/06/22/high_order_fn.html
