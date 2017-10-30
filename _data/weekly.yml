@@ -1,3 +1,21 @@
+- author: 于鹏
+  title: 手机适配所涉及单位汇总
+  time: Oct 27, 2017
+  href: http://www.jianshu.com/p/0b7c4166d0df
+  description: 总结手机适配单位和简单的换算关系
+
+- author: 曹楠
+  title: TensorFlow Lite --- 赋予移动设备机器学习的能力
+  time: Oct 27, 2017
+  href: https://github.com/cnsnake11/blog/blob/master/%E5%85%B6%E5%AE%83/How%20TensorFlow%20Lite%20Brings%20Machine%20Learning%20to%20Mobile%20Devices.md
+  description: 伴随着人工智能领域研究的突破，移动设备的计算方式也在发生着巨大的变化。我们通过智能手机获取信息的方式，可以从计算机的智能预测需求中获益。
+
+- author: 曹楠
+  title: 富文本编辑器3~自定义元素
+  time: Oct 13, 2017
+  href: https://github.com/cnsnake11/blog/blob/master/%E5%85%B6%E5%AE%83/%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A83~%E8%87%AA%E5%AE%9A%E4%B9%89%E5%85%83%E7%B4%A0.md
+  description: 使用富文本编辑器编写文章的过程中需要插入一些特殊的元素
+
 - author: 尹洁
   title: 高阶函数简单应用
   time: Jun 30, 2017
