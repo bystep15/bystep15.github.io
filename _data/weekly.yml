@@ -1,3 +1,39 @@
+- author: 梁楷涛
+  title: 解读CSP策略
+  time: Dec 30, 2017
+  href: http://www.apptranz.com/wk/content-security-policy/
+  description: 它是一套应用在浏览器端的策略，通过限制网页引入资源，防止一些跨站攻击、点击劫持或者其他代码注入。
+
+- author: 曹楠
+  title: 更快的dom构建：预解析，异步，延迟和提前加载 ~
+  time: Dec 17, 2017
+  href: https://github.com/cnsnake11/blog/blob/master/%E5%85%B6%E5%AE%83/Building%20the%20DOM%20faster:%20speculative%20parsing%2C%20async%2C%20defer%20and%20preload(part%203).md
+  description: 完善、体系的浏览器渲染资源的处理策略参考
+
+- author: 梁楷涛
+  title: 几个常用的数据排重方法
+  time: Dec 1, 2017
+  href: http://www.apptranz.com/wk/make-it-unique/
+  description: 还有更多去重的方法等待挖掘，我们要做的是，高效、可用、美好。
+
+- author: 于鹏
+  title: 递归——汉诺塔
+  time: Nov 17, 2017
+  href: https://www.jianshu.com/p/1dbc95c0c995
+  description: 将一个大的问题分解成比较小的，有着相同形式的问题去解决。
+
+- author: 于鹏
+  title: 浅谈大型网站架构演化发展历程
+  time: Nov 10, 2017
+  href: https://www.jianshu.com/p/d895f2923199
+  description: 浅谈大型网站架构演化发展历程
+
+- author: 梁楷涛
+  title: 微信小程序集成Redux
+  time: Nov 3, 2017
+  href: http://www.apptranz.com/wk/react-in-weapp/
+  description: 选择合适的工具与小程序结合使用
+
 - author: 于鹏
   title: 手机适配所涉及单位汇总
   time: Oct 27, 2017
